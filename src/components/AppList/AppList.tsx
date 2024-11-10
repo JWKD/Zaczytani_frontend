@@ -30,7 +30,7 @@ const AppList = () => {
   }, []);
 
   return loading ? (
-    <div>Loading...</div>
+    <div>Loading ...</div>
   ) : error ? (
     <div>Error: {error}</div>
   ) : (
