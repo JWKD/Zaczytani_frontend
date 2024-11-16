@@ -17,8 +17,6 @@ const router = createBrowserRouter([
       { path: '/', element: <Home /> },
       { path: 'account', element: <Account /> },
       { path: '/user/:id', element: <User /> },
-
-      { path: '*', element: <NotFound /> },
     ],
   },
   {
@@ -26,6 +24,7 @@ const router = createBrowserRouter([
     element: <AuthLayout />,
     children: [{ path: '/auth/login', element: <LoginPage /> }],
   },
+  { path: '*', element: <NotFound /> },
 ]);
 
 function App() {

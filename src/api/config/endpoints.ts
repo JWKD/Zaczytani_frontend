@@ -5,9 +5,9 @@ const endpoints = {
     update: (id: number) => `Book/${id}`, // Endpoint do aktualizacji danych (PUT)
     delete: (id: number) => `Book/${id}`, // Endpoint do usuwania danych (DELETE)
   },
-  user:{
-    create: `Identity/login`,
-  }
+  user: {
+    login: `Identity/login`,
+  },
 };
 
 export default endpoints;

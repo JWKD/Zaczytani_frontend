@@ -1,8 +1,9 @@
 import picture from '../assets/loggingPicture.jpg';
 import { useState, ChangeEvent } from 'react';
-import { Box, Link, Typography, InputBase, Button, styled } from '@mui/material';
+import { Box, Link, Typography, InputBase, Button, styled, textFieldClasses } from '@mui/material';
 import dataApi from '../api/userApi';
 import { useNavigate } from 'react-router-dom';
+import { AxiosError } from 'axios';
 
 const StyledButton = styled(Button)({
   width: '100%',
@@ -29,7 +30,9 @@ const StyledInput = styled(InputBase)({
 
 const StyledTitle = styled(Typography)({
   fontSize: '2rem',
-  fontWeight: 'bold',
+  fontWeight: '400',
+  fontFamily: 'Coiny',
+  fontStyle: 'normal',
   color: '#8a4b3e',
   marginBottom: '20px',
 });
@@ -78,10 +81,17 @@ const StyledContainer = styled('div')(({ theme }) => ({
   height: '100vh',
   backgroundColor: theme.palette.primary.light,
 }));
+
+const StyledText = styled(Typography)({
+  fontSize: '1rem',
+  color: 'red',
+  marginBottom: '20px',
+});
 function LoginPage() {
   const [login, setLogin] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const navigate = useNavigate();
+  const [message, setMessage] = useState<string>('');
 
   const handleInputLoginChange = (event: ChangeEvent<HTMLInputElement>) => {
     setLogin(event.target.value);
@@ -103,7 +113,13 @@ function LoginPage() {
         navigate('/');
       }
     } catch (error) {
-      console.error('Błąd podczas wysyłania danych:', error);
+      const err = error as AxiosError;
+      if (err.status === 401) {
+        setMessage('Podano błędne dane');
+      } else {
+        setMessage('Wystąpił nieoczekiwany problem');
+        console.error('Błąd podczas wysyłania danych:', error);
+      }
     }
   };
   return (
@@ -122,15 +138,19 @@ function LoginPage() {
             onChange={handleInputLoginChange}
           ></StyledInput>
           <StyledInput
-            type="text"
+            type="password"
             placeholder="hasło"
             className="input"
             value={password}
             onChange={handleInputPasswordChange}
           ></StyledInput>
+          <StyledText>{message}</StyledText>
           <StyledButton onClick={handleSubmit}>ZALOGUJ</StyledButton>
           <StyledLink href="#" className="link">
             Zapomniałeś hasła?
+          </StyledLink>
+          <StyledLink href="#" className="link">
+            Zarejestruj się
           </StyledLink>
         </StyledForm>
       </StyledCard>
