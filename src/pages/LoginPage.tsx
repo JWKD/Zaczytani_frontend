@@ -53,7 +53,7 @@ const StyledImage = styled('img')({
 });
 
 const StyledImageContainer = styled(Box)({
-  marginRight: '24px', //
+  marginRight: '24px',
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
