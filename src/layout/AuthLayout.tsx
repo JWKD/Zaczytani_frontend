@@ -1,16 +1,12 @@
-import { styled } from '@mui/material';
 import { Outlet } from 'react-router-dom';
-
-const StyledContainer = styled('div')(({ theme }) => ({
-  display: 'flex',
-  flexDirection: 'column',
-}));
+import Navigation from './Navigation/Navigation';
 
 const AuthLayout = () => {
   return (
-    <StyledContainer>
+    <>
+      <Navigation />
       <Outlet />
-    </StyledContainer>
+    </>
   );
 };
 

@@ -3,8 +3,8 @@ import apiClient from './config/axios';
 import endpoints from './config/endpoints';
 
 const dataApi = {
-  getData: async (): Promise<Book[]> => {
-    const response = await apiClient.get<Book[]>(endpoints.book.fetch);
+  getBookDetails: async (id: string): Promise<Book> => {
+    const response = await apiClient.get<Book>(endpoints.book.fetchDetails(id));
     return response.data;
   },
 
