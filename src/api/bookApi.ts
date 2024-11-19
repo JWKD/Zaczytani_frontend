@@ -8,6 +8,13 @@ const dataApi = {
     return response.data;
   },
 
+  getSearchedBooks: async (searchPhrase: string): Promise<Book[]> => {
+    const response = await apiClient.get<Book[]>(
+      `${endpoints.book.fetchSearchedBooks}?SearchPhrase=${encodeURIComponent(searchPhrase)}`
+    );
+    return response.data;
+  },
+
   // postData: async (payload: DataItemRequest): Promise<void> => {
   //   return await apiClient.post(endpoints.data.create, payload);
   // },
