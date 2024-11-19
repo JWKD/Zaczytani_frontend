@@ -1,0 +1,25 @@
+.navbar {
+  background-image: url(../../assets/navigationPicture.png);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  .logo{
+    margin: 0px;
+    font-family: 'Coiny', sans-serif;
+    font-size: 40px;
+    color: #743836;
+    cursor: pointer;
+    text-shadow:
+    2px 2px 0 #fff, 
+    -2px -2px 0 #fff,
+    2px -2px 0 #fff,
+    -2px 2px 0 #fff;
+    
+  }
+  .links{
+    display: flex;
+    gap: 30px;
+  }
+}
+
