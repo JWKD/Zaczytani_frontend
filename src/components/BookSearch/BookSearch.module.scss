@@ -1,11 +1,13 @@
 .searchContainer {
-  display: flex;
-  align-items: center;
-  background-color: white;
-  border: 1px solid #ddd;
-  border-radius: 50px;
-  padding: 5px 15px;
-  width: 300px;
+  width: 400px;
+  .iconAndInput {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    padding: 5px 15px;
+  }
   .searchIcon {
     display: flex;
   }
@@ -14,5 +16,36 @@
     outline: none;
     font-size: 16px;
     width: 100%;
+  }
+
+  .bookList {
+    width: 400px;
+    font-size: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    float: left;
+    .bookTitle {
+      font-family: Roboto serif;
+      font-weight: 600;
+      display: inline-block;
+      padding-left: 10px;
+    }
+    .bookAuthor {
+      font-family: Roboto serif;
+      font-weight: 500;
+      display: inline-block;
+      padding-left: 5px;
+    }
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+    li {
+      border-bottom: 1px solid #ddddddde;
+    }
+    li:hover {
+      background-color: #e7e4e463;
+    }
   }
 }

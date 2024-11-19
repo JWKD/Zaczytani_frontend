@@ -14,3 +14,9 @@ export interface Author {
   id: string;
   name: string;
 }
+
+export interface AuthorBooks {
+  id: string;
+  name: string;
+  books: Book[];
+}

@@ -1,18 +1,23 @@
-import { useEffect, useState } from 'react';
-import SearchIcon from '../../icons/searchIcon';
+import { ChangeEvent, useEffect, useState } from 'react';
 import styles from './BookSearch.module.scss';
 import dataApi from '../../api/bookApi';
-import { Book } from '../../interfaces/book';
+import { AuthorBooks, Book } from '../../interfaces/book';
+import SearchIcon from '../../icons/SearchIcon';
+import { useNavigate } from 'react-router-dom';
 
 function BookSearch() {
   const [searchPhrase, setSearchPhrase] = useState('');
-  const [books, setBooks] = useState<Book[]>([]);
+  const [authorBooks, setAuthorBooks] = useState<AuthorBooks[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
-      if (!searchPhrase) return;
+      if (!searchPhrase || searchPhrase.length < 3) {
+        setAuthorBooks([]);
+        return;
+      }
 
       setLoading(true);
       setError(null);
@@ -20,7 +25,30 @@ function BookSearch() {
       try {
         const result = await dataApi.getSearchedBooks(searchPhrase);
         console.log(result);
-        setBooks(result);
+        // Przekształcenie danych z API do odpowiedniej struktury
+        const authorsWithBooks: AuthorBooks[] = result.map((authorData: any) => {
+          const books: Book[] = authorData.books.map((bookData: any) => ({
+            id: bookData.id,
+            title: bookData.title,
+            isbn: bookData.isbn,
+            description: bookData.description,
+            pageNumber: bookData.pageNumber,
+            authors: [
+              {
+                id: authorData.id,
+                name: authorData.name,
+              },
+            ],
+          }));
+
+          return {
+            id: authorData.id,
+            name: authorData.name,
+            books: books,
+          };
+        });
+
+        setAuthorBooks(authorsWithBooks);
       } catch (err) {
         console.error(err);
         setError('Wystąpił błąd podczas wyszukiwania książek');
@@ -32,42 +60,44 @@ function BookSearch() {
     fetchData();
   }, [searchPhrase]);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchPhrase(e.target.value);
   };
 
-  return loading ? (
-    <div>Loading ...</div>
-  ) : error ? (
-    <div>Error: {error}</div>
-  ) : (
-    <div className={styles.searchContainer}>
-      <span className={styles.searchIcon}>
-        <SearchIcon />
-      </span>
-      <input
-        className={styles.inputBox}
-        value={searchPhrase}
-        onChange={handleInputChange}
-        type="text"
-        placeholder="Tytuł, autor lub ISBN"
-      />
+  function handleClick(id: string) {
+    navigate(`/books/${id}`);
+  }
 
-      {books.length > 0 ? (
-        <ul className={styles.bookList}>
-          {books.map((book) => (
-            <li key={book.id} className={styles.bookItem}>
-              <strong>{book.title}</strong> -{' '}
-              <ul>
-                {book.authors.map((author) => (
-                  <li key={author.id}>{author.name}</li>
-                ))}
-              </ul>
-            </li>
+  return (
+    <div className={styles.searchContainer}>
+      <div className={styles.iconAndInput}>
+        <span className={styles.searchIcon}>
+          <SearchIcon />
+        </span>
+        <input
+          className={styles.inputBox}
+          value={searchPhrase}
+          onChange={handleInputChange}
+          type="text"
+          placeholder="Tytuł, autor lub ISBN"
+        />
+      </div>
+
+      {authorBooks.length > 0 && searchPhrase.length > 2 ? (
+        <div className={styles.bookList}>
+          {authorBooks.map((author) => (
+            <ul>
+              {author.books.map((book) => (
+                <li key={book.id} onClick={() => handleClick(book.id)}>
+                  <h3 className={styles.bookTitle}>{book.title}: </h3>
+                  <h3 className={styles.bookAuthor}>{author.name}</h3>
+                </li>
+              ))}
+            </ul>
           ))}
-        </ul>
+        </div>
       ) : (
-        !loading && !error && searchPhrase && <p>Brak wyników</p>
+        !loading && !error
       )}
     </div>
   );

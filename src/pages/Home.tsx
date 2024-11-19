@@ -1,5 +1,6 @@
 import { Button, Container, styled, TextField, Typography } from '@mui/material';
 import AppList from '../components/AppList/AppList';
+import BookSearch from '../components/BookSearch/BookSearch';
 
 const StyledTextField = styled(TextField)(({ theme }) => ({
   padding: '10px',
@@ -25,6 +26,9 @@ function Home() {
       <StyledTextField />
 
       <AppList />
+      <div>
+        <BookSearch />
+      </div>
     </Container>
   );
 }

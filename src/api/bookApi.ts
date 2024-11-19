@@ -1,4 +1,4 @@
-import { Book } from '../interfaces/book';
+import { AuthorBooks, Book } from '../interfaces/book';
 import apiClient from './config/axios';
 import endpoints from './config/endpoints';
 
@@ -8,8 +8,8 @@ const dataApi = {
     return response.data;
   },
 
-  getSearchedBooks: async (searchPhrase: string): Promise<Book[]> => {
-    const response = await apiClient.get<Book[]>(
+  getSearchedBooks: async (searchPhrase: string): Promise<AuthorBooks[]> => {
+    const response = await apiClient.get<AuthorBooks[]>(
       `${endpoints.book.fetchSearchedBooks}?SearchPhrase=${encodeURIComponent(searchPhrase)}`
     );
     return response.data;
