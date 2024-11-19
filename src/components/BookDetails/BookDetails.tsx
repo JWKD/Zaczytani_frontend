@@ -1,9 +1,9 @@
-// components/BookDetails.tsx
 import { useEffect, useState } from 'react';
 import styles from './BookDetails.module.scss';
 import dataApi from '../../api/bookApi';
 import { Book } from '../../interfaces/book';
 import '@fontsource/roboto-serif';
+import Star from '../../icons/Star';
 
 interface BookDetailsProps {
   id: string;
@@ -73,10 +73,9 @@ function BookDetails({ id }: BookDetailsProps) {
           <p>
             <strong>ISBN:</strong> {book.isbn || 'Brak ISBN'}
           </p>
-          <div>
-            <p>
-              <strong>Ocena</strong> X z Y
-            </p>
+          <div className={styles.rating}>
+            <Star />
+            <p> 7,5 z 6066 ocen</p>
           </div>
           <div>
             <p>
