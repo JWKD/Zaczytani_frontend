@@ -4,7 +4,6 @@ import { Box, Link, Typography, InputBase, Button, styled, textFieldClasses } fr
 import dataApi from '../api/userApi';
 import { useNavigate } from 'react-router-dom';
 import { AxiosError } from 'axios';
-import '@fontsource/coiny';
 
 const StyledButton = styled(Button)({
   width: '100%',

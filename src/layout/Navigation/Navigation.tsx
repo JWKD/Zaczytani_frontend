@@ -1,5 +1,4 @@
 import styles from './Navigation.module.scss';
-import '@fontsource/coiny';
 
 type NavigationProps = {
   children?: React.ReactNode;

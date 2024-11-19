@@ -9,6 +9,7 @@ import LoginPage from './pages/LoginPage';
 import AuthLayout from './layout/AuthLayout';
 import RegisterPage from './pages/RegisterPage';
 import ForgotPassword from './pages/ForgotPassword';
+import '@fontsource/coiny';
 
 const router = createBrowserRouter([
   {
@@ -23,11 +24,11 @@ const router = createBrowserRouter([
     path: '/auth',
     element: <AuthLayout />,
     children: [
-      { path: '/auth/login', element: <LoginPage /> },
       { path: '/auth/register', element: <RegisterPage /> },
       { path: '/auth/forgotPassword', element: <ForgotPassword /> },
     ],
   },
+  { path: '/auth/login', element: <LoginPage /> },
   { path: '*', element: <NotFound /> },
 ]);
 
