@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import styles from './BookDetails.module.scss';
 import dataApi from '../../api/bookApi';
 import { Book } from '../../interfaces/book';
-import '@fontsource/roboto-serif';
 import Star from '../../icons/Star';
 
 interface BookDetailsProps {
@@ -18,7 +17,6 @@ function BookDetails({ id }: BookDetailsProps) {
     const fetchData = async () => {
       try {
         const result = await dataApi.getBookDetails(id);
-        console.log(result);
         setBook(result);
       } catch (err) {
         setError('Wystąpił błąd');
@@ -37,7 +35,7 @@ function BookDetails({ id }: BookDetailsProps) {
   ) : (
     book && (
       <div className={styles.bookContainer}>
-        <img className={styles.bookCover} src="../src/assets/okladka.jpg"></img>
+        <img className={styles.bookCover} src={book.imageUrl}></img>
         <div className={styles.aboutAndButtons}>
           <div className={styles.aboutContainer}>
             <h2 className={styles.title}>{book.title}</h2>

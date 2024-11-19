@@ -14,4 +14,5 @@ export interface Book {
   description: string;
   pageNumber: number;
   authors: Author[];
+  imageUrl: string;
 }

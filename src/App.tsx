@@ -9,6 +9,7 @@ import Layout from './layout/Layout';
 import LoginPage from './pages/LoginPage';
 import AuthLayout from './layout/AuthLayout';
 import Details from './pages/Details';
+import '@fontsource/roboto-serif';
 
 const router = createBrowserRouter([
   {
