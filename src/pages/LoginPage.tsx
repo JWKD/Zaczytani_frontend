@@ -29,16 +29,15 @@ const StyledInput = styled(InputBase)({
 });
 
 const StyledTitle = styled(Typography)({
-  fontSize: '2rem',
-  fontWeight: '400',
-  fontFamily: 'Coiny',
-  fontStyle: 'normal',
-  color: '#8a4b3e',
   marginBottom: '20px',
+  fontFamily: 'Coiny, sans-serif',
+  fontSize: '40px',
+  color: '#743836',
 });
 
 const StyledLink = styled(Link)({
   color: '#7ea0a6',
+  cursor: 'pointer',
   textDecoration: 'none',
   '&:hover': {
     textDecoration: 'underline',
@@ -122,6 +121,14 @@ function LoginPage() {
       }
     }
   };
+
+  function handleClickRegister() {
+    navigate('/auth/register');
+  }
+
+  function handleClickForgotPassoword() {
+    navigate('/auth/forgotPassword');
+  }
   return (
     <StyledContainer>
       <StyledCard className="container">
@@ -146,10 +153,10 @@ function LoginPage() {
           ></StyledInput>
           <StyledText>{message}</StyledText>
           <StyledButton onClick={handleSubmit}>ZALOGUJ</StyledButton>
-          <StyledLink href="#" className="link">
+          <StyledLink onClick={handleClickForgotPassoword} className="link">
             Zapomniałeś hasła?
           </StyledLink>
-          <StyledLink href="#" className="link">
+          <StyledLink onClick={handleClickRegister} className="link">
             Zarejestruj się
           </StyledLink>
         </StyledForm>
