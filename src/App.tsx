@@ -7,6 +7,8 @@ import { theme } from './theme';
 import Layout from './layout/Layout';
 import LoginPage from './pages/LoginPage';
 import AuthLayout from './layout/AuthLayout';
+import Details from './pages/Details';
+import '@fontsource/roboto-serif';
 import RegisterPage from './pages/RegisterPage';
 import ForgotPassword from './pages/ForgotPassword';
 import '@fontsource/coiny';
@@ -17,6 +19,7 @@ const router = createBrowserRouter([
     element: <Layout />,
     children: [
       { path: '/', element: <Home /> },
+      { path: '/books/:id', element: <Details /> },
       { path: '/user/:id', element: <User /> },
     ],
   },
