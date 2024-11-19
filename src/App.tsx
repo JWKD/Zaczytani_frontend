@@ -1,6 +1,5 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Home from './pages/Home';
-import Account from './pages/Account';
 import NotFound from './pages/NotFound';
 import User from './pages/User';
 import { CssBaseline, ThemeProvider } from '@mui/material';
@@ -8,6 +7,9 @@ import { theme } from './theme';
 import Layout from './layout/Layout';
 import LoginPage from './pages/LoginPage';
 import AuthLayout from './layout/AuthLayout';
+import RegisterPage from './pages/RegisterPage';
+import ForgotPassword from './pages/ForgotPassword';
+import '@fontsource/coiny';
 
 const router = createBrowserRouter([
   {
@@ -15,15 +17,18 @@ const router = createBrowserRouter([
     element: <Layout />,
     children: [
       { path: '/', element: <Home /> },
-      { path: 'account', element: <Account /> },
       { path: '/user/:id', element: <User /> },
     ],
   },
   {
     path: '/auth',
     element: <AuthLayout />,
-    children: [{ path: '/auth/login', element: <LoginPage /> }],
+    children: [
+      { path: '/auth/register', element: <RegisterPage /> },
+      { path: '/auth/forgotPassword', element: <ForgotPassword /> },
+    ],
   },
+  { path: '/auth/login', element: <LoginPage /> },
   { path: '*', element: <NotFound /> },
 ]);
 
