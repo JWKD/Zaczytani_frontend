@@ -6,6 +6,8 @@ import User from './pages/User';
 import { CssBaseline, ThemeProvider } from '@mui/material';
 import { theme } from './theme';
 import Layout from './layout/Layout';
+import LoginPage from './pages/LoginPage';
+import AuthLayout from './layout/AuthLayout';
 
 const router = createBrowserRouter([
   {
@@ -15,9 +17,14 @@ const router = createBrowserRouter([
       { path: '/', element: <Home /> },
       { path: 'account', element: <Account /> },
       { path: '/user/:id', element: <User /> },
-      { path: '*', element: <NotFound /> },
     ],
   },
+  {
+    path: '/auth',
+    element: <AuthLayout />,
+    children: [{ path: '/auth/login', element: <LoginPage /> }],
+  },
+  { path: '*', element: <NotFound /> },
 ]);
 
 function App() {

@@ -13,7 +13,7 @@ const apiClient = axios.create({
 apiClient.interceptors.request.use(
   (config) => {
     // Możesz dodać token do nagłówków, np.:
-    // const token = localStorage.getItem('token'); // Pobranie tokena z localStorage
+    // const token = localStorage.getItem('accessToken'); // Pobranie tokena z localStorage
     // if (token) {
     //   config.headers['Authorization'] = `Bearer ${token}`; // Dodanie tokena do nagłówków
     // }
