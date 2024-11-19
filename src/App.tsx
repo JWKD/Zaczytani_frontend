@@ -8,6 +8,7 @@ import { theme } from './theme';
 import Layout from './layout/Layout';
 import LoginPage from './pages/LoginPage';
 import AuthLayout from './layout/AuthLayout';
+import Details from './pages/Details';
 
 const router = createBrowserRouter([
   {
@@ -16,6 +17,7 @@ const router = createBrowserRouter([
     children: [
       { path: '/', element: <Home /> },
       { path: 'account', element: <Account /> },
+      { path: '/books/:id', element: <Details /> },
       { path: '/user/:id', element: <User /> },
     ],
   },

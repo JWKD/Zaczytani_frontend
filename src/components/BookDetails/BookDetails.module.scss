@@ -1,0 +1,135 @@
+.bookContainer {
+  max-width: 90%;
+  margin: 0 auto;
+  background-color: #ffffff66;
+  border-radius: 8px;
+  padding: 20px;
+  font-family: Roboto serif;
+  font-size: 16px;
+}
+
+.bookCover {
+  width: 150px;
+  height: auto;
+  float: left;
+  margin-right: 0px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.aboutContainer {
+  width: 90%;
+  background: #c4b6ac4d;
+  border-top-right-radius: 50px;
+  border-bottom-right-radius: 50px;
+  padding: 8px;
+  margin-top: 15px;
+  margin-bottom: 10px;
+  padding-left: 20px;
+  .title {
+    font-weight: 800;
+    color: #333;
+    margin-bottom: 5px;
+  }
+  .authors {
+    color: #665243;
+    font-weight: 400;
+    margin-bottom: 5px;
+  }
+
+  .publisher {
+    color: #0000008c;
+    font-weight: 300;
+    padding-bottom: 5px;
+  }
+}
+
+.aboutAndButtons {
+  display: flex;
+  gap: 10px;
+}
+
+.buttons {
+  float: right;
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  margin-top: 30px;
+  .addButton {
+    background-color: #b8dc8cd4;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    margin-bottom: 10px;
+    height: 22px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  .addButton:hover {
+    background-color: #a3c88b;
+  }
+  .currentlyButton {
+    background-color: #1fc7a599;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    margin-bottom: 10px;
+    height: 22px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  .currentlyButton:hover {
+    background-color: #17a28d;
+  }
+  .cancelButton {
+    background-color: #743836b2;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    height: 22px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  .cancelButton:hover {
+    background-color: #63302a;
+  }
+}
+
+.detailsContainer {
+  padding-left: 30px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+  strong {
+    font-weight: 600;
+    color: black;
+  }
+  p {
+    margin-bottom: 3px;
+    font-weight: 200;
+    color: #0000008c;
+  }
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+h2,
+h3,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+.description {
+  background-color: white;
+  font-size: 14px;
+  padding: 15px;
+  font-weight: 400;
+  color: #0000008c;
+  border-radius: 5px;
+  margin-left: 10%;
+  margin-right: 10%;
+}
