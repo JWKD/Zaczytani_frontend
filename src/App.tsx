@@ -7,11 +7,12 @@ import { theme } from './theme';
 import Layout from './layout/Layout';
 import LoginPage from './pages/LoginPage';
 import AuthLayout from './layout/AuthLayout';
-import Details from './pages/Details';
+import Details from './pages/BookDetails';
 import '@fontsource/roboto-serif';
 import RegisterPage from './pages/RegisterPage';
 import ForgotPassword from './pages/ForgotPassword';
 import '@fontsource/coiny';
+import AuthorDetails from './components/AuthorDetails/AuthorDetails';
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,7 @@ const router = createBrowserRouter([
     children: [
       { path: '/', element: <Home /> },
       { path: '/books/:id', element: <Details /> },
+      { path: '/authors/:id', element: <AuthorDetails /> },
       { path: '/user/:id', element: <User /> },
     ],
   },

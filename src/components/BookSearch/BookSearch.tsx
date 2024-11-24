@@ -4,6 +4,7 @@ import dataApi from '../../api/bookApi';
 import { AuthorBooks, Book } from '../../interfaces/book';
 import SearchIcon from '../../icons/SearchIcon';
 import { useNavigate } from 'react-router-dom';
+import Delete from '../../icons/Delete';
 
 function BookSearch() {
   const [searchPhrase, setSearchPhrase] = useState('');
@@ -64,8 +65,16 @@ function BookSearch() {
     setSearchPhrase(e.target.value);
   };
 
-  function handleClick(id: string) {
+  function handleClickBook(id: string) {
     navigate(`/books/${id}`);
+  }
+
+  function handleClickAuthor(author: AuthorBooks) {
+    navigate(`/authors/${author.id}`, { state: { author } });
+  }
+
+  function handleClickDelete() {
+    setSearchPhrase('');
   }
 
   return (
@@ -81,6 +90,11 @@ function BookSearch() {
           type="text"
           placeholder="Tytuł, autor lub ISBN"
         />
+        {searchPhrase.length > 2 && (
+          <span className={styles.delete} onClick={() => handleClickDelete()}>
+            <Delete />
+          </span>
+        )}
       </div>
 
       {authorBooks.length > 0 && searchPhrase.length > 2 ? (
@@ -88,9 +102,13 @@ function BookSearch() {
           {authorBooks.map((author) => (
             <ul>
               {author.books.map((book) => (
-                <li key={book.id} onClick={() => handleClick(book.id)}>
-                  <h3 className={styles.bookTitle}>{book.title}: </h3>
-                  <h3 className={styles.bookAuthor}>{author.name}</h3>
+                <li key={book.id}>
+                  <h3 className={styles.bookTitle} onClick={() => handleClickBook(book.id)}>
+                    {book.title}:{' '}
+                  </h3>
+                  <h3 className={styles.bookAuthor} onClick={() => handleClickAuthor(author)}>
+                    {author.name}
+                  </h3>
                 </li>
               ))}
             </ul>

@@ -26,7 +26,7 @@ function BookDetails({ id }: BookDetailsProps) {
     };
 
     fetchData();
-  }, []);
+  }, [id]);
 
   return loading ? (
     <div>Loading ...</div>
@@ -51,7 +51,6 @@ function BookDetails({ id }: BookDetailsProps) {
           <div className={styles.buttons}>
             <button className={styles.addButton}>Dodaj do półki</button>
             <button className={styles.currentlyButton}>Aktualnie czytam</button>
-            <button className={styles.cancelButton}>Anuluj</button>
           </div>
         </div>
 
