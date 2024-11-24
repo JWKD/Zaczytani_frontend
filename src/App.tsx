@@ -10,6 +10,7 @@ import '@fontsource/roboto-serif';
 import RegisterPage from './pages/RegisterPage';
 import ForgotPassword from './pages/ForgotPassword';
 import '@fontsource/coiny';
+import ShakePage from './pages/ShakePage';
 
 const router = createBrowserRouter([
   {
@@ -19,6 +20,7 @@ const router = createBrowserRouter([
       { path: '/', element: <Home /> },
       { path: '/books/:id', element: <Details /> },
       { path: '/user/:id', element: <User /> },
+      { path: '/user/shake', element: <ShakePage /> },
     ],
   },
   {
