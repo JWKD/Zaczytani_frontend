@@ -3,6 +3,8 @@
   align-items: center;
   background-color: rgba(139, 126, 116, 0.8);
   border: none;
+  width: 400px;
+  text-decoration: none;
   border-radius: 50px;
   padding: 10px 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
@@ -34,6 +36,7 @@
 .shakeomatText strong {
   font-size: 1.5rem;
   display: block;
+  text-align: center;
 }
 
 .shakeomatText span {
