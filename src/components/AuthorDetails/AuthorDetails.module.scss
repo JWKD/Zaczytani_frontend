@@ -1,0 +1,127 @@
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  background-color: #f1eee8;
+  font-family: Roboto serif;
+
+  .secondContainer {
+    background-color: #ffffff66;
+    margin-left: 20%;
+    margin-right: 20%;
+    border-radius: 15px;
+
+    .authorConainer {
+      margin-top: 20px;
+      text-align: center;
+      margin-bottom: 30px;
+
+      display: flex;
+      margin-left: 15%;
+      margin-right: 15%;
+
+      .aboutAuthor {
+        margin-top: 40px;
+        margin-bottom: 40px;
+        background-color: #c3b6ac4d;
+        border-top-right-radius: 29px;
+        border-bottom-right-radius: 29px;
+        width: 100%;
+
+        .authorName {
+          font-weight: 800;
+          color: #333;
+          margin-bottom: 5px;
+        }
+
+        .booksLength {
+          color: #665243;
+          font-weight: 600;
+          margin-bottom: 5px;
+        }
+
+        .genres {
+          font-size: 1rem;
+          color: #777;
+          margin-top: 5px;
+        }
+      }
+    }
+
+    img {
+      width: 150px;
+      height: auto;
+      margin-right: 0px;
+      border-radius: 50px;
+    }
+
+    .booksContainer {
+      width: 100%;
+      display: flex;
+
+      .ulBooks {
+        list-style-type: none;
+        padding: 0;
+        gap: 10px;
+        width: 100%;
+
+        .book {
+          background-color: white;
+          padding: 10px;
+          border-radius: 5px;
+          margin: 20px;
+          display: flex;
+
+          .bookCover {
+            border-radius: 0;
+          }
+
+          .aboutBook {
+            padding: 15px;
+
+            .bookTitle {
+              font-weight: 800;
+              color: #333;
+              font-size: 16px;
+              margin-bottom: 5px;
+            }
+            .ulAuthors {
+              list-style-type: none;
+              padding: 0;
+            }
+
+            .authorsOfBook {
+              color: #665243;
+              font-size: 16px;
+              font-weight: 400;
+              margin-bottom: 5px;
+            }
+
+            .series {
+              color: #665243;
+              font-size: 16px;
+              font-weight: 400;
+              margin-bottom: 5px;
+            }
+
+            .rating {
+              display: flex;
+              align-items: center;
+              color: #665243;
+              font-size: 16px;
+              font-weight: 400;
+              margin-bottom: 5px;
+            }
+
+            .review {
+              color: #665243;
+              font-size: 16px;
+              font-weight: 400;
+              margin-bottom: 5px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

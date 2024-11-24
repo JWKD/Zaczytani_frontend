@@ -1,12 +1,3 @@
-export interface BookRequest {
-  title: string;
-}
-
-export interface Author {
-  id: string;
-  name: string;
-}
-
 export interface Book {
   id: string;
   title: string;
@@ -15,4 +6,18 @@ export interface Book {
   pageNumber: number;
   authors: Author[];
   imageUrl: string;
+}
+
+export interface BookRequest {
+  title: string;
+}
+export interface Author {
+  id: string;
+  name: string;
+}
+
+export interface AuthorBooks {
+  id: string;
+  name: string;
+  books: Book[];
 }

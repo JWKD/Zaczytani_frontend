@@ -5,12 +5,13 @@ import User from './pages/User';
 import Layout from './layout/Layout';
 import LoginPage from './pages/LoginPage';
 import AuthLayout from './layout/AuthLayout';
-import Details from './pages/Details';
 import '@fontsource/roboto-serif';
 import RegisterPage from './pages/RegisterPage';
 import ForgotPassword from './pages/ForgotPassword';
 import '@fontsource/coiny';
 import ShakePage from './pages/ShakePage';
+import BookDetailsPage from './pages/BookDetailsPage';
+import AuthorDetailsPage from './pages/AuthorDetailsPage';
 
 const router = createBrowserRouter([
   {
@@ -18,7 +19,8 @@ const router = createBrowserRouter([
     element: <Layout />,
     children: [
       { path: '/', element: <Home /> },
-      { path: '/books/:id', element: <Details /> },
+      { path: '/books/:id', element: <BookDetailsPage /> },
+      { path: '/authors/:id', element: <AuthorDetailsPage /> },
       { path: '/user/:id', element: <User /> },
       { path: '/user/shake', element: <ShakePage /> },
     ],

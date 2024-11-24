@@ -1,10 +1,17 @@
-import { Book } from '../interfaces/book';
+import { AuthorBooks, Book } from '../interfaces/book';
 import apiClient from './config/axios';
 import endpoints from './config/endpoints';
 
 const dataApi = {
   getBookDetails: async (id: string): Promise<Book> => {
     const response = await apiClient.get<Book>(endpoints.book.fetchDetails(id));
+    return response.data;
+  },
+
+  getSearchedBooks: async (searchPhrase: string): Promise<AuthorBooks[]> => {
+    const response = await apiClient.get<AuthorBooks[]>(endpoints.book.fetchSearchedBooks, {
+      params: { searchPhrase },
+    });
     return response.data;
   },
 

@@ -1,0 +1,76 @@
+.searchContainer {
+  width: 400px;
+  margin-top: 15px;
+  .iconAndInput {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    padding: 5px 15px;
+  }
+  .searchIcon {
+    display: flex;
+  }
+  .delete {
+    display: flex;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    :hover {
+      background-color: #e7e4e4;
+      border-radius: 10px;
+    }
+  }
+  .inputBox {
+    border: none;
+    outline: none;
+    font-size: 16px;
+    width: 100%;
+  }
+
+  .bookList {
+    background-color: white;
+    width: 400px;
+    font-size: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    position: absolute;
+
+    .bookTitle {
+      font-family: Roboto serif;
+      font-weight: 600;
+      display: inline-block;
+      padding-left: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .bookTitle:hover {
+      background-color: #e7e4e4;
+      border-radius: 5px;
+    }
+    .bookAuthor {
+      font-family: Roboto serif;
+      font-weight: 500;
+      display: inline-block;
+      padding-left: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .bookAuthor:hover {
+      background-color: #e7e4e4;
+      border-radius: 5px;
+    }
+
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+    li {
+      border-bottom: 1px solid #ddddddde;
+    }
+    li:hover {
+      background-color: #e7e4e463;
+    }
+  }
+}
