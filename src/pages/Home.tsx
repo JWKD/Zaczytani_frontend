@@ -1,7 +1,9 @@
+import ShakeButton from '../components/ShakeButton/ShakeButton';
 function Home() {
   return (
     <>
-      <h1>Home page</h1>
+      <h1>Strona główna</h1>
+      <ShakeButton />
     </>
   );
 }

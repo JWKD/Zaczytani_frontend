@@ -15,9 +15,8 @@
     "@emotion/styled": "^11.13.0",
     "@fontsource/coiny": "^5.1.0",
     "@fontsource/roboto-serif": "^5.1.1",
-    "@mui/icons-material": "^6.1.6",
-    "@mui/material": "^6.1.5",
     "axios": "^1.7.7",
+    "canvas-confetti": "^1.9.3",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.27.0",
@@ -25,6 +24,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.13.0",
+    "@types/canvas-confetti": "^1.6.4",
     "@types/node": "^22.7.9",
     "@types/react": "^18.3.11",
     "@types/react-dom": "^18.3.1",
