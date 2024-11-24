@@ -25,10 +25,9 @@ function BookSearch() {
 
       try {
         const result = await dataApi.getSearchedBooks(searchPhrase);
-        console.log(result);
-        // Przekształcenie danych z API do odpowiedniej struktury
-        const authorsWithBooks: AuthorBooks[] = result.map((authorData: any) => {
-          const books: Book[] = authorData.books.map((bookData: any) => ({
+
+        const authorsWithBooks: AuthorBooks[] = result.map((authorData: AuthorBooks) => {
+          const books: Book[] = authorData.books.map((bookData: Book) => ({
             id: bookData.id,
             title: bookData.title,
             isbn: bookData.isbn,
@@ -40,6 +39,7 @@ function BookSearch() {
                 name: authorData.name,
               },
             ],
+            imageUrl: bookData.imageUrl,
           }));
 
           return {

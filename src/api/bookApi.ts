@@ -9,9 +9,9 @@ const dataApi = {
   },
 
   getSearchedBooks: async (searchPhrase: string): Promise<AuthorBooks[]> => {
-    const response = await apiClient.get<AuthorBooks[]>(
-      `${endpoints.book.fetchSearchedBooks}?SearchPhrase=${encodeURIComponent(searchPhrase)}`
-    );
+    const response = await apiClient.get<AuthorBooks[]>(endpoints.book.fetchSearchedBooks, {
+      params: { searchPhrase },
+    });
     return response.data;
   },
 

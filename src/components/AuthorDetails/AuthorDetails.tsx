@@ -4,9 +4,10 @@ import { useEffect } from 'react';
 import styles from './AuthorDetails.module.scss';
 import Star from '../../icons/Star';
 import imag from '../../assets/okladka.jpg';
+import varietOfBooks from '../../utils/utils';
 
 interface AuthorDetailsProps {
-  author: AuthorBooks; // Tablica książek jako props
+  author: AuthorBooks;
 }
 
 function AuthorDetails() {
@@ -17,23 +18,12 @@ function AuthorDetails() {
 
   useEffect(() => {
     if (!author) {
-      // Jeśli autor nie istnieje, przekierowujemy na stronę główną (lub stronę błędu)
-      navigate('*'); // Możesz zmienić na "/home" lub inną stronę, którą preferujesz
+      navigate('*');
     }
   }, [author, navigate]);
 
   if (!author) {
-    // Możemy tutaj zwrócić null lub inny komunikat
-    return null; // Unikamy renderowania w przypadku braku autora
-  }
-
-  function odmianaKsiazek(liczba: number): string {
-    if (liczba === 1) return 'książka';
-    if (liczba >= 2 && liczba <= 4) return 'książki';
-    if (liczba % 10 >= 2 && liczba % 10 <= 4 && !(liczba % 100 >= 12 && liczba % 100 <= 14)) {
-      return 'książki';
-    }
-    return 'książek';
+    return null;
   }
 
   return (
@@ -44,7 +34,7 @@ function AuthorDetails() {
           <div className={styles.aboutAuthor}>
             <h2 className={styles.authorName}>{author.name}</h2>
             <h3 className={styles.booksLength}>
-              {author.books.length} {odmianaKsiazek(author.books.length)}
+              {author.books.length} {varietOfBooks(author.books.length)}
             </h3>
             <h4 className={styles.genres}>Gatunki tego typu romanse komedie itp</h4>
           </div>
@@ -54,7 +44,7 @@ function AuthorDetails() {
             {author.books.map((book: Book) => (
               <li key={book.id}>
                 <div className={styles.book}>
-                  <img className={styles.bookCover} src={imag} alt="Zdjęcie książki" />
+                  <img className={styles.bookCover} src={book.imageUrl} alt="Zdjęcie książki" />
                   <div className={styles.aboutBook}>
                     <h2 className={styles.bookTitle}>{book.title}</h2>
                     <ul className={styles.ulAuthors}>
