@@ -3,7 +3,6 @@ import { Author, AuthorBooks, Book } from '../../interfaces/book';
 import { useEffect } from 'react';
 import styles from './AuthorDetails.module.scss';
 import Star from '../../icons/Star';
-import imag from '../../assets/okladka.jpg';
 import varietOfBooks from '../../utils/utils';
 
 interface AuthorDetailsProps {
@@ -18,7 +17,7 @@ function AuthorDetails() {
 
   useEffect(() => {
     if (!author) {
-      navigate('*');
+      navigate('/*');
     }
   }, [author, navigate]);
 
@@ -30,7 +29,7 @@ function AuthorDetails() {
     <div className={styles.mainContainer}>
       <div className={styles.secondContainer}>
         <div className={styles.authorConainer}>
-          <img src={imag} alt="Zdjęcie autora" />
+          <img src={author.imageUrl} alt="Zdjęcie autora" />
           <div className={styles.aboutAuthor}>
             <h2 className={styles.authorName}>{author.name}</h2>
             <h3 className={styles.booksLength}>
