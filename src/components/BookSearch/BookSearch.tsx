@@ -13,6 +13,36 @@ function BookSearch() {
   const [error, setError] = useState<string | null>(null);
   const navigate = useNavigate();
 
+  const [books, setBooks] = useState<Book[]>([]);
+
+  const groupBooks = (authorBooks: AuthorBooks[]): Book[] => {
+    const bookMap = new Map<string, Book>();
+
+    authorBooks.forEach((author) => {
+      author.books.forEach((book) => {
+        const existingBook = bookMap.get(book.id);
+
+        if (existingBook) {
+          existingBook.authors.push({ id: author.id, name: author.name, imageUrl: author.imageUrl });
+        } else {
+          bookMap.set(book.id, {
+            ...book,
+            authors: [{ id: author.id, name: author.name, imageUrl: author.imageUrl }],
+          });
+        }
+      });
+    });
+    return Array.from(bookMap.values());
+  };
+
+  useEffect(() => {
+    setBooks([]);
+    if (authorBooks.length > 0) {
+      const groupedBooks = groupBooks(authorBooks);
+      setBooks(groupedBooks);
+    }
+  }, [authorBooks]);
+
   useEffect(() => {
     const fetchData = async () => {
       if (!searchPhrase || searchPhrase.length < 3) {
@@ -37,6 +67,7 @@ function BookSearch() {
               {
                 id: authorData.id,
                 name: authorData.name,
+                imageUrl: authorData.imageUrl,
               },
             ],
             imageUrl: bookData.imageUrl,
@@ -45,6 +76,7 @@ function BookSearch() {
           return {
             id: authorData.id,
             name: authorData.name,
+            imageUrl: authorData.imageUrl,
             books: books,
           };
         });
@@ -77,6 +109,10 @@ function BookSearch() {
     setSearchPhrase('');
   }
 
+  function findAuthorById(authorBooks: AuthorBooks[], authorId: string): AuthorBooks {
+    return authorBooks.find((author) => author.id === authorId)!;
+  }
+
   return (
     <div className={styles.searchContainer}>
       <div className={styles.iconAndInput}>
@@ -97,20 +133,30 @@ function BookSearch() {
         )}
       </div>
 
-      {authorBooks.length > 0 && searchPhrase.length > 2 ? (
+      {books.length > 0 && searchPhrase.length > 2 ? (
         <div className={styles.bookList}>
-          {authorBooks.map((author) => (
+          {books.map((book) => (
             <ul>
-              {author.books.map((book) => (
-                <li key={book.id}>
-                  <h3 className={styles.bookTitle} onClick={() => handleClickBook(book.id)}>
-                    {book.title}:{' '}
-                  </h3>
-                  <h3 className={styles.bookAuthor} onClick={() => handleClickAuthor(author)}>
-                    {author.name}
-                  </h3>
-                </li>
-              ))}
+              <li className={styles.bookItem} key={book.id}>
+                <h3 className={styles.bookTitle} onClick={() => handleClickBook(book.id)}>
+                  {book.title}:{' '}
+                </h3>
+                <ul className={styles.authorList}>
+                  {book.authors.map((author) => (
+                    <li key={author.id}>
+                      <h3
+                        className={styles.bookAuthor}
+                        onClick={() => {
+                          const foundAuthor: AuthorBooks = findAuthorById(authorBooks, author.id);
+                          handleClickAuthor(foundAuthor);
+                        }}
+                      >
+                        {author.name}
+                      </h3>
+                    </li>
+                  ))}
+                </ul>
+              </li>
             </ul>
           ))}
         </div>
