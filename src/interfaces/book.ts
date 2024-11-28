@@ -14,12 +14,12 @@ export interface BookRequest {
 export interface Author {
   id: string;
   name: string;
-  imageUrl: string;
+  imageUrl: string | null;
 }
 
 export interface AuthorBooks {
   id: string;
   name: string;
-  imageUrl: string;
+  imageUrl: string | null;
   books: Book[];
 }
