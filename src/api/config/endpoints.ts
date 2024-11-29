@@ -9,6 +9,7 @@ const endpoints = {
     bookRequest: `BookRequest`, // Endpoint do tworzenia bookRequest
     fetchAuthors: `Author`, // Endpoint do pobierania autorów
     fetchGenres: `Book/Genres`, // Endpoint do pobierania gatunków
+    fetchPublishingHouses: `Book/PublishingHouses`, // Endpoint do pobierania wydawnictw
   },
   user: {
     login: `Identity/login`,

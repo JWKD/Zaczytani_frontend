@@ -1,9 +1,11 @@
 .mainContainer {
   display: flex;
   font-family: Roboto serif;
+  max-width: 90%;
+  margin: auto;
 
   .staticContainer {
-    width: 25%;
+    flex: 1;
     margin: 20px;
 
     h2 {
@@ -28,23 +30,165 @@
   }
 
   .addBookContainer {
+    flex: 2;
     background-color: #c3b6ac4d;
     border: 10px;
-    width: 800px;
+    padding: 25px;
+    border-radius: 10px;
+    margin: 20px;
+
+    .buttons {
+      display: flex;
+      float: right;
+      flex-direction: row;
+      font-weight: 400;
+      font-size: 16px;
+      margin-top: 10px;
+
+      .addButton {
+        background-color: #b8dc8c;
+        border-radius: 30px;
+        border: none;
+        color: white;
+        width: 150px;
+        height: 46px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+      .addButton:hover {
+        background-color: #a3c88b;
+      }
+      .cancelButton {
+        background-color: #8f4f4a;
+        border-radius: 30px;
+        border: none;
+        color: white;
+        width: 150px;
+        height: 46px;
+        margin-left: 20px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+      .cancelButton:hover {
+        background-color: #743836;
+      }
+    }
+
+    .photoAndInputs {
+      display: flex;
+    }
+
+    .addPhoto {
+      background-color: #493a3a85;
+      height: 150px;
+      width: 120px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
 
     .mainInputs {
-      .addPhoto {
-        background-color: #493a3a85;
-        height: 170px;
-        width: 120px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      width: 100%;
+      margin-left: 25px;
+
+      input,
+      span {
+        width: 100%;
       }
 
-      .authorsInput {
-        width: '400px';
-        margin: '50px auto';
+      input:nth-child(1) {
+        grid-column: span 2;
+      }
+
+      input {
+        width: 100%;
+        max-height: 38px;
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        color: #444;
+        box-sizing: border-box;
+
+        ::placeholder {
+          color: #999;
+          font-style: italic;
+        }
+      }
+      input:focus {
+        border-color: #4a90e2;
+        border-width: 2px;
+        outline: none;
+      }
+    }
+
+    .bookParagraph {
+      font-weight: 600;
+      color: #4a3423;
+      margin: 10px;
+    }
+
+    .description {
+      width: 100%;
+      outline: none;
+      border: none;
+      box-shadow: none;
+      border-radius: 5px;
+      height: 250px;
+      padding: 10px;
+      resize: none;
+      font-size: 16px;
+      font-weight: 300;
+    }
+
+    .lastInputs {
+      display: flex;
+      justify-content: space-between;
+      color: #0000008c;
+      font-weight: 500;
+      padding: 10px;
+
+      .pages {
+        display: flex;
+        input[type='number']::-webkit-inner-spin-button,
+        input[type='number']::-webkit-outer-spin-button {
+          -webkit-appearance: none;
+          margin: 0;
+        }
+
+        input {
+          border: none;
+          outline: none;
+          background-color: #ffffff8f;
+          max-width: 75px;
+          margin-left: 5px;
+          border-radius: 5px;
+        }
+      }
+      .date {
+        display: flex;
+        input {
+          border: none;
+          outline: none;
+          background-color: #ffffff8f;
+          max-width: 150px;
+          margin-left: 5px;
+          border-radius: 5px;
+        }
+      }
+      .isbn {
+        display: flex;
+        input {
+          border: none;
+          outline: none;
+          background-color: #ffffff8f;
+          max-width: 100px;
+          margin-left: 5px;
+          border-radius: 5px;
+        }
       }
     }
   }

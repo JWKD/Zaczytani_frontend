@@ -2,26 +2,38 @@ import { useState } from 'react';
 import AddBookIcon from '../../icons/AddBookIcon';
 import CameraLens from '../../icons/CameraLens';
 import styles from '../AddBook/AddBook.module.scss';
-import GenresAutoComplete from './GenresAutoComplete';
+import GenresAutoComplete from './AutoCompletes/GenresAutoComplete';
+import AuthorAutoComplete from './AutoCompletes/AuthorAutoComplete';
+import PublishingHouseAutoComplete from './AutoCompletes/PublishingHouseAutoComplete';
 
 export interface BookRequest {
   title: string;
-  isbn: string;
-  description: string;
-  pageNumber: number;
-  releaseDate: string;
-  fileName: string;
+  isbn?: string;
+  description?: string;
+  pageNumber?: number;
+  releaseDate?: string;
+  fileName?: string;
   authors: string;
-  publishingHouse: string;
-  genre: string[];
-  series: string;
+  publishingHouse?: string;
+  genre?: string[];
+  series?: string;
 }
 
 function AddBook() {
   const [selectedGenres, setSelectedGenres] = useState<string[]>([]);
+  const [selectedAuthors, setSelectedAuthors] = useState<string[]>([]);
+  const [selectedPublishingHouse, setSelectedPublishingHouses] = useState<string>('');
 
   const handleGenresChange = (selectedOptions: string[]) => {
     setSelectedGenres(selectedOptions);
+  };
+
+  const handleAuthorsChange = (selectedOptions: string[]) => {
+    setSelectedAuthors(selectedOptions);
+  };
+
+  const handlePublishingHouseChange = (selectedOptions: string) => {
+    setSelectedPublishingHouses(selectedOptions);
   };
 
   return (
@@ -52,12 +64,43 @@ function AddBook() {
         </div>
       </div>
       <div className={styles.addBookContainer}>
-        <div className={styles.mainInputs}>
+        <div className={styles.photoAndInputs}>
           <div className={styles.addPhoto}>
             <CameraLens />
           </div>
-          <input type="text" placeholder="Tytuł"></input>
-          <GenresAutoComplete value={selectedGenres} onChange={handleGenresChange} />
+          <div className={styles.mainInputs}>
+            <input type="text" placeholder="Tytuł"></input>
+            <span>
+              <AuthorAutoComplete value={selectedAuthors} onChange={handleAuthorsChange} />
+            </span>
+            <span>
+              <PublishingHouseAutoComplete value={selectedPublishingHouse} onChange={handlePublishingHouseChange} />
+            </span>
+            <span>
+              <GenresAutoComplete value={selectedGenres} onChange={handleGenresChange} />
+            </span>
+            <input type="text" placeholder="Seria"></input>
+          </div>
+        </div>
+        <p className={styles.bookParagraph}>Opis książki:</p>
+        <textarea className={styles.description} placeholder="Tutaj pisz..."></textarea>
+        <div className={styles.lastInputs}>
+          <div className={styles.pages}>
+            <p>Ilość stron:</p>
+            <input type="number" />
+          </div>
+          <div className={styles.date}>
+            <p>Data wydania:</p>
+            <input type="date" />
+          </div>
+          <div className={styles.isbn}>
+            <p>ISBN:</p>
+            <input type="text" />
+          </div>
+        </div>
+        <div className={styles.buttons}>
+          <button className={styles.addButton}>DODAJ</button>
+          <button className={styles.cancelButton}>ANULUJ</button>
         </div>
       </div>
     </div>

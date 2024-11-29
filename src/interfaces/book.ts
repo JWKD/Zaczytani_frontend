@@ -20,3 +20,8 @@ export interface AuthorBooks {
   imageUrl: string | null;
   books: Book[];
 }
+
+export interface PublishingHouse {
+  id: string;
+  name: string;
+}

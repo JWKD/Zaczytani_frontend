@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import Select from 'react-select';
-import dataApi from '../../api/bookApi';
+import dataApi from '../../../api/bookApi';
+import './AutoComplete.modules.scss';
 
 interface GenreOption {
   value: string;
@@ -32,7 +33,7 @@ function GenresAutoComplete({ value, onChange }: GenresAutoCompleteProps) {
         setGenres(result);
       } catch (err) {
         console.error(err);
-        setError('Wystąpił błąd podczas wyszukiwania książek');
+        setError('Wystąpił błąd podczas wyszukiwania gatunków');
       } finally {
         setLoading(false);
       }
@@ -60,7 +61,7 @@ function GenresAutoComplete({ value, onChange }: GenresAutoCompleteProps) {
       options={genreOptions}
       className="basic-multi-select"
       classNamePrefix="select"
-      placeholder="Wybierz..."
+      placeholder="Wybierz gatunek/ki..."
     />
   );
 }
