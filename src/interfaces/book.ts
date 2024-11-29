@@ -8,9 +8,6 @@ export interface Book {
   imageUrl: string;
 }
 
-export interface BookRequest {
-  title: string;
-}
 export interface Author {
   id: string;
   name: string;

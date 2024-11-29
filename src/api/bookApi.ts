@@ -1,4 +1,5 @@
-import { AuthorBooks, Book } from '../interfaces/book';
+import { BookRequest } from '../components/AddBook/AddBook';
+import { Author, AuthorBooks, Book } from '../interfaces/book';
 import apiClient from './config/axios';
 import endpoints from './config/endpoints';
 
@@ -12,6 +13,20 @@ const dataApi = {
     const response = await apiClient.get<AuthorBooks[]>(endpoints.book.fetchSearchedBooks, {
       params: { searchPhrase },
     });
+    return response.data;
+  },
+
+  postBookRequest: async (payload: BookRequest): Promise<void> => {
+    return await apiClient.post(endpoints.book.bookRequest, payload);
+  },
+
+  getAuthors: async (): Promise<Author[]> => {
+    const response = await apiClient.get<Author[]>(endpoints.book.fetchAuthors);
+    return response.data;
+  },
+
+  getGenres: async (): Promise<string[]> => {
+    const response = await apiClient.get<string[]>(endpoints.book.fetchGenres);
     return response.data;
   },
 

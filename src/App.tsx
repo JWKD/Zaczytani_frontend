@@ -12,6 +12,7 @@ import '@fontsource/coiny';
 import ShakePage from './pages/ShakePage';
 import BookDetailsPage from './pages/BookDetailsPage';
 import AuthorDetailsPage from './pages/AuthorDetailsPage';
+import AddBookPage from './pages/AddBookPage';
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,7 @@ const router = createBrowserRouter([
       { path: '/authors/:id', element: <AuthorDetailsPage /> },
       { path: '/user/:id', element: <User /> },
       { path: '/user/shake', element: <ShakePage /> },
+      { path: '/books/add', element: <AddBookPage /> },
     ],
   },
   {
