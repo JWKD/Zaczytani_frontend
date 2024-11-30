@@ -17,7 +17,10 @@ const defaultUser: User = {
 const UserContext = createContext<UserContextType | undefined>(undefined);
 
 export const UserProvider = ({ children }: PropsWithChildren) => {
-  const [user, setUser] = useState<User>(defaultUser);
+  const [user, setUser] = useState<User>({
+    ...defaultUser,
+    isLoggedIn: Boolean(localStorage.getItem('accessToken') && localStorage.getItem('refreshToken')),
+  });
 
   const logout = () => {
     localStorage.removeItem('accessToken');
@@ -30,18 +33,12 @@ export const UserProvider = ({ children }: PropsWithChildren) => {
     return Boolean(accessToken && user.isLoggedIn);
   };
 
-  // Automatyczna inicjalizacja użytkownika, jeśli token istnieje
   useEffect(() => {
-    const accessToken = localStorage.getItem('accessToken');
-    const refreshToken = localStorage.getItem('refreshToken');
-
-    if (accessToken && refreshToken) {
-      setUser({
-        firstName: 'Default', // tu będzie trzeba strzelać do api po informacje o userze
-        lastName: 'User', // tu będzie trzeba strzelać do api po informacje o userze
-        isLoggedIn: true,
-      });
-    }
+    setUser({
+      ...user,
+      firstName: 'Default', // tu będzie trzeba strzelać do api po informacje o userze
+      lastName: 'User', // tu będzie trzeba strzelać do api po informacje o userze
+    });
   }, []);
 
   return <UserContext.Provider value={{ user, setUser, logout, isLoggedIn }}>{children}</UserContext.Provider>;
