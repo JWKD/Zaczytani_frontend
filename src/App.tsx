@@ -12,13 +12,10 @@ import '@fontsource/coiny';
 import ShakePage from './pages/ShakePage';
 import BookDetailsPage from './pages/BookDetailsPage';
 import AuthorDetailsPage from './pages/AuthorDetailsPage';
-<<<<<<< HEAD
 import AddBookPage from './pages/AddBookPage';
-=======
 import PrivateRoute from './routes/PrivateRoute';
 import PublicRoute from './routes/PublicRoute';
 import { UserProvider } from './context/UserContext';
->>>>>>> d6c7b1f106a4359d0451f4b229d9a14642b7638f
 
 const router = createBrowserRouter([
   {
