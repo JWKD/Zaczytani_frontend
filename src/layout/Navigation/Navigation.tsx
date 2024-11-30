@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styles from './Navigation.module.scss';
 
 type NavigationProps = {
@@ -7,7 +8,9 @@ type NavigationProps = {
 function Navigation({ children }: NavigationProps) {
   return (
     <nav className={styles.navbar}>
-      <p className={styles.logo}>Zaczytani</p>
+      <Link to="/" className={styles.logo}>
+        Zaczytani
+      </Link>
       <div className={styles.links}>{children}</div>
     </nav>
   );

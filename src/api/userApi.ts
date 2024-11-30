@@ -1,13 +1,13 @@
-import { User } from '../interfaces/user';
+import { LoginRequest } from '../interfaces/login';
 import apiClient from './config/axios';
 import endpoints from './config/endpoints';
 
-const dataApi = {
-  // Funkcja do wysyłania danych użytkownika za pomocą POST
-  createUser: async (payload: User) => {
+const userApi = {
+  login: async (payload: LoginRequest) => {
     const response = await apiClient.post(endpoints.user.login, { email: payload.login, password: payload.password });
     return response;
   },
+  refreshToken: async (refreshToken: string) => await apiClient.post(endpoints.user.refreshToken, { refreshToken }),
 };
 
-export default dataApi;
+export default userApi;

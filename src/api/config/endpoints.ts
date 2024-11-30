@@ -13,6 +13,7 @@ const endpoints = {
   },
   user: {
     login: `Identity/login`,
+    refreshToken: 'Identity/refresh'
   },
 };
 

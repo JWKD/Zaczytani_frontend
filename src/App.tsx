@@ -12,12 +12,22 @@ import '@fontsource/coiny';
 import ShakePage from './pages/ShakePage';
 import BookDetailsPage from './pages/BookDetailsPage';
 import AuthorDetailsPage from './pages/AuthorDetailsPage';
+<<<<<<< HEAD
 import AddBookPage from './pages/AddBookPage';
+=======
+import PrivateRoute from './routes/PrivateRoute';
+import PublicRoute from './routes/PublicRoute';
+import { UserProvider } from './context/UserContext';
+>>>>>>> d6c7b1f106a4359d0451f4b229d9a14642b7638f
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <Layout />,
+    element: (
+      <PrivateRoute>
+        <Layout />
+      </PrivateRoute>
+    ),
     children: [
       { path: '/', element: <Home /> },
       { path: '/books/:id', element: <BookDetailsPage /> },
@@ -29,18 +39,33 @@ const router = createBrowserRouter([
   },
   {
     path: '/auth',
-    element: <AuthLayout />,
+    element: (
+      <PublicRoute>
+        <AuthLayout />
+      </PublicRoute>
+    ),
     children: [
       { path: '/auth/register', element: <RegisterPage /> },
       { path: '/auth/forgotPassword', element: <ForgotPassword /> },
     ],
   },
-  { path: '/auth/login', element: <LoginPage /> },
+  {
+    path: '/auth/login',
+    element: (
+      <PublicRoute restricted>
+        <LoginPage />
+      </PublicRoute>
+    ),
+  },
   { path: '*', element: <NotFound /> },
 ]);
 
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <UserProvider>
+      <RouterProvider router={router} />
+    </UserProvider>
+  );
 }
 
 export default App;
