@@ -1,5 +1,7 @@
 .mainContainer {
   display: flex;
+  padding-left: 20px;
+  padding-right: 20px;
   font-family: Roboto serif;
   .myRequests {
     flex: 1;
@@ -14,8 +16,11 @@
       padding: 10px;
       border-radius: 20px;
     }
+
     .list {
       padding: 10px;
+      max-height: 75vh;
+      overflow-y: auto;
       .listItem {
         background-color: #ffffff8f;
         margin-bottom: 10px;
@@ -47,7 +52,7 @@
     padding: 10px;
     .currentRequest {
       .bookCover {
-        width: 150px;
+        width: 130px;
         height: auto;
         float: left;
         margin-right: 0px;
@@ -60,7 +65,6 @@
         padding: 8px;
         margin-top: 15px;
         margin-bottom: 10px;
-        padding-left: 20px;
         .title {
           font-weight: 800;
           color: #333;
@@ -75,7 +79,7 @@
         .publisher {
           color: #0000008c;
           font-weight: 300;
-          padding-bottom: 5px;
+          margin-bottom: 5px;
         }
       }
       .secondInfo {

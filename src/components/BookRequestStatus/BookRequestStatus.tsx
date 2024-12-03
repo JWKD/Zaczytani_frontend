@@ -54,14 +54,14 @@ function BookRequestStatus() {
           <div className={styles.currentRequest}>
             {activeRequest.image && <img className={styles.bookCover} src={activeRequest.image} alt="Okładka" />}
             <div className={styles.mainInfo}>
-              <div className={styles.title}>{activeRequest.title} </div>
+              <div className={styles.title}> {activeRequest.title} </div>
               <div className={styles.authors}>{activeRequest.authors}</div>
               <div className={styles.publisher}>Wydawnictwo: {activeRequest.publishingHouse}</div>
             </div>
             <div className={styles.secondInfo}>
               <div className={styles.genres}>
                 <strong>Gatunki:</strong>
-                {activeRequest.genre && activeRequest.genre.map((g) => <div className={styles.genre}> {g},</div>)}
+                {activeRequest.genre && activeRequest.genre.map((g) => <div className={styles.genre}> {g}</div>)}
               </div>
               <div className={styles.series}>
                 <strong>Cykl:</strong> {activeRequest.series}
