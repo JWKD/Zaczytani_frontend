@@ -23,3 +23,17 @@ export interface AuthorBooks {
   imageUrl: string | null;
   books: Book[];
 }
+export interface BookRequestGet {
+  id: string;
+  title: string;
+  isbn: string | null;
+  description: string | null;
+  pageNumber: number | null;
+  releaseDate: string | null;
+  image: string | null;
+  authors: string;
+  publishingHouse: string | null;
+  genre: string[] | null;
+  series: string | null;
+  status: string;
+}
