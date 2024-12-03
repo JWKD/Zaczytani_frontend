@@ -1,0 +1,37 @@
+.select__control {
+  font-family: 'Roboto', sans-serif;
+}
+
+.select__menu {
+  font-family: 'Roboto', sans-serif;
+}
+
+.select__placeholder {
+  font-family: 'Roboto', sans-serif;
+}
+
+.select__single-value {
+  font-family: 'Roboto', sans-serif;
+}
+
+.select__input {
+  font-family: 'Roboto', sans-serif;
+}
+.select__control {
+  max-width: 25vw;
+  overflow: hidden;
+}
+
+.select__input input {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.select__single-value {
+  max-width: 90%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
