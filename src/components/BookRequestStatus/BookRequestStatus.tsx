@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react';
 import styles from './BookRequestStatus.module.scss';
 import dataApi from '../../api/bookApi';
-import { BookRequestGet } from '../../interfaces/book';
+import { BookRequest } from '../../interfaces/book';
 
 function BookRequestStatus() {
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
-  const [requests, setRequests] = useState<BookRequestGet[]>([]);
-  const [activeRequest, setActiveRequest] = useState<BookRequestGet>(requests[0]);
+  const [requests, setRequests] = useState<BookRequest[]>([]);
+  const [activeRequest, setActiveRequest] = useState<BookRequest>(requests[0]);
 
   useEffect(() => {
     const fetchData = async () => {

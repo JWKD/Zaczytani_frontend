@@ -20,7 +20,7 @@ export interface AuthorBooks {
   imageUrl: string | null;
   books: Book[];
 }
-export interface BookRequestGet {
+export interface BookRequestModel {
   id: string;
 }
 
@@ -29,26 +29,27 @@ export interface PublishingHouse {
   name: string;
 }
 
-export interface BookRequestPre {
+export interface BookRequestPost {
   title: string;
   isbn: string | null;
   description: string | null;
   pageNumber: number | null;
   releaseDate: string | null;
   fileName: string | null;
-  authors: string[];
+  authors: string;
   publishingHouse: string | null;
   genre: string[] | null;
   series: string | null;
 }
 
 export interface BookRequest {
+  id: string;
   title: string;
   isbn: string | null;
   description: string | null;
   pageNumber: number | null;
   releaseDate: string | null;
-  fileName: string | null;
+  image: string | null;
   authors: string;
   publishingHouse: string | null;
   genre: string[] | null;

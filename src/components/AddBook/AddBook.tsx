@@ -8,8 +8,21 @@ import PublishingHouseAutoComplete from './AutoCompletes/PublishingHouseAutoComp
 import { useNavigate } from 'react-router-dom';
 import dataApiFile from '../../api/fileApi';
 import dataApiBook from '../../api/bookApi';
-import { BookRequest, BookRequestPre } from '../../interfaces/book';
+import { BookRequestPost } from '../../interfaces/book';
 import { convertBookRequest, validateForm } from './helpers';
+
+interface BookRequestPre {
+  title: string;
+  isbn: string | null;
+  description: string | null;
+  pageNumber: number | null;
+  releaseDate: string | null;
+  fileName: string | null;
+  authors: string[];
+  publishingHouse: string | null;
+  genre: string[] | null;
+  series: string | null;
+}
 
 function AddBook() {
   const [bookRequest, setBookRequest] = useState<BookRequestPre>({
@@ -25,7 +38,7 @@ function AddBook() {
     series: null,
   });
 
-  const [bookRequestPost, setBookRequestPost] = useState<BookRequest>({
+  const [bookRequestPost, setBookRequestPost] = useState<BookRequestPost>({
     title: '',
     isbn: null,
     description: null,
@@ -80,7 +93,7 @@ function AddBook() {
     }
   };
 
-  const handleChange = (field: keyof BookRequest, value: any) => {
+  const handleChange = (field: keyof BookRequestPre, value: any) => {
     if (field === 'pageNumber') {
       setBookRequest({
         ...bookRequest,
