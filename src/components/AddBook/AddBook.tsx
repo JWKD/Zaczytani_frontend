@@ -8,7 +8,7 @@ import PublishingHouseAutoComplete from './AutoCompletes/PublishingHouseAutoComp
 import { useNavigate } from 'react-router-dom';
 import dataApiFile from '../../api/fileApi';
 import dataApiBook from '../../api/bookApi';
-import { BookRequestPost } from '../../interfaces/book';
+import { BookRequestRequest } from '../../interfaces/book';
 import { convertBookRequest, validateForm } from './helpers';
 
 export interface BookRequestPre {
@@ -38,7 +38,7 @@ function AddBook() {
     series: null,
   });
 
-  const [bookRequestPost, setBookRequestPost] = useState<BookRequestPost>({
+  const [bookRequestPost, setBookRequestPost] = useState<BookRequestRequest>({
     title: '',
     isbn: null,
     description: null,

@@ -1,4 +1,4 @@
-import { BookRequestPost } from '../../interfaces/book';
+import { BookRequestRequest } from '../../interfaces/book';
 import { BookRequestPre } from './AddBook';
 
 export const validateForm = (bookRequest: BookRequestPre) => {
@@ -40,7 +40,7 @@ export const validateForm = (bookRequest: BookRequestPre) => {
 export const convertBookRequest = (bookRequest: BookRequestPre) => {
   const authorsString = bookRequest.authors.join(', ');
 
-  const bookRequestPost: BookRequestPost = {
+  const bookRequestPost: BookRequestRequest = {
     title: bookRequest.title,
     isbn: bookRequest.isbn,
     description: bookRequest.description,

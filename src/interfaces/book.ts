@@ -20,6 +20,8 @@ export interface AuthorBooks {
   imageUrl: string | null;
   books: Book[];
 }
+
+// interfejs do odpowiedzi z posta
 export interface BookRequestModel {
   id: string;
 }
@@ -29,7 +31,8 @@ export interface PublishingHouse {
   name: string;
 }
 
-export interface BookRequestPost {
+// interfejs do wysyłania post
+export interface BookRequestRequest {
   title: string;
   isbn: string | null;
   description: string | null;
@@ -42,6 +45,7 @@ export interface BookRequestPost {
   series: string | null;
 }
 
+// interfejs do pobierania bookRequest
 export interface BookRequest {
   id: string;
   title: string;
