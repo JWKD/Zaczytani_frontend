@@ -65,6 +65,16 @@ function AddBook() {
   const [file, setFile] = useState<File | null>(null);
   const [filePreview, setFilePreview] = useState<string>('');
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
+  const [isPopupVisible, setIsPopupVisible] = useState(false);
+
+  const handleOpenPopup = () => {
+    if (validateForm()) {
+      uploadFile();
+      setIsPopupVisible(true);
+    }
+  };
+  const handleClosePopup = () => setIsPopupVisible(false);
+
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (file) {
@@ -85,10 +95,7 @@ function AddBook() {
     try {
       if (file) {
         const result = await dataApiFile.postFile(file);
-        setBookRequestPost({
-          ...bookRequestPost,
-          ['fileName']: result,
-        });
+        handleChange('fileName', result);
       }
     } catch (error) {
       console.error('Błąd podczas przesyłania pliku:', error);
@@ -141,7 +148,6 @@ function AddBook() {
     e.preventDefault();
     if (validateForm()) {
       convertBookRequest();
-      uploadFile();
     }
   };
 
@@ -185,7 +191,7 @@ function AddBook() {
     if (bookRequest.series && bookRequest.series.length > 150) {
       newErrors.series = 'Seria nie może być dłuższa niż 150 znaków!';
     }
-    if (!bookRequest.genre) {
+    if (!bookRequest.genre || bookRequest.genre.length === 0) {
       newErrors.genre = 'Musisz dodać conajmniej jeden gatunek!';
     }
 
@@ -195,6 +201,19 @@ function AddBook() {
 
   return (
     <div className={styles.mainContainer}>
+      {isPopupVisible && (
+        <div className={styles.popupOverlay}>
+          <div className={styles.popup}>
+            <h2>Na pewno chcesz dodać ksiażkę?</h2>
+            <button className={styles.yesButton} onClick={handleAdd}>
+              TAK
+            </button>
+            <button className={styles.noButton} onClick={handleClosePopup}>
+              NIE
+            </button>
+          </div>
+        </div>
+      )}
       <div className={styles.staticContainer}>
         <h2>
           Dodaj książkę{' '}
@@ -342,7 +361,7 @@ function AddBook() {
           </div>
         </div>
         <div className={styles.buttons}>
-          <button className={styles.addButton} onClick={handleAdd}>
+          <button className={styles.addButton} onClick={handleOpenPopup}>
             DODAJ
           </button>
           <button className={styles.cancelButton} onClick={handleCancel}>

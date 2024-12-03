@@ -4,6 +4,57 @@
   max-width: 90%;
   margin: auto;
 
+  .popupOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+
+  .popup {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 300px;
+    text-align: center;
+    z-index: 1001;
+    h2 {
+      padding: 10px;
+    }
+    .yesButton {
+      background-color: #28a745;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      margin-top: 10px;
+      margin-right: 10px;
+      border-radius: 4px;
+      cursor: pointer;
+      :hover {
+        background-color: #218838;
+      }
+    }
+    .noButton {
+      background-color: #dc3545;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      margin-top: 10px;
+      border-radius: 4px;
+      cursor: pointer;
+      :hover {
+        background-color: #c82333;
+      }
+    }
+  }
+
   .staticContainer {
     flex: 1;
     margin: 20px;
