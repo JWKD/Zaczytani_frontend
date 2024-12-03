@@ -1,7 +1,7 @@
 import apiClient from './config/axios';
 import endpoints from './config/endpoints';
 
-const dataApi = {
+const fileApi = {
   postFile: async (payload: File): Promise<string> => {
     const formData = new FormData();
     formData.append('file', payload, payload.name);
@@ -14,4 +14,4 @@ const dataApi = {
   },
 };
 
-export default dataApi;
+export default fileApi;
