@@ -11,7 +11,7 @@ import dataApiBook from '../../api/bookApi';
 import { BookRequestPost } from '../../interfaces/book';
 import { convertBookRequest, validateForm } from './helpers';
 
-interface BookRequestPre {
+export interface BookRequestPre {
   title: string;
   isbn: string | null;
   description: string | null;
