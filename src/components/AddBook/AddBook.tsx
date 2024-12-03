@@ -85,7 +85,10 @@ function AddBook() {
     try {
       if (file) {
         const result = await dataApiFile.postFile(file);
-        handleChange('fileName', result.fileName);
+        setBookRequestPost({
+          ...bookRequestPost,
+          ['fileName']: result,
+        });
       }
     } catch (error) {
       console.error('Błąd podczas przesyłania pliku:', error);
@@ -137,8 +140,8 @@ function AddBook() {
   const handleAdd = (e: React.FormEvent) => {
     e.preventDefault();
     if (validateForm()) {
-      uploadFile();
       convertBookRequest();
+      uploadFile();
     }
   };
 
@@ -147,7 +150,7 @@ function AddBook() {
       try {
         if (bookRequestPost.title) {
           await dataApiBook.postBookRequest(bookRequestPost);
-          navigate('/');
+          navigate('/user/bookrequests');
         }
       } catch (error) {
         console.error('Błąd podczas przesyłania prośby:', error);
