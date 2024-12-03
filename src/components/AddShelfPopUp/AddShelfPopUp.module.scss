@@ -1,0 +1,53 @@
+.shelfPopUpContainer {
+  .shelfContainer {
+    width: 250px;
+    margin: 8px;
+
+    .booksContainer {
+      width: 250px;
+      margin-bottom: none;
+      display: flex;
+      justify-content: space-between;
+      padding: 0 15px;
+
+      .images {
+        height: 100px;
+        width: 70px;
+        margin-bottom: 0px;
+      }
+      .imageWithText {
+        position: relative;
+        height: 100px;
+        width: 70px;
+
+        img {
+          height: 100%;
+          width: 100%;
+        }
+
+        .textOverlay {
+          margin-top: 3px;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          text-align: center;
+        }
+      }
+    }
+
+    .bar {
+      margin: 0px;
+      height: 13px;
+      width: 250px;
+      background-color: rgb(107, 99, 97);
+    }
+
+    .text {
+      text-align: center;
+      padding: 5px;
+      font-family: 'Roboto Serif';
+      color: #948b89;
+    }
+  }
+}

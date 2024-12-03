@@ -17,7 +17,7 @@ function ShakeForm() {
 
   const launchConfetti = () => {
     confetti({
-      particleCount: 150,
+      particleCount: 350,
       spread: 120,
       origin: { x: 0.5, y: 0.5 },
       startVelocity: 40,

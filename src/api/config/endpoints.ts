@@ -10,6 +10,9 @@ const endpoints = {
   user: {
     login: `Identity/login`,
   },
+  shelf: {
+    fetch: `Shelf`, // Trzeba będzie zmienić na taki jaki będzie w Api.Endpoint do pobieracjia wszystkich półek
+  },
 };
 
 export default endpoints;

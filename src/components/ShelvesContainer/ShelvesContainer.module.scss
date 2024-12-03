@@ -1,0 +1,47 @@
+.shelvesContainer {
+  width: 100%;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.4);
+  border-radius: 10px;
+  .title {
+    font-family: 'Roboto Serif';
+    font-size: 20px;
+    color: #4a3423;
+    display: flex;
+    margin: 10px;
+    .text {
+      margin-left: 5px;
+      font-size: 20px;
+    }
+  }
+  display: flex;
+  flex-direction: column;
+
+  .shelvesGrid {
+    padding: 10px;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(250px, 1fr));
+    max-height: 435px;
+    overflow-y: auto;
+    .addShelfButton {
+      border: none;
+      cursor: pointer;
+      background: transparent;
+      transition:
+      background-color 0.3s,
+      box-shadow 0.3s;
+    }
+    .addShelfButton:hover {
+      background-color: rgba(255, 255, 255, 0.6);
+    }
+    .shelfPopUp{
+      height: 100px;
+      width: 100px;
+      background-color: red;
+      visibility: hidden;
+    }
+    .openShelfPopUp{
+      visibility: visible;
+    }
+  }
+}

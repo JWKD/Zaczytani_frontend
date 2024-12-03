@@ -1,0 +1,56 @@
+.shelfContainer {
+  width: 250px;
+  margin: auto;
+
+  .booksContainer {
+    width: 250px;
+    margin-bottom: none;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 15px;
+
+    .images {
+      height: 100px;
+      width: 70px;
+      margin-bottom: 0px;
+    }
+
+    .imageWithText {
+      position: relative;
+      height: 100px;
+      width: 70px;
+
+      img {
+        height: 100%;
+        width: 100%;
+      }
+
+      .textOverlay {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 16px;
+        text-align: center;
+        color: hsl(42, 17%, 85%);
+        font-family: 'Roboto Serif';
+      }
+      .textOverlay:hover {
+        color: hsl(42, 17%, 80%);
+      }
+    }
+  }
+
+  .bar {
+    margin: 0px;
+    height: 13px;
+    width: 250px;
+    background-color: rgba(74, 52, 35, 0.76);
+  }
+
+  .text {
+    text-align: center;
+    padding: 5px;
+    font-family: 'Roboto Serif';
+  }
+}

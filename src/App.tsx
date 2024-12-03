@@ -1,5 +1,5 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import Home from './pages/Home';
+import Home from './pages/Home/Home';
 import NotFound from './pages/NotFound';
 import User from './pages/User';
 import Layout from './layout/Layout';
@@ -12,6 +12,7 @@ import '@fontsource/coiny';
 import ShakePage from './pages/ShakePage';
 import BookDetailsPage from './pages/BookDetailsPage';
 import AuthorDetailsPage from './pages/AuthorDetailsPage';
+import ShelfDetails from './pages/ShelfDetails';
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,7 @@ const router = createBrowserRouter([
       { path: '/authors/:id', element: <AuthorDetailsPage /> },
       { path: '/user/:id', element: <User /> },
       { path: '/user/shake', element: <ShakePage /> },
+      { path: '/user/shelf/details', element: <ShelfDetails /> },
     ],
   },
   {
