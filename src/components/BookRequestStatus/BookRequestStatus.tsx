@@ -41,7 +41,6 @@ function BookRequestStatus() {
             {requests.map((request) => (
               <li key={request.id}>
                 <div className={styles.listItem} onClick={() => handleClick(request.id)}>
-                  {request.image && <img src={request.image} alt="Okładka" />}
                   <p className={styles.title}>{request.title}</p>
                   <p>{request.authors}</p>
                 </div>
@@ -62,7 +61,7 @@ function BookRequestStatus() {
             <div className={styles.secondInfo}>
               <div className={styles.genres}>
                 <strong>Gatunki:</strong>
-                {activeRequest.genre && activeRequest.genre.map((g) => <div className={styles.genre}> {g}</div>)}
+                {activeRequest.genre && activeRequest.genre.map((g) => <div className={styles.genre}> {g},</div>)}
               </div>
               <div className={styles.series}>
                 <strong>Cykl:</strong> {activeRequest.series}

@@ -86,13 +86,23 @@
         strong {
           font-weight: 600;
         }
+        .genres {
+          display: flex;
+          flex-wrap: wrap;
+          .genre {
+            margin-left: 5px;
+          }
+        }
       }
       .description {
         background-color: white;
+        margin: 10px;
+        padding: 10px;
         border-radius: 10px;
       }
       .status {
         font-size: 20px;
+        text-align: center;
         .pending {
           color: #007bff;
         }
