@@ -3,6 +3,7 @@ import CreatableSelect from 'react-select/creatable';
 import dataApi from '../../../api/bookApi';
 import { PublishingHouse } from '../../../interfaces/book';
 import './AutoComplete.modules.scss';
+import { BookRequest } from '../AddBook';
 
 interface PublishingHouseOption {
   value: string;
@@ -10,8 +11,8 @@ interface PublishingHouseOption {
 }
 
 interface PublishingHouseAutoCompleteProps {
-  value?: string;
-  onChange?: (selectedOption: string) => void;
+  value?: string | null;
+  onChange?: (field: keyof BookRequest, selectedOptions: string) => void;
 }
 
 function PublishingHouseAutoComplete({ value, onChange }: PublishingHouseAutoCompleteProps) {
@@ -46,7 +47,7 @@ function PublishingHouseAutoComplete({ value, onChange }: PublishingHouseAutoCom
 
   const handleChange = (selectedOption: PublishingHouseOption | null) => {
     if (onChange) {
-      onChange(selectedOption?.value || '');
+      onChange('publishingHouse', selectedOption?.value || '');
     }
   };
 
@@ -55,7 +56,7 @@ function PublishingHouseAutoComplete({ value, onChange }: PublishingHouseAutoCom
     setGenres((prevPublishingHouse) => [...prevPublishingHouse, newOption]);
 
     if (onChange) {
-      onChange(newOption.id);
+      onChange('publishingHouse', newOption.name);
     }
   };
 

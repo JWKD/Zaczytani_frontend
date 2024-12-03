@@ -3,6 +3,7 @@ import { Author } from '../../../interfaces/book';
 import dataApi from '../../../api/bookApi';
 import CreatableSelect from 'react-select/creatable';
 import './AutoComplete.modules.scss';
+import { BookRequest } from '../AddBook';
 
 interface AuthorOption {
   value: string;
@@ -11,7 +12,7 @@ interface AuthorOption {
 
 interface AuthorsAutoCompleteProps {
   value?: string[];
-  onChange?: (selectedOptions: string[]) => void;
+  onChange?: (field: keyof BookRequest, selectedOptions: string[]) => void;
 }
 
 function AuthorAutoComplete({ value, onChange }: AuthorsAutoCompleteProps) {
@@ -44,8 +45,8 @@ function AuthorAutoComplete({ value, onChange }: AuthorsAutoCompleteProps) {
 
   const handleChange = (selectedOptions: any) => {
     if (onChange) {
-      const selectedAuthors = selectedOptions.map((option: any) => option.value);
-      onChange(selectedAuthors);
+      const selectedAuthors = selectedOptions?.map((option: any) => option.value);
+      onChange('authors', selectedAuthors);
     }
   };
 
@@ -53,7 +54,7 @@ function AuthorAutoComplete({ value, onChange }: AuthorsAutoCompleteProps) {
     const newOption: Author = { id: inputValue, name: inputValue, imageUrl: null };
     setAuthors((prevAuthors) => [...prevAuthors, newOption]);
     if (onChange) {
-      onChange([...(value || []), inputValue]);
+      onChange('authors', [...(value || []), inputValue]);
     }
   };
 

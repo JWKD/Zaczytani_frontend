@@ -13,7 +13,10 @@ const endpoints = {
   },
   user: {
     login: `Identity/login`,
-    refreshToken: 'Identity/refresh'
+    refreshToken: 'Identity/refresh',
+  },
+  file: {
+    postFile: `File`, // Endpoint do wysyłania pliku
   },
 };
 

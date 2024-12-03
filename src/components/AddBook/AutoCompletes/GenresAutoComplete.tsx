@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import Select from 'react-select';
 import dataApi from '../../../api/bookApi';
 import './AutoComplete.modules.scss';
+import { BookRequest } from '../AddBook';
 
 interface GenreOption {
   value: string;
@@ -9,8 +10,8 @@ interface GenreOption {
 }
 
 interface GenresAutoCompleteProps {
-  value?: string[];
-  onChange?: (selectedOptions: string[]) => void;
+  value?: string[] | null;
+  onChange?: (field: keyof BookRequest, selectedOptions: string[]) => void;
 }
 
 function GenresAutoComplete({ value, onChange }: GenresAutoCompleteProps) {
@@ -41,10 +42,10 @@ function GenresAutoComplete({ value, onChange }: GenresAutoCompleteProps) {
     fetchData();
   }, []);
 
-  const handleChange = (selectedOptions: any) => {
+  const handleChange = (selectedOptions: GenreOption[]) => {
     if (onChange) {
-      const selectedGenres = selectedOptions.map((option: any) => option.value);
-      onChange(selectedGenres);
+      const selectedGenres = selectedOptions?.map((option) => option.value);
+      onChange('genre', selectedGenres);
     }
   };
 
@@ -55,13 +56,14 @@ function GenresAutoComplete({ value, onChange }: GenresAutoCompleteProps) {
   ) : (
     <Select
       value={value?.map((genre) => genreOptions.find((option) => option.value === genre))}
-      onChange={handleChange}
+      onChange={(selectedOptions) => handleChange(selectedOptions as GenreOption[])}
       isMulti
       name="genres"
       options={genreOptions}
       className="basic-multi-select"
       classNamePrefix="select"
       placeholder="Wybierz gatunek/ki..."
+      noOptionsMessage={() => 'Brak wyników wyszukiwania'}
     />
   );
 }

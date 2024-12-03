@@ -78,13 +78,28 @@
       display: flex;
     }
 
-    .addPhoto {
-      background-color: #493a3a85;
+    .addImage {
       height: 150px;
-      width: 120px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      cursor: pointer;
+      img {
+        height: 150px;
+        object-fit: cover;
+      }
+      .addPhoto {
+        background-color: #493a3a85;
+        height: 150px;
+        width: 120px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+      }
+      transition:
+        box-shadow 0.3s ease,
+        transform 0.3s ease;
+      .addPhoto:hover {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
     }
 
     .mainInputs {
@@ -95,11 +110,25 @@
       margin-left: 25px;
 
       input,
-      span {
+      span,
+      .inputContainer {
         width: 100%;
       }
 
-      input:nth-child(1) {
+      .inputContainer {
+        position: relative;
+        margin-bottom: 5px;
+      }
+
+      .error {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        color: red;
+        font-size: 11px;
+      }
+
+      .inputContainer:nth-child(1) {
         grid-column: span 2;
       }
 
@@ -131,22 +160,30 @@
       margin: 10px;
     }
 
-    .description {
-      width: 100%;
-      outline: none;
-      border: none;
-      box-shadow: none;
-      border-radius: 5px;
-      height: 250px;
-      padding: 10px;
-      resize: none;
-      font-size: 16px;
-      font-weight: 300;
+    .inputContainer {
+      .description {
+        width: 100%;
+        outline: none;
+        border: none;
+        box-shadow: none;
+        border-radius: 5px;
+        height: 250px;
+        padding: 10px;
+        resize: none;
+        font-size: 16px;
+        font-weight: 300;
+      }
+      .error {
+        top: 100%;
+        left: 0;
+        color: red;
+        font-size: 11px;
+      }
     }
 
     .lastInputs {
-      display: flex;
-      justify-content: space-between;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
       color: #0000008c;
       font-weight: 500;
       padding: 10px;
@@ -181,6 +218,7 @@
       }
       .isbn {
         display: flex;
+
         input {
           border: none;
           outline: none;
