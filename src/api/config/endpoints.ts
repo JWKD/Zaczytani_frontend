@@ -6,6 +6,7 @@ const endpoints = {
     update: (id: number) => `Book/${id}`, // Endpoint do aktualizacji danych (PUT)
     delete: (id: number) => `Book/${id}`, // Endpoint do usuwania danych (DELETE)
     fetchSearchedBooks: `Book/Search`, // Endpoint do pobierania wyszukiwanych książek
+    fetchBookRequest: `BookRequest`, // Endpoint do pobierania bookRequestów użytkownika
     bookRequest: `BookRequest`, // Endpoint do tworzenia bookRequest
     fetchAuthors: `Author`, // Endpoint do pobierania autorów
     fetchGenres: `Book/Genres`, // Endpoint do pobierania gatunków
