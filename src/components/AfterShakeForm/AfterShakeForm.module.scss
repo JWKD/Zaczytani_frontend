@@ -1,0 +1,76 @@
+.afterShakeContainer {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+  flex-direction: column;
+  font-family: 'Roboto', sans-serif;
+  .shakeomatMain {
+    height: 400px;
+    width: 425px;
+    background-color: white;
+    border-radius: 10px;
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    .bookCover {
+      width: 140px;
+      height: 200px;
+      margin-top: 10px;
+    }
+    .bookTitle {
+      font-size: 18px;
+      margin-bottom: 5px;
+    }
+    .authors {
+      font-size: 15px;
+      margin-bottom: 5px;
+    }
+    .bookRatingContainer {
+      display: flex;
+      align-items: center;
+      margin-bottom: 5px;
+      .rating {
+        margin-left: 5px;
+      }
+    }
+    .addToShelfButton {
+      background-color: #b8dc8cd4;
+      border-radius: 5px;
+      border: none;
+      color: white;
+      margin-bottom: 10px;
+      height: 30px;
+      width: 240px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      font-size: 15px;
+    }
+    .addToShelfButton:hover {
+      background-color: #a3c88b;
+    }
+    .bookDetailsButton {
+      text-decoration: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 15px;
+      text-align: center;
+      background-color: #1fc7a599;
+      border-radius: 5px;
+      border: none;
+      color: white;
+      margin-bottom: 10px;
+      height: 30px;
+      width: 240px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .bookDetailsButton:hover {
+      background-color: #17a28d;
+    }
+  }
+}
