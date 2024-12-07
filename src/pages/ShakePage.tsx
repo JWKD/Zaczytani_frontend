@@ -8,6 +8,7 @@ function ShakePage() {
   const [myBook, setBook] = useState<Book>();
   const [isShaking, setIsShaking] = useState<boolean>();
   const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -16,6 +17,7 @@ function ShakePage() {
         setBook(result);
         setIsShaking(true);
       } catch (err) {
+        setError('Wystąpił błąd');
         setIsShaking(false);
       } finally {
         setLoading(false);
@@ -25,7 +27,15 @@ function ShakePage() {
     fetchData();
   }, []);
 
-  return loading ? <div>Loading ...</div> : isShaking ? <AfterShakeForm book={myBook} /> : <ShakeForm />;
+  return loading ? (
+    <div>Loading ...</div>
+  ) : error ? (
+    <div>Error: {error}</div>
+  ) : isShaking ? (
+    <AfterShakeForm book={myBook} />
+  ) : (
+    <ShakeForm />
+  );
 }
 
 export default ShakePage;
