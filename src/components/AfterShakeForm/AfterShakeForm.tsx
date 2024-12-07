@@ -17,7 +17,7 @@ function AfterShakeForm({ book }: AfterShakeFormProps) {
         <img className={styles.bookCover} src={book?.imageUrl || defaultCover} alt="Okładka książki" />
         <h1 className={styles.bookTitle}>{book?.title}</h1>
         <h2 className={styles.authors}>
-          <ul>{book?.authors.map((author) => <li key={author.id}>{author.id}</li>)}</ul>
+          <ul>{book?.authors.map((author) => <li key={author.id}>{author.name}</li>)}</ul>
         </h2>
         <div className={styles.bookRatingContainer}>
           <Star />

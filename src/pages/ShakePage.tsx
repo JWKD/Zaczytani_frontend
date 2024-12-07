@@ -3,6 +3,7 @@ import AfterShakeForm from '../components/AfterShakeForm/AfterShakeForm';
 import { useEffect, useState } from 'react';
 import dataApi from '../api/bookApi';
 import { Book } from '../interfaces/book';
+import { AxiosError } from 'axios';
 
 function ShakePage() {
   const [myBook, setBook] = useState<Book>();
@@ -17,8 +18,12 @@ function ShakePage() {
         setBook(result);
         setIsShaking(true);
       } catch (err) {
-        setError('Wystąpił błąd');
-        setIsShaking(false);
+        const error = err as AxiosError;
+        if (error.status === 404) {
+          setIsShaking(false);
+        } else {
+          setError('Wystąpił błąd');
+        }
       } finally {
         setLoading(false);
       }
