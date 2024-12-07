@@ -1,4 +1,4 @@
-import { AuthorBooks, Book } from '../interfaces/book';
+import { AuthorBooks, Author, Book, BookRequest, PublishingHouse, BookRequestPost } from '../interfaces/book';
 import apiClient from './config/axios';
 import endpoints from './config/endpoints';
 
@@ -23,6 +23,30 @@ const dataApi = {
   gethasDrawn: async (): Promise<Book> => {
     const response = await apiClient.get<Book>(endpoints.book.fetchBookHasDrawn);
     return response.data;
+  },
+
+  getAuthors: async (): Promise<Author[]> => {
+    const response = await apiClient.get<Author[]>(endpoints.book.fetchAuthors);
+    return response.data;
+  },
+
+  getGenres: async (): Promise<string[]> => {
+    const response = await apiClient.get<string[]>(endpoints.book.fetchGenres);
+    return response.data;
+  },
+
+  getPublishingHouses: async (): Promise<PublishingHouse[]> => {
+    const response = await apiClient.get<PublishingHouse[]>(endpoints.book.fetchPublishingHouses);
+    return response.data;
+  },
+
+  getBookRequest: async (): Promise<BookRequest[]> => {
+    const response = await apiClient.get<BookRequest[]>(endpoints.book.fetchBookRequest);
+    return response.data;
+  },
+
+  postBookRequest: async (payload: BookRequestPost): Promise<void> => {
+    return await apiClient.post(endpoints.book.bookRequest, payload);
   },
 
   // postData: async (payload: DataItemRequest): Promise<void> => {

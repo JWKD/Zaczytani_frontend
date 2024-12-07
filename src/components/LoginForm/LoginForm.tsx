@@ -2,10 +2,12 @@ import picture from '../../assets/loggingPicture.jpg';
 import { useState, ChangeEvent, FormEvent } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AxiosError } from 'axios';
-import dataApi from '../../api/userApi';
+import userApi from '../../api/userApi';
 import styles from './LoginForm.module.scss';
+import { useUser } from '../../context/UserContext';
 
 function LoginForm() {
+  const { setUser } = useUser();
   const [login, setLogin] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const navigate = useNavigate();
@@ -24,11 +26,16 @@ function LoginForm() {
     const user = { login, password };
 
     try {
-      const response = await dataApi.createUser(user);
+      const response = await userApi.login(user);
 
       if (response.status === 200) {
         localStorage.setItem('accessToken', response.data.accessToken);
         localStorage.setItem('refreshToken', response.data.refreshToken);
+        setUser({
+          firstName: '', //trzeba strzelić do api po informacje o userze albo przerobić api logowania zeby zwracało info o użytkowniku
+          lastName: '', //trzeba strzelić do api po informacje o userze albo przerobić api logowania zeby zwracało info o użytkowniku
+          isLoggedIn: true,
+        });
         navigate('/');
       }
     } catch (error) {

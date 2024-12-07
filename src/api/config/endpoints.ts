@@ -8,9 +8,18 @@ const endpoints = {
     fetchSearchedBooks: `Book/Search`, // Endpoint do pobierania wyszukiwanych książek
     fetchBookHasDrawn: `Book/HasDrawn`, // Endpoint do sprawdzania czy było już losowanie danego dnia
     getRandomBook: `Book/Random`, // (POST) Endpoint do zapisania że już było losowanie i pobranie ksiązki
+    fetchBookRequest: `BookRequest`, // Endpoint do pobierania bookRequestów użytkownika
+    bookRequest: `BookRequest`, // Endpoint do tworzenia bookRequest
+    fetchAuthors: `Author`, // Endpoint do pobierania autorów
+    fetchGenres: `Book/Genres`, // Endpoint do pobierania gatunków
+    fetchPublishingHouses: `Book/PublishingHouses`, // Endpoint do pobierania wydawnictw
   },
   user: {
     login: `Identity/login`,
+    refreshToken: 'Identity/refresh',
+  },
+  file: {
+    postFile: `File`, // Endpoint do wysyłania pliku
   },
 };
 

@@ -12,9 +12,6 @@ export interface Book {
   authors: Author[];
 }
 
-export interface BookRequest {
-  title: string;
-}
 export interface Author {
   id: string;
   name: string;
@@ -26,4 +23,44 @@ export interface AuthorBooks {
   name: string;
   imageUrl: string | null;
   books: Book[];
+}
+
+// interfejs do odpowiedzi z posta
+export interface BookRequestModel {
+  id: string;
+}
+
+export interface PublishingHouse {
+  id: string;
+  name: string;
+}
+
+// interfejs do wysyłania post
+export interface BookRequestRequest {
+  title: string;
+  isbn: string | null;
+  description: string | null;
+  pageNumber: number | null;
+  releaseDate: string | null;
+  fileName: string | null;
+  authors: string;
+  publishingHouse: string | null;
+  genre: string[] | null;
+  series: string | null;
+}
+
+// interfejs do pobierania bookRequest
+export interface BookRequest {
+  id: string;
+  title: string;
+  isbn: string | null;
+  description: string | null;
+  pageNumber: number | null;
+  releaseDate: string | null;
+  image: string | null;
+  authors: string;
+  publishingHouse: string | null;
+  genre: string[] | null;
+  series: string | null;
+  status: string;
 }
