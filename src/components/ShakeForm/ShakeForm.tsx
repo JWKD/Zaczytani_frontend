@@ -31,7 +31,7 @@ function ShakeForm() {
       saveData();
       setIsShaking(false);
       launchConfetti();
-    }, 2000);
+    }, 1200);
     launchConfetti();
   };
 

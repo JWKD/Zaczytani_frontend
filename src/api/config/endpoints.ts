@@ -1,3 +1,5 @@
+import { create } from 'domain';
+
 const endpoints = {
   book: {
     fetch: `Book`, // Endpoint do pobierania danych
@@ -22,7 +24,10 @@ const endpoints = {
     postFile: `File`, // Endpoint do wysyłania pliku
   },
   shelf: {
-    fetch: `Shelf`, // Trzeba będzie zmienić na taki jaki będzie w Api.Endpoint do pobieracjia wszystkich półek
+    fetch: `Bookshelf/GetAllBookShelves`, // Endpoint do pobierania wszystkich półek
+    fetchShelfBooks: (id: string) => `Bookshelf/${id}/Books`, // Endpoint do pobierania książek na danej półce
+    fetchShelf: (id: string) => `Bookshelf/GetBookshelf/${id}`, // Endpoint do pobrania jednej półki
+    create: `Bookshelf/Create`, // Endpoint do dodania półki
   },
 };
 
