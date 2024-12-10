@@ -3,6 +3,79 @@
   justify-content: center;
   gap: 50px;
   padding: 10px;
+
+  .popupOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    .popup {
+      background-color: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      width: 400px;
+      height: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .newNameInput {
+        width: 300px;
+        height: 40px;
+        border: 2px solid #dadada;
+        border-radius: 5px;
+        padding: 5px;
+        font-size: 16px;
+      }
+
+      .errorText {
+        margin-top: 5px;
+        top: 100%;
+        left: 0;
+        color: red;
+        font-size: 13px;
+      }
+      .popUpButtonContainer {
+        padding: 20px;
+        display: flex;
+        gap: 20px;
+        .yesButton {
+          background-color: #b8dc8c;
+          border-radius: 5px;
+          border: none;
+          color: white;
+          width: 80px;
+          height: 30px;
+          cursor: pointer;
+          transition: background-color 0.3s ease;
+        }
+        .yesButton:hover {
+          background-color: #a3c88b;
+        }
+        .noButton {
+          background-color: hsla(2, 36%, 33%, 0.6);
+          border-radius: 5px;
+          border: none;
+          color: white;
+          width: 80px;
+          height: 30px;
+          cursor: pointer;
+          transition: background-color 0.3s ease;
+        }
+        .noButton:hover {
+          background-color: hsla(2, 36%, 33%, 0.7);
+        }
+      }
+    }
+  }
+
   .leftPanel {
     padding: 10px;
     align-items: left;
@@ -31,7 +104,7 @@
       background-color: #ffffff66;
       padding-left: 58px;
       padding-right: 58px;
-      padding-top:60px;
+      padding-top: 60px;
       padding-bottom: 30px;
       border-radius: 10px;
     }

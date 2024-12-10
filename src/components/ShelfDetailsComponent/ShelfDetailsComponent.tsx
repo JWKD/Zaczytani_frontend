@@ -1,14 +1,14 @@
 import { useEffect, useState } from 'react';
 import { Book } from '../../interfaces/book';
 import dataApi from '../../api/shelvesApi';
-import { Shelf } from '../../interfaces/Shelf';
+import { Shelf, UpdateShelf } from '../../interfaces/Shelf';
 import styles from './ShelfDetailsComponent.module.scss';
 import ShelfComponent from '../ShelfComponent/ShelfComponent';
 import BookIcon from '../../icons/BookIcon';
 import DotHorizontal from '../../icons/DotsHorizontal';
 import defaultImage from '../../assets/defaultCover.png';
-import Star from '../../icons/Star';
 import RatingIcon from '../../icons/RatingIcon';
+import { useNavigate } from 'react-router-dom';
 
 interface ShelfDetailsProps {
   id: string;
@@ -19,6 +19,16 @@ function ShelfDetailsComponent({ id }: ShelfDetailsProps) {
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   const [shelf, setShelf] = useState<Shelf>();
+  const [isPopupVisible, setIsPopupVisible] = useState(false);
+  const [validError, setValidationError] = useState<string>('');
+  const [inputValue, setInputValue] = useState<string>('');
+  const navigate = useNavigate();
+
+  const [newShelf, setNewShelf] = useState<UpdateShelf>({
+    shelfId: id,
+    name: '',
+    description: 'string',
+  });
 
   useEffect(() => {
     const fetchData = async () => {
@@ -37,19 +47,49 @@ function ShelfDetailsComponent({ id }: ShelfDetailsProps) {
     fetchData();
   }, [id]);
 
-  async function handleChangeNameClick() {
-    try {
-      const resultShelf = await dataApi.getShelf(id);
-      console.log(resultShelf);
-      setShelf(resultShelf);
-      const resultShelfBooks = await dataApi.getShelfBooks(id);
-      setBooks(resultShelfBooks);
-      console.log(resultShelfBooks);
-    } catch (err) {
-      setError('Wystąpił błąd');
-    } finally {
-      setLoading(false);
+  const handleNewShelfNameChange = (e: { target: { value: string } }) => {
+    setInputValue(e.target.value);
+    setNewShelf((prevShelf) => ({
+      ...prevShelf,
+      name: e.target.value,
+    }));
+  };
+
+  const validateInput = (value: string): string => {
+    if (value.trim().length < 3) {
+      return 'Nazwa półki musi mieć co najmniej 3 znaki.';
     }
+    if (value.trim().length > 25) {
+      return 'Nazwa półki nie może przekraczać 25 znaków.';
+    }
+    return '';
+  };
+
+  function saveDataButton() {
+    const validationError = validateInput(inputValue);
+    if (validationError) {
+      setValidationError(validationError);
+      return;
+    }
+    const postData = async () => {
+      try {
+        await dataApi.updateShelf(newShelf);
+      } catch (error) {
+        console.error('Błąd podczas zmiany nazwy:', error);
+      } finally {
+        navigate(0);
+      }
+    };
+
+    postData();
+  }
+
+  function closePopUp() {
+    setIsPopupVisible(false);
+  }
+
+  async function handleChangeNameClick() {
+    setIsPopupVisible(true);
   }
   return loading ? (
     <div>Loading ...</div>
@@ -57,6 +97,28 @@ function ShelfDetailsComponent({ id }: ShelfDetailsProps) {
     <div>Error: {error}</div>
   ) : (
     <div className={styles.pageContainer}>
+      {isPopupVisible && (
+        <div className={styles.popupOverlay}>
+          <div className={styles.popup}>
+            <input
+              type="string"
+              value={inputValue}
+              className={styles.newNameInput}
+              onChange={handleNewShelfNameChange}
+              placeholder="Wpisz nową nazwę półki"
+            ></input>
+            {validError && <p className={styles.errorText}>{validError}</p>}
+            <div className={styles.popUpButtonContainer}>
+              <button className={styles.yesButton} onClick={saveDataButton}>
+                Zapisz
+              </button>
+              <button className={styles.noButton} onClick={closePopUp}>
+                Anuluj
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
       <section className={styles.leftPanel}>
         <div className={styles.title}>
           <h2 className={styles.text}>Moja biblioteczka</h2>
