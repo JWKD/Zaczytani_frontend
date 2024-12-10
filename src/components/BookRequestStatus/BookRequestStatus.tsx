@@ -22,7 +22,7 @@ function BookRequestStatus() {
     };
 
     fetchData();
-  });
+  }, []);
 
   const handleClick = (id: string) => {
     setActiveRequest(requests.find((request) => request.id === id)!);

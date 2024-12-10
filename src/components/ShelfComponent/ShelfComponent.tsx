@@ -6,7 +6,7 @@ import { Book } from '../../interfaces/book';
 import { Shelf } from '../../interfaces/Shelf';
 import dataApi from '../../api/shelvesApi';
 
-interface ShelfComponentProps {
+export interface ShelfComponentProps {
   shelf: Shelf;
 }
 
@@ -42,7 +42,7 @@ const ShelfComponent: React.FC<ShelfComponentProps> = ({ shelf }) => {
           .map((books: Book, index) => (
             <img key={index} src={books.imageUrl || defaultImage} className={styles.images} alt={books.title} />
           ))}
-        <Link to="/user/shelf/details" className={styles.imageWithText}>
+        <Link to={`/Bookshelf/GetBookshelf/${shelf.id}`} className={styles.imageWithText}>
           <img src={defaultImage} className={styles.images} alt="Book Cover" />
           <div className={styles.textOverlay}>Zobacz więcej...</div>
         </Link>

@@ -1,0 +1,90 @@
+.pageContainer {
+  display: flex;
+  gap: 50px;
+  padding: 10px;
+  .leftPanel {
+    padding: 10px;
+    align-items: left;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: auto;
+    .title {
+      background-color: #c3b6ac4d;
+      border-radius: 50px;
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      padding: 30px;
+      align-items: center;
+      width: 367px;
+      height: 52px;
+      .text {
+        color: #4a3423;
+        font-family: 'Roboto Serif';
+        font-size: 20px;
+      }
+    }
+    .shelfContainer {
+      background-color: #ffffff66;
+      padding-left: 58px;
+      padding-right: 58px;
+      padding-top: 30px;
+      padding-bottom: 30px;
+      border-radius: 10px;
+    }
+    .buttonContainer {
+      margin-top: 100px;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      .changeNameButton {
+        margin-bottom: 10px;
+        background-color: #b8dc8c;
+        border-radius: 5px;
+        border: none;
+        color: white;
+        width: 208px;
+        height: 30px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+      .changeNameButton:hover {
+        background-color: #a3c88b;
+      }
+      .deleteButton {
+        background-color: hsla(2, 36%, 33%, 0.6);
+        border-radius: 5px;
+        border: none;
+        color: white;
+        width: 208px;
+        height: 30px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+      .deleteButton:hover {
+        background-color: hsla(2, 36%, 33%, 0.7);
+      }
+    }
+  }
+  .rightPanel{
+    background-color: #ffffff66;
+    border-radius: 10px;
+    width: auto;
+    .shelfTitle{
+        font-family: 'Roboto Serif';
+        font-size: 16px;;
+        color: #4a3423;
+        display: flex;
+        margin: 15px;
+        .shelfText{
+            margin-left: 10px;
+            font-size: 20px;
+        }
+    }
+    .booksContainer{
+        
+    }
+  }
+}

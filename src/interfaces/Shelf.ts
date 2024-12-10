@@ -11,3 +11,13 @@ export interface CreateShelf {
   name: string;
   description: string;
 }
+
+export interface DeleteShelf {
+  shelfId: string;
+}
+
+export interface UpdateShelf {
+  shelfId: string;
+  name: string;
+  description: string;
+}

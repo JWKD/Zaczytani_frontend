@@ -2,7 +2,6 @@
   width: 770px;
   height: 500px;
   display: flex;
-  flex-direction: column; 
   align-items: center; 
   justify-content: center; 
   background-color: #ffffff66;
@@ -12,7 +11,8 @@
     background-color: white;
     width: 514px;
     height: 314px;
-    border-radius: 10px;
+    border-radius: 10px;  
+
     .title {
       font-family: 'Roboto Serif';
       font-size: 20px;
