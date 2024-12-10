@@ -3,7 +3,7 @@ import defaultImage from '../../assets/DefaultBookCover.png';
 import Plus from '../../icons/Plus';
 import DotHorizontal from '../../icons/DotsHorizontal';
 import { useNavigate } from 'react-router-dom';
-import { SetStateAction, useEffect, useState } from 'react';
+import { SetStateAction, useState } from 'react';
 import dataApi from '../../api/shelvesApi';
 import { CreateShelf } from '../../interfaces/Shelf';
 

@@ -1,5 +1,6 @@
 .pageContainer {
   display: flex;
+  justify-content: center;
   gap: 50px;
   padding: 10px;
   .leftPanel {
@@ -30,7 +31,7 @@
       background-color: #ffffff66;
       padding-left: 58px;
       padding-right: 58px;
-      padding-top: 30px;
+      padding-top:60px;
       padding-bottom: 30px;
       border-radius: 10px;
     }
@@ -68,23 +69,76 @@
       }
     }
   }
-  .rightPanel{
+  .rightPanel {
     background-color: #ffffff66;
     border-radius: 10px;
     width: auto;
-    .shelfTitle{
-        font-family: 'Roboto Serif';
-        font-size: 16px;;
-        color: #4a3423;
-        display: flex;
-        margin: 15px;
-        .shelfText{
-            margin-left: 10px;
-            font-size: 20px;
-        }
+    .shelfTitle {
+      font-family: 'Roboto Serif';
+      font-size: 16px;
+      color: #4a3423;
+      display: flex;
+      margin: 7px;
+      .shelfText {
+        margin-left: 10px;
+        font-size: 20px;
+      }
     }
-    .booksContainer{
-        
+    .booksContainer {
+      margin-left: 10px;
+      margin-right: 10px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      max-height: 475px;
+      overflow-y: auto;
+      overflow-x: hidden;
+      background-color: white;
+      border-radius: 10px;
+      .oneBook {
+        padding: 7px 30px;
+        .image {
+          width: 116px;
+          height: 159px;
+        }
+        .bookTitle {
+          width: 116px;
+          height: 16px;
+          font-size: 14px;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          font-weight: bold;
+          color: #4a3423;
+          font-family: 'Roboto Serif';
+        }
+        .bookAuthor {
+          margin-top: 2px;
+          width: 116px;
+          height: 14px;
+          font-size: 12px;
+          .authorName {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            color: #665243;
+            font-family: 'Roboto Serif';
+          }
+        }
+        .ratingContainer {
+          margin-top: 2px;
+          display: flex;
+          align-items: center;
+          margin-bottom: 5px;
+          .rating {
+            margin-top: 2px;
+            margin-left: 10px;
+            color: #665243;
+            font-family: 'Roboto Serif';
+            font-size: 16px;
+            font-weight: bold;
+          }
+        }
+      }
     }
   }
 }

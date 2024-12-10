@@ -7,6 +7,8 @@ import ShelfComponent from '../ShelfComponent/ShelfComponent';
 import BookIcon from '../../icons/BookIcon';
 import DotHorizontal from '../../icons/DotsHorizontal';
 import defaultImage from '../../assets/defaultCover.png';
+import Star from '../../icons/Star';
+import RatingIcon from '../../icons/RatingIcon';
 
 interface ShelfDetailsProps {
   id: string;
@@ -75,7 +77,24 @@ function ShelfDetailsComponent({ id }: ShelfDetailsProps) {
         </div>
         <div className={styles.booksContainer}>
           {books?.map((books: Book, index) => (
-            <img key={index} src={books.imageUrl || defaultImage} className={styles.images} alt={books.title} />
+            <div key={index} className={styles.oneBook}>
+              <img src={books.imageUrl || defaultImage} className={styles.image} alt={books.title}></img>
+              <div className={styles.bookTitle}>{books.title}</div>
+              <div className={styles.bookAuthor}>
+                <ul>
+                  <li className={styles.authorName}>{books.title}</li>
+                  {books.authors.map((author) => (
+                    <li key={author.id} className={styles.authorName}>
+                      {author.name}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className={styles.ratingContainer}>
+                <RatingIcon />
+                <p className={styles.rating}>{books.rating}</p>
+              </div>
+            </div>
           ))}
         </div>
       </section>
