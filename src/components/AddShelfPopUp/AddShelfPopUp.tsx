@@ -3,12 +3,13 @@ import defaultImage from '../../assets/DefaultBookCover.png';
 import Plus from '../../icons/Plus';
 import DotHorizontal from '../../icons/DotsHorizontal';
 import { useNavigate } from 'react-router-dom';
-import { SetStateAction, useEffect, useState } from 'react';
+import { useState } from 'react';
 import dataApi from '../../api/shelvesApi';
 import { CreateShelf } from '../../interfaces/Shelf';
 
 function AddShelfPopUp() {
   const [inputValue, setInputValue] = useState<string>('');
+  const [error, setError] = useState<string>('');
   const [newShelf, setNewShelf] = useState<CreateShelf>({
     name: inputValue,
     description: 'string',
@@ -18,21 +19,44 @@ function AddShelfPopUp() {
     navigate(0);
   };
 
-  const handleInputChange = (e: { target: { value: SetStateAction<string> } }) => {
+  const validateInput = (value: string): string => {
+    if (value.trim().length < 3) {
+      return 'Nazwa półki musi mieć co najmniej 3 znaki.';
+    }
+    if (value.trim().length > 25) {
+      return 'Nazwa półki nie może przekraczać 25 znaków.';
+    }
+    return '';
+  };
+
+  const handleInputChange = (e: { target: { value: string } }) => {
     setInputValue(e.target.value);
+    setNewShelf((prevShelf) => ({
+      ...prevShelf,
+      name: e.target.value,
+    }));
+
+    const validationError = validateInput(e.target.value);
+    setError(validationError);
   };
 
   function handleAdd() {
-    useEffect(() => {
-      const postData = async () => {
-        try {
-          await dataApi.postShelf(newShelf);
-        } catch (error) {
-          console.error('Błąd podczas przesyłania prośby:', error);
-        }
-      };
-      postData();
-    });
+    const validationError = validateInput(inputValue);
+    if (validationError) {
+      setError(validationError);
+      return;
+    }
+    const postData = async () => {
+      try {
+        await dataApi.postShelf(newShelf);
+      } catch (error) {
+        console.error('Błąd podczas zapisu półki:', error);
+      } finally {
+        navigate(0);
+      }
+    };
+
+    postData();
   }
 
   return (
@@ -63,6 +87,7 @@ function AddShelfPopUp() {
                 onChange={handleInputChange}
                 placeholder="Wpisz nazwę nowej półki"
               ></input>
+              {error && <p className={styles.errorText}>{error}</p>}
             </div>
           </div>
 

@@ -2,9 +2,9 @@
   width: 770px;
   height: 500px;
   display: flex;
-  flex-direction: column; 
-  align-items: center; 
-  justify-content: center; 
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   background-color: #ffffff66;
   border-radius: 10px;
 
@@ -72,11 +72,18 @@
           width: 250px;
           background-color: rgb(107, 99, 97);
         }
-        .placeholder{
+        .placeholder {
           font-family: 'Roboto Serif';
           width: 250px;
           text-align: center;
           border: none;
+        }
+        .errorText {
+          margin-top: 1px;
+          font-family: 'Roboto Serif';
+          text-align: center;
+          color: red;
+          font-size: 11px;
         }
 
         .text {
