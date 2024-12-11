@@ -4,20 +4,19 @@ import styles from './ShelvesContainer.module.scss';
 import DotHorizontal from '../../icons/DotsHorizontal';
 import { Shelf } from '../../interfaces/Shelf';
 import AddShelfComponent from '../ShelfComponent/AddSheflComponent/AddSheflComponent';
-import dataApi from '../../api/shelvesApi';
-import AfterShakeForm from '../AfterShakeForm/AfterShakeForm';
+import shelfApi from '../../api/shelvesApi';
 import AddShelfPopUp from '../AddShelfPopUp/AddShelfPopUp';
 
 function ShelvesContainer() {
   const [shelves, setShelves] = useState<Shelf[]>();
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
-  const [clickadd, SetClickAdd] = useState<boolean>(false);
+  const [clickAdd, SetClickAdd] = useState<boolean>(false);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const result = await dataApi.getShelves();
+        const result = await shelfApi.getShelves();
         setShelves(result);
       } catch (err) {
         setError('Wystąpił nieoczekiwany problem');
@@ -37,7 +36,7 @@ function ShelvesContainer() {
     <div>Loading ...</div>
   ) : error ? (
     <div>Error: {error}</div>
-  ) : clickadd ? (
+  ) : clickAdd ? (
     <AddShelfPopUp />
   ) : (
     <div className={styles.shelvesContainer}>

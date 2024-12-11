@@ -4,7 +4,7 @@ import Plus from '../../icons/Plus';
 import DotHorizontal from '../../icons/DotsHorizontal';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-import dataApi from '../../api/shelvesApi';
+import shelfApi from '../../api/shelvesApi';
 import { CreateShelf } from '../../interfaces/Shelf';
 
 function AddShelfPopUp() {
@@ -48,7 +48,7 @@ function AddShelfPopUp() {
     }
     const postData = async () => {
       try {
-        await dataApi.postShelf(newShelf);
+        await shelfApi.postShelf(newShelf);
       } catch (error) {
         console.error('Błąd podczas zapisu półki:', error);
       } finally {

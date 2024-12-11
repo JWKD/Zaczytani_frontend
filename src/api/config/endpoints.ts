@@ -1,5 +1,3 @@
-import { create } from 'domain';
-
 const endpoints = {
   book: {
     fetch: `Book`, // Endpoint do pobierania danych

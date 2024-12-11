@@ -3,7 +3,7 @@ import { CreateShelf, Shelf } from '../interfaces/Shelf';
 import apiClient from './config/axios';
 import endpoints from './config/endpoints';
 
-const dataApi = {
+const shelfApi = {
   getShelves: async (): Promise<Shelf[]> => {
     const response = await apiClient.get<Shelf[]>(endpoints.shelf.fetch);
     return response.data;
@@ -17,4 +17,4 @@ const dataApi = {
   },
 };
 
-export default dataApi;
+export default shelfApi;
