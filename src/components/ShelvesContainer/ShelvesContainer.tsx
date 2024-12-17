@@ -16,7 +16,7 @@ function ShelvesContainer() {
   const fetchData = async () => {
     try {
       const result = await shelfApi.getShelves();
-      setShelves(result);
+      setShelves(result.slice().reverse());
     } catch (err) {
       setError('Wystąpił nieoczekiwany problem');
     } finally {

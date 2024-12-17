@@ -61,7 +61,7 @@ function BookRequestStatus() {
             <div className={styles.secondInfo}>
               <div className={styles.genres}>
                 <strong>Gatunki:</strong>
-                {activeRequest.genre && activeRequest.genre.map((g) => <div className={styles.genre}> {g},</div>)}
+                {activeRequest.genre && activeRequest.genre.join(', ')}
               </div>
               <div className={styles.series}>
                 <strong>Cykl:</strong> {activeRequest.series}

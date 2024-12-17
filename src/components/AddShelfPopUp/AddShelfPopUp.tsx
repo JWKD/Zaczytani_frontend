@@ -64,31 +64,28 @@ const AddShelfPopUp: React.FC<ChildProps> = ({ onChangeValue }) => {
           <DotHorizontal />
           <h2 className={styles.text}>Dodaj nową półkę</h2>
         </div>
-        <div className={styles.addShelfContainer}>
-          <div className={styles.centerContainer}>
-            <div className={styles.shelfContainer}>
-              <div className={styles.booksContainer}>
+        <div className={styles.centerContainer}>
+          <div className={styles.shelfContainer}>
+            <div className={styles.booksContainer}>
+              <img src={defaultImage} className={styles.images} alt="Book Cover" />
+              <div className={styles.imageWithText}>
                 <img src={defaultImage} className={styles.images} alt="Book Cover" />
-                <div className={styles.imageWithText}>
-                  <img src={defaultImage} className={styles.images} alt="Book Cover" />
-                  <div className={styles.textOverlay}>
-                    <Plus />
-                  </div>
+                <div className={styles.textOverlay}>
+                  <Plus />
                 </div>
-                <img src={defaultImage} className={styles.images} alt="Book Cover" />
               </div>
-              <div className={styles.bar}></div>
-              <input
-                type="text"
-                value={inputValue}
-                className={styles.placeholder}
-                onChange={handleInputChange}
-                placeholder="Wpisz nazwę nowej półki"
-              ></input>
-              {error && <p className={styles.errorText}>{error}</p>}
+              <img src={defaultImage} className={styles.images} alt="Book Cover" />
             </div>
+            <div className={styles.bar}></div>
+            <input
+              type="text"
+              value={inputValue}
+              className={styles.placeholder}
+              onChange={handleInputChange}
+              placeholder="Wpisz nazwę nowej półki"
+            ></input>
+            {error && <p className={styles.errorText}>{error}</p>}
           </div>
-
           <div className={styles.buttonContainer}>
             <button className={styles.addButton} onClick={handleAdd}>
               Dodaj

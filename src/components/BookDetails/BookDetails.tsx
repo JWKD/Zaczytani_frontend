@@ -58,9 +58,7 @@ function BookDetails({ id }: BookDetailsProps) {
         <div className={styles.detailsContainer}>
           <p>
             <strong>Gatunek: </strong>
-            {book.genre.map((genre) => (
-              <>{genre}, </>
-            ))}
+            {book.genre.join(', ')}
           </p>
           <p>
             <strong>Cykl:</strong> <>{book.series}</>

@@ -26,6 +26,8 @@ const endpoints = {
     fetchShelfBooks: (id: string) => `Bookshelf/${id}/Books`, // Endpoint do pobierania książek na danej półce
     fetchShelf: (id: string) => `Bookshelf/GetBookshelf/${id}`, // Endpoint do pobrania jednej półki
     create: `Bookshelf/Create`, // Endpoint do dodania półki
+    update: `Bookshelf/Update`, //Endpoint do zmiany nazwy półki
+    delete: `Bookshelf/Delete`, // Endpoint do usuwania półki
   },
 };
 

@@ -18,8 +18,18 @@ import AddBookPage from './pages/AddBookPage';
 import PrivateRoute from './routes/PrivateRoute';
 import PublicRoute from './routes/PublicRoute';
 import { UserProvider } from './context/UserContext';
+import HomeLayout from './layout/HomeLayout';
 
 const router = createBrowserRouter([
+  {
+    path: '/',
+    element: (
+      <PrivateRoute>
+        <HomeLayout />
+      </PrivateRoute>
+    ),
+    children: [{ path: '/', element: <Home /> }],
+  },
   {
     path: '/',
     element: (
@@ -33,7 +43,7 @@ const router = createBrowserRouter([
       { path: '/authors/:id', element: <AuthorDetailsPage /> },
       { path: '/user/:id', element: <User /> },
       { path: '/user/shake', element: <ShakePage /> },
-      { path: '/user/shelf/details', element: <ShelfDetails /> },
+      { path: '/bookshelf/getBookshelf/:id', element: <ShelfDetails /> },
       { path: '/user/bookrequests', element: <BookRequestStatusPage /> },
       { path: '/books/add', element: <AddBookPage /> },
     ],
