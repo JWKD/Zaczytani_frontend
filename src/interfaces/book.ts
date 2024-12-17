@@ -4,8 +4,13 @@ export interface Book {
   isbn: string;
   description: string;
   pageNumber: number;
-  authors: Author[];
+  realeaseDate: string;
   imageUrl: string;
+  genre: string[];
+  rating: number;
+  series: string;
+  publishingHouse: string;
+  authors: Author[];
 }
 
 export interface Author {

@@ -1,4 +1,4 @@
-import { AuthorBooks, Author, Book, BookRequest, PublishingHouse, BookRequestPost } from '../interfaces/book';
+import { AuthorBooks, Author, Book, BookRequest, PublishingHouse, BookRequestRequest } from '../interfaces/book';
 import apiClient from './config/axios';
 import endpoints from './config/endpoints';
 
@@ -35,7 +35,7 @@ const dataApi = {
     return response.data;
   },
 
-  postBookRequest: async (payload: BookRequestPost): Promise<void> => {
+  postBookRequest: async (payload: BookRequestRequest): Promise<void> => {
     return await apiClient.post(endpoints.book.bookRequest, payload);
   },
 
