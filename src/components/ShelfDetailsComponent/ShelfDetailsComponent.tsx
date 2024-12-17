@@ -27,7 +27,7 @@ function ShelfDetailsComponent({ id }: ShelfDetailsProps) {
   const [newShelf, setNewShelf] = useState<UpdateShelf>({
     shelfId: id,
     name: '',
-    description: 'string',
+    description: '',
   });
 
   useEffect(() => {

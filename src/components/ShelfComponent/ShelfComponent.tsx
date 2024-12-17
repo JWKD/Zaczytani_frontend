@@ -4,7 +4,7 @@ import defaultImage from '../../assets/DefaultBookCover.png';
 import styles from './ShelfComponent.module.scss';
 import { Book } from '../../interfaces/book';
 import { Shelf } from '../../interfaces/Shelf';
-import dataApi from '../../api/shelvesApi';
+import shelfApi from '../../api/shelvesApi';
 
 export interface ShelfComponentProps {
   shelf: Shelf;
@@ -18,7 +18,7 @@ const ShelfComponent: React.FC<ShelfComponentProps> = ({ shelf }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const result = await dataApi.getShelfBooks(shelf.id);
+        const result = await shelfApi.getShelfBooks(shelf.id);
         setBook(result);
       } catch (err) {
         setError('Wystąpił błąd');
