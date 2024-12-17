@@ -21,6 +21,12 @@ const endpoints = {
   file: {
     postFile: `File`, // Endpoint do wysyłania pliku
   },
+  shelf: {
+    fetch: `Bookshelf/GetAllBookShelves`, // Endpoint do pobierania wszystkich półek
+    fetchShelfBooks: (id: string) => `Bookshelf/${id}/Books`, // Endpoint do pobierania książek na danej półce
+    fetchShelf: (id: string) => `Bookshelf/GetBookshelf/${id}`, // Endpoint do pobrania jednej półki
+    create: `Bookshelf/Create`, // Endpoint do dodania półki
+  },
 };
 
 export default endpoints;
