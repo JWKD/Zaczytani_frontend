@@ -1,0 +1,264 @@
+.pageContainer {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  padding: 10px;
+
+  .popupOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    .popup {
+      background-color: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      width: 400px;
+      height: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .newNameInput {
+        width: 300px;
+        height: 40px;
+        border: 2px solid #dadada;
+        border-radius: 5px;
+        padding: 5px;
+        font-size: 16px;
+      }
+
+      .errorText {
+        margin-top: 5px;
+        top: 100%;
+        left: 0;
+        color: red;
+        font-size: 13px;
+      }
+      .popUpButtonContainer {
+        padding: 20px;
+        display: flex;
+        gap: 20px;
+        .yesButton {
+          background-color: #b8dc8c;
+          border-radius: 5px;
+          border: none;
+          color: white;
+          width: 80px;
+          height: 30px;
+          cursor: pointer;
+          transition: background-color 0.3s ease;
+        }
+        .yesButton:hover {
+          background-color: #a3c88b;
+        }
+        .noButton {
+          background-color: hsla(2, 36%, 33%, 0.6);
+          border-radius: 5px;
+          border: none;
+          color: white;
+          width: 80px;
+          height: 30px;
+          cursor: pointer;
+          transition: background-color 0.3s ease;
+        }
+        .noButton:hover {
+          background-color: hsla(2, 36%, 33%, 0.7);
+        }
+      }
+    }
+
+    .deletePopupContainer {
+      background-color: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      width: 400px;
+      height: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      .deleteButtonContainer {
+        padding: 20px;
+        display: flex;
+        gap: 20px;
+        .deleteText {
+          text-align: center;
+        }
+        .shelfDeleteButoon {
+          background-color: #b8dc8c;
+          border-radius: 5px;
+          border: none;
+          color: white;
+          width: 80px;
+          height: 30px;
+          cursor: pointer;
+          transition: background-color 0.3s ease;
+        }
+        .shelfDeleteButoon:hover {
+          background-color: #a3c88b;
+        }
+        .shelfCancelButoon {
+          background-color: hsla(2, 36%, 33%, 0.6);
+          border-radius: 5px;
+          border: none;
+          color: white;
+          width: 80px;
+          height: 30px;
+          cursor: pointer;
+          transition: background-color 0.3s ease;
+        }
+        .shelfCancelButoon:hover {
+          background-color: hsla(2, 36%, 33%, 0.7);
+        }
+      }
+    }
+  }
+
+  .leftPanel {
+    padding: 10px;
+    align-items: left;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: auto;
+    .title {
+      background-color: #c3b6ac4d;
+      border-radius: 50px;
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      padding: 30px;
+      align-items: center;
+      width: 367px;
+      height: 52px;
+      .text {
+        color: #4a3423;
+        font-family: 'Roboto Serif';
+        font-size: 20px;
+      }
+    }
+    .shelfContainer {
+      background-color: #ffffff66;
+      padding-left: 58px;
+      padding-right: 58px;
+      padding-top: 60px;
+      padding-bottom: 30px;
+      border-radius: 10px;
+    }
+    .buttonContainer {
+      margin-top: 100px;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      .changeNameButton {
+        margin-bottom: 10px;
+        background-color: #b8dc8c;
+        border-radius: 5px;
+        border: none;
+        color: white;
+        width: 208px;
+        height: 30px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+      .changeNameButton:hover {
+        background-color: #a3c88b;
+      }
+      .deleteButton {
+        background-color: hsla(2, 36%, 33%, 0.6);
+        border-radius: 5px;
+        border: none;
+        color: white;
+        width: 208px;
+        height: 30px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+      .deleteButton:hover {
+        background-color: hsla(2, 36%, 33%, 0.7);
+      }
+    }
+  }
+  .rightPanel {
+    background-color: #ffffff66;
+    border-radius: 10px;
+    min-width: 600px;
+    width: auto;
+    .shelfTitle {
+      font-family: 'Roboto Serif';
+      font-size: 16px;
+      color: #4a3423;
+      display: flex;
+      margin: 7px;
+      .shelfText {
+        margin-left: 10px;
+        font-size: 20px;
+      }
+    }
+    .booksContainer {
+      margin-left: 10px;
+      margin-right: 10px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      max-height: 475px;
+      overflow-y: auto;
+      overflow-x: hidden;
+      background-color: white;
+      border-radius: 10px;
+      .oneBook {
+        padding: 7px 30px;
+        .image {
+          width: 116px;
+          height: 159px;
+        }
+        .bookTitle {
+          width: 116px;
+          height: 16px;
+          font-size: 14px;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          font-weight: bold;
+          color: #4a3423;
+          font-family: 'Roboto Serif';
+        }
+        .bookAuthor {
+          margin-top: 2px;
+          width: 116px;
+          height: 14px;
+          font-size: 12px;
+          .authorName {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            color: #665243;
+            font-family: 'Roboto Serif';
+          }
+        }
+        .ratingContainer {
+          margin-top: 2px;
+          display: flex;
+          align-items: center;
+          margin-bottom: 5px;
+          .rating {
+            margin-top: 2px;
+            margin-left: 10px;
+            color: #665243;
+            font-family: 'Roboto Serif';
+            font-size: 16px;
+            font-weight: bold;
+          }
+        }
+      }
+    }
+  }
+}

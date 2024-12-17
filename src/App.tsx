@@ -43,7 +43,7 @@ const router = createBrowserRouter([
       { path: '/authors/:id', element: <AuthorDetailsPage /> },
       { path: '/user/:id', element: <User /> },
       { path: '/user/shake', element: <ShakePage /> },
-      { path: '/user/shelf/details', element: <ShelfDetails /> },
+      { path: '/bookshelf/getBookshelf/:id', element: <ShelfDetails /> },
       { path: '/user/bookrequests', element: <BookRequestStatusPage /> },
       { path: '/books/add', element: <AddBookPage /> },
     ],
