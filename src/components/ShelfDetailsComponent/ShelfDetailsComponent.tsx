@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Book } from '../../interfaces/book';
-import dataApi from '../../api/shelvesApi';
-import { Shelf, UpdateShelf } from '../../interfaces/Shelf';
+
+import { DeleteShelf, Shelf, UpdateShelf } from '../../interfaces/Shelf';
 import styles from './ShelfDetailsComponent.module.scss';
 import ShelfComponent from '../ShelfComponent/ShelfComponent';
 import BookIcon from '../../icons/BookIcon';
@@ -9,6 +9,7 @@ import DotHorizontal from '../../icons/DotsHorizontal';
 import defaultImage from '../../assets/defaultCover.png';
 import RatingIcon from '../../icons/RatingIcon';
 import { useNavigate } from 'react-router-dom';
+import shelfApi from '../../api/shelvesApi';
 
 interface ShelfDetailsProps {
   id: string;
@@ -20,6 +21,7 @@ function ShelfDetailsComponent({ id }: ShelfDetailsProps) {
   const [error, setError] = useState<string | null>(null);
   const [shelf, setShelf] = useState<Shelf>();
   const [isPopupVisible, setIsPopupVisible] = useState(false);
+  const [deletePopup, setDeletePopup] = useState(false);
   const [validError, setValidationError] = useState<string>('');
   const [inputValue, setInputValue] = useState<string>('');
   const navigate = useNavigate();
@@ -30,12 +32,16 @@ function ShelfDetailsComponent({ id }: ShelfDetailsProps) {
     description: '',
   });
 
+  const [deleteShelf] = useState<DeleteShelf>({
+    shelfId: id,
+  });
+
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const resultShelf = await dataApi.getShelf(id);
+        const resultShelf = await shelfApi.getShelf(id);
         setShelf(resultShelf);
-        const resultShelfBooks = await dataApi.getShelfBooks(id);
+        const resultShelfBooks = await shelfApi.getShelfBooks(id);
         setBooks(resultShelfBooks);
       } catch (err) {
         setError('Wystąpił błąd');
@@ -65,27 +71,41 @@ function ShelfDetailsComponent({ id }: ShelfDetailsProps) {
     return '';
   };
 
-  function saveDataButton() {
+  const saveDataButton = async () => {
     const validationError = validateInput(inputValue);
     if (validationError) {
       setValidationError(validationError);
       return;
     }
-    const postData = async () => {
-      try {
-        await dataApi.updateShelf(newShelf);
-      } catch (error) {
-        console.error('Błąd podczas zmiany nazwy:', error);
-      } finally {
-        navigate(0);
-      }
-    };
+    try {
+      await shelfApi.updateShelf(newShelf);
+    } catch (error) {
+      console.error('Błąd podczas zmiany nazwy:', error);
+    } finally {
+      navigate('/');
+    }
+  };
 
-    postData();
+  const handleDeleteConfirm = async () => {
+    try {
+      await shelfApi.deleteShelf(deleteShelf);
+    } catch (error) {
+      console.error('Błąd podczas usuwania:', error);
+    } finally {
+      navigate('/');
+    }
+  };
+
+  function handleDeleteShelf() {
+    setDeletePopup(true);
   }
 
   function closePopUp() {
     setIsPopupVisible(false);
+  }
+
+  function handleDeleteCancel() {
+    setDeletePopup(false);
   }
 
   async function handleChangeNameClick() {
@@ -119,18 +139,37 @@ function ShelfDetailsComponent({ id }: ShelfDetailsProps) {
           </div>
         </div>
       )}
+      {deletePopup && (
+        <div className={styles.popupOverlay}>
+          <div className={styles.deletePopupContainer}>
+            <div className={styles.deleteText}>Czy na pewno chcesz usunąć?</div>
+            <div className={styles.deleteButtonContainer}>
+              <button className={styles.shelfDeleteButoon} onClick={handleDeleteConfirm}>
+                Tak
+              </button>
+              <button className={styles.shelfCancelButoon} onClick={handleDeleteCancel}>
+                Anuluj
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
       <section className={styles.leftPanel}>
         <div className={styles.title}>
           <h2 className={styles.text}>Moja biblioteczka</h2>
           <BookIcon />
         </div>
         <div className={styles.shelfContainer}>{shelf && <ShelfComponent shelf={shelf} />}</div>
-        <div className={styles.buttonContainer}>
-          <button className={styles.changeNameButton} onClick={handleChangeNameClick}>
-            Zmień nazwę półki
-          </button>
-          <button className={styles.deleteButton}>Usuń półkę</button>
-        </div>
+        {!shelf?.isDefault && (
+          <div className={styles.buttonContainer}>
+            <button className={styles.changeNameButton} onClick={handleChangeNameClick}>
+              Zmień nazwę półki
+            </button>
+            <button className={styles.deleteButton} onClick={handleDeleteShelf}>
+              Usuń półkę
+            </button>
+          </div>
+        )}
       </section>
       <section className={styles.rightPanel}>
         <div className={styles.shelfTitle}>

@@ -74,6 +74,52 @@
         }
       }
     }
+
+    .deletePopupContainer {
+      background-color: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      width: 400px;
+      height: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      .deleteButtonContainer {
+        padding: 20px;
+        display: flex;
+        gap: 20px;
+        .deleteText {
+          text-align: center;
+        }
+        .shelfDeleteButoon {
+          background-color: #b8dc8c;
+          border-radius: 5px;
+          border: none;
+          color: white;
+          width: 80px;
+          height: 30px;
+          cursor: pointer;
+          transition: background-color 0.3s ease;
+        }
+        .shelfDeleteButoon:hover {
+          background-color: #a3c88b;
+        }
+        .shelfCancelButoon {
+          background-color: hsla(2, 36%, 33%, 0.6);
+          border-radius: 5px;
+          border: none;
+          color: white;
+          width: 80px;
+          height: 30px;
+          cursor: pointer;
+          transition: background-color 0.3s ease;
+        }
+        .shelfCancelButoon:hover {
+          background-color: hsla(2, 36%, 33%, 0.7);
+        }
+      }
+    }
   }
 
   .leftPanel {

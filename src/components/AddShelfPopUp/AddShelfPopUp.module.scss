@@ -28,6 +28,7 @@
     .centerContainer {
       padding: 50px;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
       .shelfContainer {
@@ -80,11 +81,12 @@
           border: none;
         }
         .errorText {
-          margin-top: 1px;
+          margin-top: 2px;
           font-family: 'Roboto Serif';
           text-align: center;
           color: red;
           font-size: 11px;
+          position: absolute;
         }
 
         .text {

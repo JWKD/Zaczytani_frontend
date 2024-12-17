@@ -75,15 +75,6 @@ const AddShelfPopUp: React.FC<ChildProps> = ({ onChangeValue }) => {
                 </div>
               </div>
               <img src={defaultImage} className={styles.images} alt="Book Cover" />
-              <div className={styles.bar}></div>
-              <input
-                type="text"
-                value={inputValue}
-                className={styles.placeholder}
-                onChange={handleInputChange}
-                placeholder="Wpisz nazwę nowej półki"
-              ></input>
-              {error && <p className={styles.errorText}>{error}</p>}
             </div>
             <div className={styles.bar}></div>
             <input
@@ -93,6 +84,7 @@ const AddShelfPopUp: React.FC<ChildProps> = ({ onChangeValue }) => {
               onChange={handleInputChange}
               placeholder="Wpisz nazwę nowej półki"
             ></input>
+            {error && <p className={styles.errorText}>{error}</p>}
           </div>
           <div className={styles.buttonContainer}>
             <button className={styles.addButton} onClick={handleAdd}>

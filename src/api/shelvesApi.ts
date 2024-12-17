@@ -22,9 +22,9 @@ const shelfApi = {
   updateShelf: async (payload: UpdateShelf): Promise<void> => {
     return await apiClient.put(endpoints.shelf.update, payload);
   },
-  // deleteShelf: async (payload: DeleteShelf): Promise<void> => {
-  //   return await apiClient.delete(endpoints.shelf.delete, payload);
-  // },
+  deleteShelf: async (payload: DeleteShelf): Promise<void> => {
+    return await apiClient.delete(endpoints.shelf.delete, { data: payload });
+  },
 };
 
 export default shelfApi;
