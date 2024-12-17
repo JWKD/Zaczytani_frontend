@@ -13,20 +13,25 @@ function ShelvesContainer() {
   const [error, setError] = useState<string | null>(null);
   const [clickAdd, SetClickAdd] = useState<boolean>(false);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const result = await shelfApi.getShelves();
-        setShelves(result);
-      } catch (err) {
-        setError('Wystąpił nieoczekiwany problem');
-      } finally {
-        setLoading(false);
-      }
-    };
+  const fetchData = async () => {
+    try {
+      const result = await shelfApi.getShelves();
+      setShelves(result);
+    } catch (err) {
+      setError('Wystąpił nieoczekiwany problem');
+    } finally {
+      setLoading(false);
+    }
+  };
 
+  useEffect(() => {
     fetchData();
   }, []);
+
+  const handleChangeValue = (newValue: boolean) => {
+    fetchData();
+    SetClickAdd(newValue);
+  };
 
   function handleClick() {
     SetClickAdd(true);
@@ -37,7 +42,7 @@ function ShelvesContainer() {
   ) : error ? (
     <div>Error: {error}</div>
   ) : clickAdd ? (
-    <AddShelfPopUp />
+    <AddShelfPopUp onChangeValue={handleChangeValue} />
   ) : (
     <div className={styles.shelvesContainer}>
       <div className={styles.title}>

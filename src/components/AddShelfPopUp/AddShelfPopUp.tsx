@@ -2,21 +2,23 @@ import styles from './AddShelfPopUp.module.scss';
 import defaultImage from '../../assets/DefaultBookCover.png';
 import Plus from '../../icons/Plus';
 import DotHorizontal from '../../icons/DotsHorizontal';
-import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import shelfApi from '../../api/shelvesApi';
 import { CreateShelf } from '../../interfaces/Shelf';
 
-function AddShelfPopUp() {
+type ChildProps = {
+  onChangeValue: (newValue: boolean) => void;
+};
+
+const AddShelfPopUp: React.FC<ChildProps> = ({ onChangeValue }) => {
   const [inputValue, setInputValue] = useState<string>('');
   const [error, setError] = useState<string>('');
   const [newShelf, setNewShelf] = useState<CreateShelf>({
     name: inputValue,
-    description: 'string',
+    description: '',
   });
-  const navigate = useNavigate();
   const handleCancel = () => {
-    navigate(0);
+    onChangeValue(false);
   };
 
   const validateInput = (value: string): string => {
@@ -40,24 +42,20 @@ function AddShelfPopUp() {
     setError(validationError);
   };
 
-  function handleAdd() {
+  const handleAdd = async () => {
     const validationError = validateInput(inputValue);
     if (validationError) {
       setError(validationError);
       return;
     }
-    const postData = async () => {
-      try {
-        await shelfApi.postShelf(newShelf);
-      } catch (error) {
-        console.error('Błąd podczas zapisu półki:', error);
-      } finally {
-        navigate(0);
-      }
-    };
-
-    postData();
-  }
+    try {
+      await shelfApi.postShelf(newShelf);
+    } catch (error) {
+      console.error('Błąd podczas zapisu półki:', error);
+    } finally {
+      onChangeValue(false);
+    }
+  };
 
   return (
     <div className={styles.shelfPopUpContainer}>
@@ -103,6 +101,6 @@ function AddShelfPopUp() {
       </div>
     </div>
   );
-}
+};
 
 export default AddShelfPopUp;
