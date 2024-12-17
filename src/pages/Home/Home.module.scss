@@ -1,0 +1,13 @@
+.homeContainer {
+  display: flex;  
+  gap: 50px;
+  padding: 20px;
+  justify-content: center;
+  .leftPanel{
+    width: 1;
+  }
+  .rightPanel {
+    width:2; 
+  }
+}
+

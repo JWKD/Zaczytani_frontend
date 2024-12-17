@@ -6,6 +6,8 @@ const endpoints = {
     update: (id: number) => `Book/${id}`, // Endpoint do aktualizacji danych (PUT)
     delete: (id: number) => `Book/${id}`, // Endpoint do usuwania danych (DELETE)
     fetchSearchedBooks: `Book/Search`, // Endpoint do pobierania wyszukiwanych książek
+    fetchBookHasDrawn: `Book/HasDrawn`, // Endpoint do sprawdzania czy było już losowanie danego dnia
+    getRandomBook: `Book/Random`, // (POST) Endpoint do zapisania że już było losowanie i pobranie ksiązki
     fetchBookRequest: `BookRequest`, // Endpoint do pobierania bookRequestów użytkownika
     bookRequest: `BookRequest`, // Endpoint do tworzenia bookRequest
     fetchAuthors: `Author`, // Endpoint do pobierania autorów
@@ -18,6 +20,12 @@ const endpoints = {
   },
   file: {
     postFile: `File`, // Endpoint do wysyłania pliku
+  },
+  shelf: {
+    fetch: `Bookshelf/GetAllBookShelves`, // Endpoint do pobierania wszystkich półek
+    fetchShelfBooks: (id: string) => `Bookshelf/${id}/Books`, // Endpoint do pobierania książek na danej półce
+    fetchShelf: (id: string) => `Bookshelf/GetBookshelf/${id}`, // Endpoint do pobrania jednej półki
+    create: `Bookshelf/Create`, // Endpoint do dodania półki
   },
 };
 

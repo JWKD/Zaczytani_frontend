@@ -15,6 +15,16 @@ const dataApi = {
     return response.data;
   },
 
+  postRandomBook: async (): Promise<Book> => {
+    const response = await apiClient.post(endpoints.book.getRandomBook);
+    return response.data;
+  },
+
+  gethasDrawn: async (): Promise<Book> => {
+    const response = await apiClient.get<Book>(endpoints.book.fetchBookHasDrawn);
+    return response.data;
+  },
+
   getAuthors: async (): Promise<Author[]> => {
     const response = await apiClient.get<Author[]>(endpoints.book.fetchAuthors);
     return response.data;
