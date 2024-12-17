@@ -4,8 +4,9 @@ export interface Book {
   isbn: string;
   description: string;
   pageNumber: number;
+  realeaseDate: string;
   imageUrl: string;
-  genre: string;
+  genre: string[];
   rating: number;
   series: string;
   publishingHouse: string;

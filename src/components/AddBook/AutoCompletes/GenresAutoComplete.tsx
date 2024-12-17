@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import Select from 'react-select';
 import dataApi from '../../../api/bookApi';
 import './AutoComplete.modules.scss';
-import { BookRequest } from '../AddBook';
+import { BookRequestPre } from '../AddBook';
 
 interface GenreOption {
   value: string;
@@ -11,7 +11,7 @@ interface GenreOption {
 
 interface GenresAutoCompleteProps {
   value?: string[] | null;
-  onChange?: (field: keyof BookRequest, selectedOptions: string[]) => void;
+  onChange?: (field: keyof BookRequestPre, selectedOptions: string[]) => void;
 }
 
 function GenresAutoComplete({ value, onChange }: GenresAutoCompleteProps) {

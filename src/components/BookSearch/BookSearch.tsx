@@ -63,6 +63,12 @@ function BookSearch() {
             isbn: bookData.isbn,
             description: bookData.description,
             pageNumber: bookData.pageNumber,
+            realeaseDate: bookData.realeaseDate,
+            imageUrl: bookData.imageUrl,
+            genre: bookData.genre,
+            rating: bookData.rating,
+            series: bookData.series,
+            publishingHouse: bookData.publishingHouse,
             authors: [
               {
                 id: authorData.id,
@@ -70,7 +76,6 @@ function BookSearch() {
                 imageUrl: authorData.imageUrl,
               },
             ],
-            imageUrl: bookData.imageUrl,
           }));
 
           return {

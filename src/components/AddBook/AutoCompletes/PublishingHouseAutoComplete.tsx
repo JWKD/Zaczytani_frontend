@@ -3,7 +3,7 @@ import CreatableSelect from 'react-select/creatable';
 import dataApi from '../../../api/bookApi';
 import { PublishingHouse } from '../../../interfaces/book';
 import './AutoComplete.modules.scss';
-import { BookRequest } from '../AddBook';
+import { BookRequestPre } from '../AddBook';
 
 interface PublishingHouseOption {
   value: string;
@@ -12,7 +12,7 @@ interface PublishingHouseOption {
 
 interface PublishingHouseAutoCompleteProps {
   value?: string | null;
-  onChange?: (field: keyof BookRequest, selectedOptions: string) => void;
+  onChange?: (field: keyof BookRequestPre, selectedOptions: string) => void;
 }
 
 function PublishingHouseAutoComplete({ value, onChange }: PublishingHouseAutoCompleteProps) {

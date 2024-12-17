@@ -20,9 +20,15 @@
       margin-left: 15%;
       margin-right: 15%;
 
+      .authorImg {
+        width: 150px;
+        margin-right: 0px;
+        border-radius: 20px;
+      }
+
       .aboutAuthor {
-        margin-top: 40px;
-        margin-bottom: 40px;
+        margin-top: 30px;
+        margin-bottom: 30px;
         background-color: #c3b6ac4d;
         border-top-right-radius: 29px;
         border-bottom-right-radius: 29px;
@@ -48,13 +54,6 @@
       }
     }
 
-    img {
-      width: 150px;
-      height: auto;
-      margin-right: 0px;
-      border-radius: 50px;
-    }
-
     .booksContainer {
       width: 100%;
       display: flex;
@@ -71,8 +70,10 @@
           border-radius: 5px;
           margin: 20px;
           display: flex;
+          cursor: pointer;
 
           .bookCover {
+            width: 150px;
             border-radius: 0;
           }
 
@@ -111,6 +112,9 @@
               font-size: 16px;
               font-weight: 400;
               margin-bottom: 5px;
+              strong {
+                margin-right: 5px;
+              }
             }
 
             .review {

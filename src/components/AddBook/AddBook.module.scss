@@ -38,7 +38,7 @@
       border-radius: 4px;
       cursor: pointer;
     }
-    .yesButton:hover{
+    .yesButton:hover {
       background-color: #218838;
     }
     .noButton {
@@ -49,9 +49,9 @@
       margin-top: 10px;
       border-radius: 4px;
       cursor: pointer;
-      :hover {
-        background-color: #c82333;
-      }
+    }
+    .noButton:hover {
+      background-color: #c82333;
     }
   }
 

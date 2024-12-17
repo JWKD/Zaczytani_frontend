@@ -3,6 +3,7 @@ import styles from './BookDetails.module.scss';
 import dataApi from '../../api/bookApi';
 import { Book } from '../../interfaces/book';
 import Star from '../../icons/Star';
+import DefaultCover from '../../assets/defaultCover.jpg';
 
 interface BookDetailsProps {
   id: string;
@@ -35,7 +36,7 @@ function BookDetails({ id }: BookDetailsProps) {
   ) : (
     book && (
       <div className={styles.bookContainer}>
-        <img className={styles.bookCover} src={book.imageUrl}></img>
+        <img className={styles.bookCover} src={book.imageUrl ?? DefaultCover}></img>
         <div className={styles.aboutAndButtons}>
           <div className={styles.aboutContainer}>
             <h2 className={styles.title}>{book.title}</h2>
@@ -46,7 +47,7 @@ function BookDetails({ id }: BookDetailsProps) {
                 ))}
               </ul>
             </h3>
-            <h3 className={styles.publisher}>Wydawnictwo: bla bla</h3>
+            <h3 className={styles.publisher}>Wydawnictwo: {book.publishingHouse}</h3>
           </div>
           <div className={styles.buttons}>
             <button className={styles.addButton}>Dodaj do półki</button>
@@ -56,23 +57,26 @@ function BookDetails({ id }: BookDetailsProps) {
 
         <div className={styles.detailsContainer}>
           <p>
-            <strong>Gatunek:</strong> fantasy
+            <strong>Gatunek: </strong>
+            {book.genre.join(', ')}
           </p>
           <p>
-            <strong>Cykl:</strong> brak
+            <strong>Cykl:</strong> <>{book.series}</>
           </p>
           <p>
-            <strong>Ilość stron:</strong> {book.pageNumber > 0 ? book.pageNumber : 'Nie podano'}
+            <strong>Ilość stron:</strong> {book.pageNumber > 0 ? book.pageNumber : 'Brak'}
           </p>
           <p>
-            <strong>Data wydania:</strong> Brak
+            <strong>Data wydania:</strong> <>{book.realeaseDate ?? 'Brak'}</>
           </p>
           <p>
-            <strong>ISBN:</strong> {book.isbn || 'Brak ISBN'}
+            <strong>ISBN:</strong> {book.isbn || 'Brak'}
           </p>
           <div className={styles.rating}>
             <Star />
-            <p> 7,5 z 6066 ocen</p>
+            <p>
+              <strong>Ocena:</strong> {book.rating} / 10
+            </p>
           </div>
           <div>
             <p>

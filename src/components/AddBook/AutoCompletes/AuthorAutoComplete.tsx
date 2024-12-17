@@ -3,7 +3,7 @@ import { Author } from '../../../interfaces/book';
 import dataApi from '../../../api/bookApi';
 import CreatableSelect from 'react-select/creatable';
 import './AutoComplete.modules.scss';
-import { BookRequest } from '../AddBook';
+import { BookRequestPre } from '../AddBook';
 
 interface AuthorOption {
   value: string;
@@ -12,7 +12,7 @@ interface AuthorOption {
 
 interface AuthorsAutoCompleteProps {
   value?: string[];
-  onChange?: (field: keyof BookRequest, selectedOptions: string[]) => void;
+  onChange?: (field: keyof BookRequestPre, selectedOptions: string[]) => void;
 }
 
 function AuthorAutoComplete({ value, onChange }: AuthorsAutoCompleteProps) {
