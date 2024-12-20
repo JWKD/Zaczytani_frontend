@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import defaultImage from '../../assets/DefaultBookCover.png';
+import defaultImage from '../../assets/defaultCover.jpg';
+import defaultImageBlank from '../../assets/DefaultBookCover.png';
 import styles from './ShelfComponent.module.scss';
 import { Book } from '../../interfaces/book';
 import { Shelf } from '../../interfaces/Shelf';
@@ -43,7 +44,7 @@ const ShelfComponent: React.FC<ShelfComponentProps> = ({ shelf }) => {
             <img key={index} src={books.imageUrl || defaultImage} className={styles.images} alt={books.title} />
           ))}
         <Link to={`/bookshelf/getBookshelf/${shelf.id}`} className={styles.imageWithText}>
-          <img src={defaultImage} className={styles.images} alt="Book Cover" />
+          <img src={defaultImageBlank} className={styles.images} alt="Book Cover" />
           <div className={styles.textOverlay}>Zobacz więcej...</div>
         </Link>
       </div>

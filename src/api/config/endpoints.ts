@@ -29,6 +29,9 @@ const endpoints = {
     update: `Bookshelf/Update`, //Endpoint do zmiany nazwy półki
     delete: `Bookshelf/Delete`, // Endpoint do usuwania półki
   },
+  review: {
+    fetch: `Review/CurrentlyReading`, // Endpoint do pobierania aktualnie czytanych książek
+  },
 };
 
 export default endpoints;

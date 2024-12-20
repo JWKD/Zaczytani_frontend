@@ -6,7 +6,7 @@ import styles from './ShelfDetailsComponent.module.scss';
 import ShelfComponent from '../ShelfComponent/ShelfComponent';
 import BookIcon from '../../icons/BookIcon';
 import DotHorizontal from '../../icons/DotsHorizontal';
-import defaultImage from '../../assets/defaultCover.png';
+import defaultImage from '../../assets/defaultCover.jpg';
 import RatingIcon from '../../icons/RatingIcon';
 import { useNavigate } from 'react-router-dom';
 import shelfApi from '../../api/shelvesApi';

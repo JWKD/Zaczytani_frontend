@@ -2,7 +2,7 @@ import styles from './AfterShakeForm.module.scss';
 import { Book } from '../../interfaces/book';
 import Star from '../../icons/Star';
 import ShakeButton from '../ShakeButton/ShakeButton';
-import defaultCover from '../../assets/defaultCover.png';
+import defaultCover from '../../assets/defaultCover.jpg';
 import { Link } from 'react-router-dom';
 
 interface AfterShakeFormProps {
