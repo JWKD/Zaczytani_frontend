@@ -13,6 +13,7 @@ const endpoints = {
     fetchAuthors: `Author`, // Endpoint do pobierania autorów
     fetchGenres: `Book/Genres`, // Endpoint do pobierania gatunków
     fetchPublishingHouses: `Book/PublishingHouses`, // Endpoint do pobierania wydawnictw
+    fetchCurrentlyReading: `Book/CurrentlyReading`, // Endpoint do pobierania aktualnie czytanych książek
   },
   user: {
     login: `Identity/login`,
@@ -28,9 +29,6 @@ const endpoints = {
     create: `Bookshelf/Create`, // Endpoint do dodania półki
     update: `Bookshelf/Update`, //Endpoint do zmiany nazwy półki
     delete: `Bookshelf/Delete`, // Endpoint do usuwania półki
-  },
-  review: {
-    fetch: `Review/CurrentlyReading`, // Endpoint do pobierania aktualnie czytanych książek
   },
 };
 

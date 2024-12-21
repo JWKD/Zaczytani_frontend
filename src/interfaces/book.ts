@@ -65,3 +65,13 @@ export interface BookRequest {
   series: string | null;
   status: string;
 }
+
+export interface CurrentlyReading {
+  id: string;
+  title: string;
+  imageUrl: string;
+  series: string;
+  progress: number;
+  pageNumber: number;
+  authors: Author[];
+}

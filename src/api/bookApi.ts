@@ -1,4 +1,12 @@
-import { AuthorBooks, Author, Book, BookRequest, PublishingHouse, BookRequestRequest } from '../interfaces/book';
+import {
+  AuthorBooks,
+  Author,
+  Book,
+  BookRequest,
+  PublishingHouse,
+  BookRequestRequest,
+  CurrentlyReading,
+} from '../interfaces/book';
 import apiClient from './config/axios';
 import endpoints from './config/endpoints';
 
@@ -47,6 +55,11 @@ const dataApi = {
 
   postBookRequest: async (payload: BookRequestRequest): Promise<void> => {
     return await apiClient.post(endpoints.book.bookRequest, payload);
+  },
+
+  getProgress: async (): Promise<CurrentlyReading[]> => {
+    const response = await apiClient.get<CurrentlyReading[]>(endpoints.book.fetchCurrentlyReading);
+    return response.data;
   },
 
   // postData: async (payload: DataItemRequest): Promise<void> => {

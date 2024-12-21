@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import styles from './ProgressComponent.module.scss';
-import { CurrentlyReading } from '../../interfaces/review';
-import reviewApi from '../../api/reviewApi';
 import defaultCover from '../../assets/defaultCover.jpg';
 import { Link } from 'react-router-dom';
 import ProgressBar from '../ProgressBar/ProgressBar';
+import dataApi from '../../api/bookApi';
+import { CurrentlyReading } from '../../interfaces/book';
 
 function ProgressComponent() {
   const [books, setBooks] = useState<CurrentlyReading[]>([]);
@@ -14,8 +14,7 @@ function ProgressComponent() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const result = await reviewApi.getProgress();
-        console.log(result);
+        const result = await dataApi.getProgress();
         setBooks(result);
       } catch (err) {
         setError('Wystąpił błąd');
@@ -51,7 +50,7 @@ function ProgressComponent() {
             </div>
             <div className={styles.containerRating}>
               <p className={styles.progressName}>Progres:</p>
-              <ProgressBar current={book.progress} max={100} />
+              <ProgressBar current={book.progress} max={book.pageNumber} />
             </div>
             <div className={styles.buttonContainer}>
               <Link to={''} className={styles.linkButton}>

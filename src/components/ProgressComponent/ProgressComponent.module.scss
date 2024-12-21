@@ -1,6 +1,6 @@
 .progressContainer {
   display: grid;
-  gap: 10px;
+  gap: 8px;
   max-height: 314px;
   overflow-y: auto;
   .bookDetails {
@@ -24,6 +24,10 @@
         margin-top: 5px;
         color: #4a3423;
         font-size: 16px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 250px;
       }
       .bookAuthors {
         width: 200px;
