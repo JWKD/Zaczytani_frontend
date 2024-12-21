@@ -32,7 +32,12 @@ function CurrentlyReadingReview({ bookId }: CurrentlyReadingReviewProps) {
     const fetchData = async () => {
       try {
         const result = await reviewApi.getCurrentlyReadingBookDetails(bookId);
+        console.log(result);
         setBook(result);
+        setReview({
+          ...review,
+          progress: result.progress,
+        });
       } catch (err) {
         setError('Wystąpił błąd');
       } finally {
@@ -45,9 +50,7 @@ function CurrentlyReadingReview({ bookId }: CurrentlyReadingReviewProps) {
 
   const postReview = async () => {
     try {
-      if (review) {
-        await reviewApi.postCurrentlyReadingBookReview(bookId, review);
-      }
+      await reviewApi.postCurrentlyReadingBookReview(bookId, review);
     } catch (error) {
       console.error('Błąd podczas przesyłania recenzji:', error);
     }
@@ -62,7 +65,6 @@ function CurrentlyReadingReview({ bookId }: CurrentlyReadingReviewProps) {
     });
 
   const toggleCheckbox = () => {
-    console.log('zaznaczone');
     setReview({
       ...review,
       containsSpoilers: !review.containsSpoilers,
@@ -113,8 +115,13 @@ function CurrentlyReadingReview({ bookId }: CurrentlyReadingReviewProps) {
       newErrors.content = 'Recenzja musi być dłuższa niż 10 znaków i krótsza niż 300 znaków!';
     }
     if (book)
-      if (!review.progress || review.progress < 0 || review.progress > book.pageNumber) {
-        newErrors.pageNumber = `Liczba stron musi być większa od 0 i mniejsza od ${book.pageNumber + 1}!`;
+      if (
+        !review.progress ||
+        review.progress < 0 ||
+        review.progress > book.pageNumber ||
+        review.progress < book.progress
+      ) {
+        newErrors.pageNumber = `Liczba stron musi być większa od 0, poprzedniego progresu i mniejsza od ${book.pageNumber + 1}!`;
       }
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -131,7 +138,7 @@ function CurrentlyReadingReview({ bookId }: CurrentlyReadingReviewProps) {
         <div className={styles.secondContainer}>
           <div className={styles.updateText}>
             <DotHorizontal />
-            <p className={styles.updateTextP}></p>Zaaktualizuj progres
+            <p className={styles.updateTextP}>Zaaktualizuj progres</p>
           </div>
           <div className={styles.thirdContainer}>
             <div className={styles.detailsCover}>
@@ -152,6 +159,7 @@ function CurrentlyReadingReview({ bookId }: CurrentlyReadingReviewProps) {
                   type="number"
                   placeholder="numer strony"
                   onChange={(e) => handleChangeProgress(Number(e.target.value))}
+                  value={review.progress ?? ''}
                 />
                 /{book.pageNumber}
               </div>
