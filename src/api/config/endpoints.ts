@@ -30,6 +30,10 @@ const endpoints = {
     update: `Bookshelf/Update`, //Endpoint do zmiany nazwy półki
     delete: `Bookshelf/Delete`, // Endpoint do usuwania półki
   },
+  review: {
+    fetchCurrentlyReadingBookDetails: (id: string) => `Review/${id}/Progress`, // Endpoint do pobierania detali książki do recenzji
+    currentlyReadingBookReview: (id: string) => `Review/${id}`, // Endpoint do wysyłania recenzji
+  },
 };
 
 export default endpoints;
