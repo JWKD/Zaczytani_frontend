@@ -1,0 +1,90 @@
+.progressContainer {
+  display: grid;
+  gap: 8px;
+  max-height: 314px;
+  overflow-y: auto;
+  .bookDetails {
+    background-color: #ffffff8f;
+    border-radius: 5px;
+    height: 152px;
+    width: 412px;
+    display: flex;
+    justify-content: space-around;
+    padding: 6px;
+    .image {
+      width: 99px;
+      height: 140px;
+    }
+    .detailsComponenet {
+      font-family: Roboto serif;
+      display: grid;
+      .bookTitle {
+        font-weight: 600;
+        margin-bottom: 5px;
+        margin-top: 5px;
+        color: #4a3423;
+        font-size: 16px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 250px;
+      }
+      .bookAuthors {
+        width: 200px;
+        height: 19px;
+        .authorName {
+          list-style-type: none;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          text-decoration: none;
+          color: #665243;
+          font-size: 16px;
+          font-weight: 400;
+        }
+      }
+      .seriesContainer {
+        display: flex;
+        font-size: 16px;
+        color: #4a3423;
+        height: 19px;
+        .bookSeries {
+          font-weight: 800;
+        }
+        .bookSeriesName {
+          font-weight: 100;
+          margin-left: 3px;
+        }
+      }
+      .containerRating {
+        margin-top: 10px;
+        margin-bottom: 5px;
+        display: flex;
+        .progressName {
+          color: #665243;
+          font-size: 15px;
+          font-weight: 600;
+          margin-right: 3px;
+        }
+      }
+      .buttonContainer {
+        background-color: #b8dc8cd4;
+        height: 20px;
+        width: 261px;
+        text-align: center;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        .linkButton {
+          text-decoration: none;
+          color: white;
+          font-size: 14px;
+          font-weight: 500;
+        }
+      }
+      .buttonContainer:hover {
+        background-color: #a3c88b;
+      }
+    }
+  }
+}

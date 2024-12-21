@@ -1,0 +1,33 @@
+.container {
+  margin-bottom: 5px;
+  display: flex;
+  .barContainer {
+    width: 147px;
+    height: 19px;
+    background-color: #b8b1ac4d;
+    overflow: hidden;
+    position: relative;
+    .progressText {
+      margin-top: 1px;
+      position: absolute;
+      width: 100%;
+      text-align: center;
+      font-size: 13px;
+      font-weight: 300;
+      color: #4a3423;
+    }
+    .progressBar {
+      margin: 2%;
+      max-width: 96%;
+      height: 13px;
+      background-color: #493a3a85;
+      width: 95%;
+    }
+  }
+  .percentRating {
+    color: #4a3423;
+    font-size: 16px;
+    font-weight: 400;
+    margin-left: 3px;
+  }
+}
