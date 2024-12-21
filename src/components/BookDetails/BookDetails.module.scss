@@ -3,9 +3,12 @@
   margin: 0 auto;
   background-color: #ffffff66;
   border-radius: 8px;
-  padding: 20px;
   font-family: Roboto serif;
   font-size: 16px;
+}
+
+.secondContainer {
+  padding: 20px;
 }
 
 .bookCover {
@@ -129,5 +132,17 @@ p {
   flex-direction: row;
   p {
     margin-left: 5px;
+    margin-top: 2px;
+  }
+}
+
+.reviewHeader {
+  display: flex;
+  color: #4a3423;
+  margin-bottom: 5px;
+  font-weight: 800;
+  span {
+    display: flex;
+    margin-right: 5px;
   }
 }
