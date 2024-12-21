@@ -8,6 +8,7 @@ import StarFilled from '../../icons/StarFilled';
 import StarEmpty from '../../icons/StarEmpty';
 import Checked from '../../icons/Checked';
 import { useNavigate } from 'react-router-dom';
+import BookIcon from '../../icons/BookIcon';
 
 interface CurrentlyReadingReviewProps {
   bookId: string;
@@ -32,7 +33,6 @@ function CurrentlyReadingReview({ bookId }: CurrentlyReadingReviewProps) {
     const fetchData = async () => {
       try {
         const result = await reviewApi.getCurrentlyReadingBookDetails(bookId);
-        console.log(result);
         setBook(result);
         setReview({
           ...review,
@@ -91,6 +91,7 @@ function CurrentlyReadingReview({ bookId }: CurrentlyReadingReviewProps) {
   const handleUpdate = () => {
     if (validateForm()) {
       postReview();
+      navigate('/');
     }
   };
   const handleFinal = () => {
@@ -101,6 +102,7 @@ function CurrentlyReadingReview({ bookId }: CurrentlyReadingReviewProps) {
           progress: book.pageNumber,
           isFinal: true,
         });
+      navigate('/');
     }
   };
 
@@ -121,7 +123,7 @@ function CurrentlyReadingReview({ bookId }: CurrentlyReadingReviewProps) {
         review.progress > book.pageNumber ||
         review.progress < book.progress
       ) {
-        newErrors.pageNumber = `Liczba stron musi być większa od 0, poprzedniego progresu i mniejsza od ${book.pageNumber + 1}!`;
+        newErrors.pageNumber = `Liczba stron musi być większa od 0, większa/równa do poprzedniego progresu i mniejsza od ${book.pageNumber + 1}!`;
       }
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -133,7 +135,12 @@ function CurrentlyReadingReview({ bookId }: CurrentlyReadingReviewProps) {
     <div>Error: {error}</div>
   ) : (
     <div className={styles.mainContainer}>
-      <div className={styles.currentlyReading}>Aktualnie czytane</div>
+      <div className={styles.currentlyReading}>
+        Aktualnie czytane
+        <span>
+          <BookIcon />
+        </span>
+      </div>
       {book && (
         <div className={styles.secondContainer}>
           <div className={styles.updateText}>
