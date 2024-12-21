@@ -145,7 +145,7 @@ function CurrentlyReadingReview({ bookId }: CurrentlyReadingReviewProps) {
         <div className={styles.secondContainer}>
           <div className={styles.updateText}>
             <DotHorizontal />
-            <p className={styles.updateTextP}>Zaaktualizuj progres</p>
+            <p className={styles.updateTextP}>Zaktualizuj progres</p>
           </div>
           <div className={styles.thirdContainer}>
             <div className={styles.detailsCover}>
@@ -166,7 +166,7 @@ function CurrentlyReadingReview({ bookId }: CurrentlyReadingReviewProps) {
                   type="number"
                   placeholder="numer strony"
                   onChange={(e) => handleChangeProgress(Number(e.target.value))}
-                  value={review.progress ?? ''}
+                  value={review.progress === 0 ? '' : (review.progress ?? '')}
                 />
                 /{book.pageNumber}
               </div>
