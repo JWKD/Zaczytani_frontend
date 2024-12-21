@@ -46,7 +46,7 @@ function ProgressComponent() {
             </p>
             <div className={styles.seriesContainer}>
               <p className={styles.bookSeries}>Cykl: </p>
-              <p className={styles.bookSeriesName}>brak</p>
+              <p className={styles.bookSeriesName}>{book.series}</p>
             </div>
             <div className={styles.containerRating}>
               <p className={styles.progressName}>Progres:</p>
