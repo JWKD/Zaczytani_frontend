@@ -8,10 +8,11 @@
     overflow: hidden;
     position: relative;
     .progressText {
+      margin-top: 1px;
       position: absolute;
       width: 100%;
       text-align: center;
-      font-size: 15px;
+      font-size: 13px;
       font-weight: 300;
       color: #4a3423;
     }
