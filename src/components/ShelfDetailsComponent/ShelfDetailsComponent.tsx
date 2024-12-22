@@ -190,16 +190,16 @@ function ShelfDetailsComponent({ id }: ShelfDetailsProps) {
           <h2 className={styles.shelfText}>Półka {shelf?.name}</h2>
         </div>
         <div className={styles.booksContainer}>
-          {books?.map((books: Book, index) => (
+          {books?.map((book: Book, index) => (
             <div key={index} className={styles.oneBook}>
-              {deleteBookPopUp && bookToDelte === books.id && (
-                <DeleteBookFromShelf onChangeValue={handleChangeValue} shelfId={id} bookId={books.id} />
+              {deleteBookPopUp && bookToDelte === book.id && (
+                <DeleteBookFromShelf onChangeValue={handleChangeValue} shelfId={id} bookId={book.id} />
               )}
-              <img src={books.imageUrl || defaultImage} className={styles.image} alt={books.title}></img>
-              <div className={styles.bookTitle}>{books.title}</div>
+              <img src={book.imageUrl || defaultImage} className={styles.image} alt={book.title}></img>
+              <div className={styles.bookTitle}>{book.title}</div>
               <div className={styles.bookAuthor}>
                 <ul>
-                  {books.authors.map((author) => (
+                  {book.authors.map((author) => (
                     <li key={author.id} className={styles.authorName}>
                       {author.name}
                     </li>
@@ -209,9 +209,9 @@ function ShelfDetailsComponent({ id }: ShelfDetailsProps) {
               <div className={styles.bottomContainer}>
                 <div className={styles.ratingContainer}>
                   <RatingIcon />
-                  <p className={styles.rating}>{Math.floor(books.rating)}</p>
+                  <p className={styles.rating}>{Math.floor(book.rating)}</p>
                 </div>
-                <div className={styles.deleteIconContainer} onClick={() => deleteBook(books.id)}>
+                <div className={styles.deleteIconContainer} onClick={() => deleteBook(book.id)}>
                   <TrashIcon />
                 </div>
               </div>
