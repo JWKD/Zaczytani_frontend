@@ -27,7 +27,7 @@ function ShelfDetailsComponent({ id }: ShelfDetailsProps) {
   const [validError, setValidationError] = useState<string>('');
   const [inputValue, setInputValue] = useState<string>('');
   const [deleteBookPopUp, setDeleteBookPopUp] = useState<boolean>(false);
-  const [bookToDelte, setBookToDelete] = useState<string>('');
+  const [bookToDelete, setBookToDelete] = useState<string>('');
   const navigate = useNavigate();
 
   const [newShelf, setNewShelf] = useState<UpdateShelf>({
@@ -192,7 +192,7 @@ function ShelfDetailsComponent({ id }: ShelfDetailsProps) {
         <div className={styles.booksContainer}>
           {books?.map((book: Book, index) => (
             <div key={index} className={styles.oneBook}>
-              {deleteBookPopUp && bookToDelte === book.id && (
+              {deleteBookPopUp && bookToDelete === book.id && (
                 <DeleteBookFromShelf onChangeValue={handleChangeValue} shelfId={id} bookId={book.id} />
               )}
               <img src={book.imageUrl || defaultImage} className={styles.image} alt={book.title}></img>
