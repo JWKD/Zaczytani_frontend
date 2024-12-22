@@ -53,7 +53,7 @@ function ProgressComponent() {
               <ProgressBar current={book.progress} max={book.pageNumber} />
             </div>
             <div className={styles.buttonContainer}>
-              <Link to={''} className={styles.linkButton}>
+              <Link to={`/review/progress/${book.id}`} className={styles.linkButton}>
                 Zaktualizuj
               </Link>
             </div>

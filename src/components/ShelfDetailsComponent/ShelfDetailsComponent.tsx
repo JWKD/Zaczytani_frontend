@@ -183,7 +183,6 @@ function ShelfDetailsComponent({ id }: ShelfDetailsProps) {
               <div className={styles.bookTitle}>{books.title}</div>
               <div className={styles.bookAuthor}>
                 <ul>
-                  <li className={styles.authorName}>{books.title}</li>
                   {books.authors.map((author) => (
                     <li key={author.id} className={styles.authorName}>
                       {author.name}

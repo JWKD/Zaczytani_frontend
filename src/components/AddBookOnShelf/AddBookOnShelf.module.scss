@@ -1,0 +1,84 @@
+.pageContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000000000;
+  .shelvesContainer {
+    width: 62%;
+    justify-content: center;
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    .title {
+      font-family: 'Roboto Serif';
+      font-size: 20px;
+      color: #4a3423;
+      display: flex;
+      margin: 10px;
+      .text {
+        margin-left: 5px;
+        font-size: 20px;
+      }
+    }
+
+    .shelvesGrid {
+      padding: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      max-height: 380px;
+      overflow-y: auto;
+      .shelfContainer {
+        display: column;
+        padding: 10px;
+        .addButtonContainer {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          pad: 5px;
+          .addBookButton {
+            background-color: #b8dc8c;
+            border-radius: 5px;
+            border: none;
+            color: white;
+            width: 80px;
+            height: 25px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+          }
+          .addBookButton:hover {
+            background-color: #a3c88b;
+          }
+        }
+      }
+    }
+
+    .buttonContainer {
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: right;
+      margin-right: 30px;
+      .cancelButton {
+        background-color: hsla(2, 36%, 33%, 0.6);
+        border-radius: 5px;
+        border: none;
+        color: white;
+        width: 80px;
+        height: 25px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+      .cancelButton:hover {
+        background-color: hsla(2, 36%, 33%, 0.7);
+      }
+    }
+  }
+}
