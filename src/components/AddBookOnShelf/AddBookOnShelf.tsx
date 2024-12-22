@@ -61,7 +61,7 @@ const AddBookOnShelf: React.FC<AddBookOnShelfProps> = ({ bookId, onChangeValue }
             <div className={styles.shelfContainer}>
               <ShelfComponent key={index} shelf={shelf} />
               <div className={styles.addButtonContainer}>
-                <button className={styles.addBookButton} onClick={addToShelf.bind(null, shelf.id)}>
+                <button className={styles.addBookButton} onClick={() => addToShelf(shelf.id)}>
                   Dodaj
                 </button>
               </div>

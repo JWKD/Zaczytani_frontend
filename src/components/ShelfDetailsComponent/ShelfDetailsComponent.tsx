@@ -27,6 +27,7 @@ function ShelfDetailsComponent({ id }: ShelfDetailsProps) {
   const [validError, setValidationError] = useState<string>('');
   const [inputValue, setInputValue] = useState<string>('');
   const [deleteBookPopUp, setDeleteBookPopUp] = useState<boolean>(false);
+  const [bookToDelte, setBookToDelete] = useState<string>('');
   const navigate = useNavigate();
 
   const [newShelf, setNewShelf] = useState<UpdateShelf>({
@@ -99,8 +100,9 @@ function ShelfDetailsComponent({ id }: ShelfDetailsProps) {
     }
   };
 
-  function deleteBook() {
+  function deleteBook(bookId: string) {
     setDeleteBookPopUp(true);
+    setBookToDelete(bookId);
   }
 
   function handleDeleteShelf() {
@@ -190,7 +192,7 @@ function ShelfDetailsComponent({ id }: ShelfDetailsProps) {
         <div className={styles.booksContainer}>
           {books?.map((books: Book, index) => (
             <div key={index} className={styles.oneBook}>
-              {deleteBookPopUp && (
+              {deleteBookPopUp && bookToDelte === books.id && (
                 <DeleteBookFromShelf onChangeValue={handleChangeValue} shelfId={id} bookId={books.id} />
               )}
               <img src={books.imageUrl || defaultImage} className={styles.image} alt={books.title}></img>
@@ -209,7 +211,7 @@ function ShelfDetailsComponent({ id }: ShelfDetailsProps) {
                   <RatingIcon />
                   <p className={styles.rating}>{Math.floor(books.rating)}</p>
                 </div>
-                <div className={styles.deleteIconContainer} onClick={deleteBook}>
+                <div className={styles.deleteIconContainer} onClick={() => deleteBook(books.id)}>
                   <TrashIcon />
                 </div>
               </div>
