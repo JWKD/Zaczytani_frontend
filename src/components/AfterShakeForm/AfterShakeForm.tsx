@@ -4,14 +4,26 @@ import Star from '../../icons/Star';
 import ShakeButton from '../ShakeButton/ShakeButton';
 import defaultCover from '../../assets/defaultCover.jpg';
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import AddBookOnShelf from '../AddBookOnShelf/AddBookOnShelf';
 
 interface AfterShakeFormProps {
   book?: Book;
 }
 
 function AfterShakeForm({ book }: AfterShakeFormProps) {
+  const [isVisible, setIsVisible] = useState<boolean>(false);
+
+  const handleChangeValue = (newValue: boolean) => {
+    setIsVisible(newValue);
+  };
+
+  function addBookToShelf() {
+    setIsVisible(true);
+  }
   return (
     <div className={styles.afterShakeContainer}>
+      {isVisible && <AddBookOnShelf onChangeValue={handleChangeValue} bookId={book?.id} />}
       <ShakeButton />
       <div className={styles.shakeomatMain}>
         <img className={styles.bookCover} src={book?.imageUrl || defaultCover} alt="Okładka książki" />
@@ -23,7 +35,9 @@ function AfterShakeForm({ book }: AfterShakeFormProps) {
           <Star />
           <p className={styles.rating}>{book?.rating}</p>
         </div>
-        <button className={styles.addToShelfButton}>Dodaj do półki</button>
+        <button className={styles.addToShelfButton} onClick={addBookToShelf}>
+          Dodaj do półki
+        </button>
         <Link to={'/books/' + book?.id} className={styles.bookDetailsButton}>
           Wyświetl szczegóły książki
         </Link>
