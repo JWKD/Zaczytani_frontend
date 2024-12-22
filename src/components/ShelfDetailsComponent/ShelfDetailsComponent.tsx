@@ -10,6 +10,8 @@ import defaultImage from '../../assets/defaultCover.jpg';
 import RatingIcon from '../../icons/RatingIcon';
 import { useNavigate } from 'react-router-dom';
 import shelfApi from '../../api/shelvesApi';
+import TrashIcon from '../../icons/TrashIcon';
+import DeleteBookFromShelf from '../DeleteBookFromShelf/DeleteBookFromShelf';
 
 interface ShelfDetailsProps {
   id: string;
@@ -24,6 +26,7 @@ function ShelfDetailsComponent({ id }: ShelfDetailsProps) {
   const [deletePopup, setDeletePopup] = useState(false);
   const [validError, setValidationError] = useState<string>('');
   const [inputValue, setInputValue] = useState<string>('');
+  const [deleteBookPopUp, setDeleteBookPopUp] = useState<boolean>(false);
   const navigate = useNavigate();
 
   const [newShelf, setNewShelf] = useState<UpdateShelf>({
@@ -96,9 +99,17 @@ function ShelfDetailsComponent({ id }: ShelfDetailsProps) {
     }
   };
 
+  function deleteBook() {
+    setDeleteBookPopUp(true);
+  }
+
   function handleDeleteShelf() {
     setDeletePopup(true);
   }
+
+  const handleChangeValue = (newValue: boolean) => {
+    setDeleteBookPopUp(newValue);
+  };
 
   function closePopUp() {
     setIsPopupVisible(false);
@@ -179,6 +190,9 @@ function ShelfDetailsComponent({ id }: ShelfDetailsProps) {
         <div className={styles.booksContainer}>
           {books?.map((books: Book, index) => (
             <div key={index} className={styles.oneBook}>
+              {deleteBookPopUp && (
+                <DeleteBookFromShelf onChangeValue={handleChangeValue} shelfId={id} bookId={books.id} />
+              )}
               <img src={books.imageUrl || defaultImage} className={styles.image} alt={books.title}></img>
               <div className={styles.bookTitle}>{books.title}</div>
               <div className={styles.bookAuthor}>
@@ -190,9 +204,14 @@ function ShelfDetailsComponent({ id }: ShelfDetailsProps) {
                   ))}
                 </ul>
               </div>
-              <div className={styles.ratingContainer}>
-                <RatingIcon />
-                <p className={styles.rating}>{books.rating}</p>
+              <div className={styles.bottomContainer}>
+                <div className={styles.ratingContainer}>
+                  <RatingIcon />
+                  <p className={styles.rating}>{Math.floor(books.rating)}</p>
+                </div>
+                <div className={styles.deleteIconContainer} onClick={deleteBook}>
+                  <TrashIcon />
+                </div>
               </div>
             </div>
           ))}
