@@ -7,6 +7,7 @@ import {
   BookRequestRequest,
   CurrentlyReading,
 } from '../interfaces/book';
+import { Review } from '../interfaces/review';
 import apiClient from './config/axios';
 import endpoints from './config/endpoints';
 
@@ -59,6 +60,11 @@ const dataApi = {
 
   getProgress: async (): Promise<CurrentlyReading[]> => {
     const response = await apiClient.get<CurrentlyReading[]>(endpoints.book.fetchCurrentlyReading);
+    return response.data;
+  },
+
+  getReviews: async (id: string): Promise<Review[]> => {
+    const response = await apiClient.get<Review[]>(endpoints.book.fetchReviews(id));
     return response.data;
   },
 

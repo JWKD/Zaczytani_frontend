@@ -54,6 +54,7 @@ function CurrentlyReadingReview({ bookId }: CurrentlyReadingReviewProps) {
     } catch (error) {
       console.error('Błąd podczas przesyłania recenzji:', error);
     }
+    navigate('/');
   };
 
   const handleMouseEnter = (star: number) => setHovered(star);
@@ -102,7 +103,6 @@ function CurrentlyReadingReview({ bookId }: CurrentlyReadingReviewProps) {
           progress: book.pageNumber,
           isFinal: true,
         });
-      navigate('/');
     }
   };
 
