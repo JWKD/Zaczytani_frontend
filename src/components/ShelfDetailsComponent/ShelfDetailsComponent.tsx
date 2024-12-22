@@ -8,7 +8,7 @@ import BookIcon from '../../icons/BookIcon';
 import DotHorizontal from '../../icons/DotsHorizontal';
 import defaultImage from '../../assets/defaultCover.jpg';
 import RatingIcon from '../../icons/RatingIcon';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import shelfApi from '../../api/shelvesApi';
 import TrashIcon from '../../icons/TrashIcon';
 import DeleteBookFromShelf from '../DeleteBookFromShelf/DeleteBookFromShelf';
@@ -195,11 +195,13 @@ function ShelfDetailsComponent({ id }: ShelfDetailsProps) {
               {deleteBookPopUp && bookToDelete === book.id && (
                 <DeleteBookFromShelf onChangeValue={handleChangeValue} shelfId={id} bookId={book.id} />
               )}
-              <img src={book.imageUrl || defaultImage} className={styles.image} alt={book.title}></img>
+              <Link to={`/books/${book.id}`}>
+                <img src={book.imageUrl || defaultImage} className={styles.image} alt={book.title}></img>
+              </Link>
               <div className={styles.bookTitle}>{book.title}</div>
               <div className={styles.bookAuthor}>
                 <ul>
-                  {book.authors.map((author) => (
+                  {book.authors.slice(0, 1).map((author) => (
                     <li key={author.id} className={styles.authorName}>
                       {author.name}
                     </li>
