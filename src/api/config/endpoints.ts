@@ -30,6 +30,8 @@ const endpoints = {
     create: `Bookshelf/Create`, // Endpoint do dodania półki
     update: `Bookshelf/Update`, //Endpoint do zmiany nazwy półki
     delete: `Bookshelf/Delete`, // Endpoint do usuwania półki
+    attach: (shelfId: string, bookId: string) => `Bookshelf/${shelfId}/${bookId}/Attach`, // Endpoint do dodania książki na daną półkę
+    detach: (shelfId: string, bookId: string) => `Bookshelf/${shelfId}/${bookId}/Detach`, // Endpoint do usuwania książki z danej półki
   },
   review: {
     fetchCurrentlyReadingBookDetails: (id: string) => `Review/${id}/Progress`, // Endpoint do pobierania detali książki do recenzji

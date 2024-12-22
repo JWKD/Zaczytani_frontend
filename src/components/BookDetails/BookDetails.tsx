@@ -6,6 +6,7 @@ import Star from '../../icons/Star';
 import DefaultCover from '../../assets/defaultCover.jpg';
 import DotHorizontal from '../../icons/DotsHorizontal';
 import ReviewsList from '../ReviewsList/ReviewsList';
+import AddBookOnShelf from '../AddBookOnShelf/AddBookOnShelf';
 
 interface BookDetailsProps {
   id: string;
@@ -15,6 +16,15 @@ function BookDetails({ id }: BookDetailsProps) {
   const [book, setBook] = useState<Book | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
+  const [isVisible, setIsVisible] = useState<boolean>(false);
+
+  const handleChangeValue = (newValue: boolean) => {
+    setIsVisible(newValue);
+  };
+
+  function addBookToShelf() {
+    setIsVisible(true);
+  }
 
   useEffect(() => {
     const fetchData = async () => {
@@ -38,6 +48,7 @@ function BookDetails({ id }: BookDetailsProps) {
   ) : (
     book && (
       <div className={styles.bookContainer}>
+        {isVisible && <AddBookOnShelf onChangeValue={handleChangeValue} bookId={book?.id} />}
         <div className={styles.secondContainer}>
           <img className={styles.bookCover} src={book.imageUrl ?? DefaultCover}></img>
           <div className={styles.aboutAndButtons}>
@@ -53,7 +64,9 @@ function BookDetails({ id }: BookDetailsProps) {
               <h3 className={styles.publisher}>Wydawnictwo: {book.publishingHouse}</h3>
             </div>
             <div className={styles.buttons}>
-              <button className={styles.addButton}>Dodaj do półki</button>
+              <button className={styles.addButton} onClick={addBookToShelf}>
+                Dodaj do półki
+              </button>
               <button className={styles.currentlyButton}>Aktualnie czytam</button>
             </div>
           </div>
