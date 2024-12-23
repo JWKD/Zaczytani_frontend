@@ -71,7 +71,7 @@ function SingleReview(initialReview: Review) {
           </div>
         </div>
       </div>
-      <div className={styles.rightContainer}>
+      <div className={styles.rightContainer} onClick={() => handleComment()}>
         <div className={styles.header}>
           <div className={styles.reviewName}>{review.user.firstName + ' ' + review.user.lastName} </div>
           <div className={styles.reviewRating}>
