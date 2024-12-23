@@ -91,7 +91,7 @@ function BookDetails({ id }: BookDetailsProps) {
             <div className={styles.rating}>
               <Star />
               <p>
-                <strong>Ocena:</strong> {book.rating} / 10
+                <strong>Ocena:</strong> {Math.round(book.rating * 10) / 10} / 10
               </p>
             </div>
             <div>

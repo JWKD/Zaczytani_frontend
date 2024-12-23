@@ -1,12 +1,8 @@
-import Arrow from '../../icons/Arrow';
-import Like from '../../icons/Like';
-import Comments from '../../icons/Comments';
 import styles from './ReviewsList.module.scss';
-import Star from '../../icons/Star';
-import profilePicture from '../../assets/profilePicture.png';
 import { useEffect, useState } from 'react';
 import { Review } from '../../interfaces/review';
 import bookApi from '../../api/bookApi';
+import SingleReview from '../SingleReview/SingleReview';
 
 interface ReviewsListProps {
   bookId: string;
@@ -30,47 +26,16 @@ function ReviewsList({ bookId }: ReviewsListProps) {
     };
 
     fetchData();
-  }, []);
+  }, [bookId]);
 
-  return (
+  return loading ? (
+    <div>Loading ...</div>
+  ) : error ? (
+    <div>Error: {error}</div>
+  ) : (
     <div className={styles.reviews}>
       {reviews.map((review: Review) => (
-        <div className={styles.reviewContainer}>
-          <div className={styles.leftContainer}>
-            <img src={review.user.imageUrl ?? profilePicture} alt="Avatar" />
-            <div className={styles.details}>
-              <p>
-                <strong>Ilość notek:</strong> {review.notesCount}
-              </p>
-              <span>
-                <Arrow />
-              </span>
-
-              <div className={styles.likesAndComm}>
-                <span>
-                  <Like /> {review.likes}
-                </span>
-                <span>
-                  <Comments /> {review.comments}
-                </span>
-              </div>
-            </div>
-          </div>
-          <div className={styles.rightContainer}>
-            <div className={styles.header}>
-              <div className={styles.reviewName}>Weronika Sowa</div>
-              <div className={styles.reviewRating}>
-                <Star />
-                <p>8 / 10</p>
-              </div>
-            </div>
-            <div className={styles.reviewContent}>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aperiam debitis eveniet, fugiat obcaecati unde
-              atque sit labore cupiditate dolor qui possimus consequuntur nihil cumque vitae perferendis repudiandae,
-              laudantium velit mollitia.
-            </div>
-          </div>
-        </div>
+        <SingleReview {...review} />
       ))}
     </div>
   );

@@ -12,6 +12,13 @@ const reviewApi = {
   postCurrentlyReadingBookReview: async (id: string, payload: CurrentlyReadingBookReview): Promise<void> => {
     return await apiClient.post(endpoints.review.currentlyReadingBookReview(id), payload);
   },
+
+  postLike: async (id: string): Promise<void> => {
+    return await apiClient.post(endpoints.review.like(id));
+  },
+  postUnlike: async (id: string): Promise<void> => {
+    return await apiClient.post(endpoints.review.unlike(id));
+  },
 };
 
 export default reviewApi;

@@ -36,6 +36,8 @@ const endpoints = {
   review: {
     fetchCurrentlyReadingBookDetails: (id: string) => `Review/${id}/Progress`, // Endpoint do pobierania detali książki do recenzji
     currentlyReadingBookReview: (id: string) => `Review/${id}`, // Endpoint do wysyłania recenzji
+    like: (id: string) => `Review/${id}/like`, // Endpoint do like recenzji
+    unlike: (id: string) => `Review/${id}/unlike`, // Endpoint do unlike recenzji
   },
 };
 

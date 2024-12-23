@@ -219,7 +219,7 @@ function CurrentlyReadingReview({ bookId }: CurrentlyReadingReviewProps) {
             </div>
             <div className={styles.buttons}>
               <div className={styles.update} onClick={() => handleUpdate()}>
-                Zaaktualizuj
+                Zaktualizuj
               </div>
               <div className={styles.final} onClick={() => handleFinal()}>
                 Ocena końcowa
