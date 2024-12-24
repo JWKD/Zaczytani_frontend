@@ -1,4 +1,5 @@
 import { Author } from './book';
+import { UserInfo } from './user';
 
 export interface CurrentlyReadingBookDetails {
   id: string;
@@ -16,4 +17,14 @@ export interface CurrentlyReadingBookReview {
   progress: number;
   isFinal: boolean;
   containsSpoilers: boolean;
+}
+
+export interface Review {
+  id: string;
+  content: string;
+  rating: number;
+  likes: number;
+  comments: number;
+  notesCount: number;
+  user: UserInfo;
 }
