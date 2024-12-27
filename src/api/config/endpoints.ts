@@ -14,6 +14,7 @@ const endpoints = {
     fetchGenres: `Book/Genres`, // Endpoint do pobierania gatunków
     fetchPublishingHouses: `Book/PublishingHouses`, // Endpoint do pobierania wydawnictw
     fetchCurrentlyReading: `Book/CurrentlyReading`, // Endpoint do pobierania aktualnie czytanych książek
+    fetchReviews: (id: string) => `Book/${id}/Reviews`, // Endpoint do pobierania recenzji książki
   },
   user: {
     login: `Identity/login`,
@@ -29,11 +30,15 @@ const endpoints = {
     create: `Bookshelf/Create`, // Endpoint do dodania półki
     update: `Bookshelf/Update`, //Endpoint do zmiany nazwy półki
     delete: `Bookshelf/Delete`, // Endpoint do usuwania półki
+    attach: (shelfId: string, bookId: string) => `Bookshelf/${shelfId}/${bookId}/Attach`, // Endpoint do dodania książki na daną półkę
+    detach: (shelfId: string, bookId: string) => `Bookshelf/${shelfId}/${bookId}/Detach`, // Endpoint do usuwania książki z danej półki
   },
   review: {
     fetchCurrentlyReadingBookDetails: (id: string) => `Review/${id}/Progress`, // Endpoint do pobierania detali książki do recenzji
     currentlyReadingBookReview: (id: string) => `Review/${id}`, // Endpoint do wysyłania recenzji
     getReview: (id: string) => `Review/${id}`, // Endpoint do pobierania detali recenzji
+    like: (id: string) => `Review/${id}/like`, // Endpoint do like recenzji
+    unlike: (id: string) => `Review/${id}/unlike`, // Endpoint do unlike recenzji
   },
 };
 

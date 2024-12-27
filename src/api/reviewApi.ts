@@ -16,6 +16,12 @@ const reviewApi = {
     const response = await apiClient.get<ReviewPage>(endpoints.review.getReview(id));
     return response.data;
   },
+  postLike: async (id: string): Promise<void> => {
+    return await apiClient.post(endpoints.review.like(id));
+  },
+  postUnlike: async (id: string): Promise<void> => {
+    return await apiClient.post(endpoints.review.unlike(id));
+  },
 };
 
 export default reviewApi;

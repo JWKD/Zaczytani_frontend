@@ -25,6 +25,14 @@ const shelfApi = {
   deleteShelf: async (payload: DeleteShelf): Promise<void> => {
     return await apiClient.delete(endpoints.shelf.delete, { data: payload });
   },
+  attach: async (shelfId: string, bookId: string) => {
+    const response = await apiClient.post(endpoints.shelf.attach(shelfId, bookId));
+    return response;
+  },
+  detach: async (shelfId: string, bookId: string) => {
+    const response = await apiClient.delete(endpoints.shelf.detach(shelfId, bookId));
+    return response;
+  },
 };
 
 export default shelfApi;

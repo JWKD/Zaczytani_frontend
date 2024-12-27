@@ -8,8 +8,10 @@ import BookIcon from '../../icons/BookIcon';
 import DotHorizontal from '../../icons/DotsHorizontal';
 import defaultImage from '../../assets/defaultCover.jpg';
 import RatingIcon from '../../icons/RatingIcon';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import shelfApi from '../../api/shelvesApi';
+import TrashIcon from '../../icons/TrashIcon';
+import DeleteBookFromShelf from '../DeleteBookFromShelf/DeleteBookFromShelf';
 
 interface ShelfDetailsProps {
   id: string;
@@ -24,6 +26,8 @@ function ShelfDetailsComponent({ id }: ShelfDetailsProps) {
   const [deletePopup, setDeletePopup] = useState(false);
   const [validError, setValidationError] = useState<string>('');
   const [inputValue, setInputValue] = useState<string>('');
+  const [deleteBookPopUp, setDeleteBookPopUp] = useState<boolean>(false);
+  const [bookToDelete, setBookToDelete] = useState<string>('');
   const navigate = useNavigate();
 
   const [newShelf, setNewShelf] = useState<UpdateShelf>({
@@ -96,9 +100,18 @@ function ShelfDetailsComponent({ id }: ShelfDetailsProps) {
     }
   };
 
+  function deleteBook(bookId: string) {
+    setDeleteBookPopUp(true);
+    setBookToDelete(bookId);
+  }
+
   function handleDeleteShelf() {
     setDeletePopup(true);
   }
+
+  const handleChangeValue = (newValue: boolean) => {
+    setDeleteBookPopUp(newValue);
+  };
 
   function closePopUp() {
     setIsPopupVisible(false);
@@ -177,23 +190,32 @@ function ShelfDetailsComponent({ id }: ShelfDetailsProps) {
           <h2 className={styles.shelfText}>Półka {shelf?.name}</h2>
         </div>
         <div className={styles.booksContainer}>
-          {books?.map((books: Book, index) => (
+          {books?.map((book: Book, index) => (
             <div key={index} className={styles.oneBook}>
-              <img src={books.imageUrl || defaultImage} className={styles.image} alt={books.title}></img>
-              <div className={styles.bookTitle}>{books.title}</div>
+              {deleteBookPopUp && bookToDelete === book.id && (
+                <DeleteBookFromShelf onChangeValue={handleChangeValue} shelfId={id} bookId={book.id} />
+              )}
+              <Link to={`/books/${book.id}`}>
+                <img src={book.imageUrl || defaultImage} className={styles.image} alt={book.title}></img>
+              </Link>
+              <div className={styles.bookTitle}>{book.title}</div>
               <div className={styles.bookAuthor}>
                 <ul>
-                  <li className={styles.authorName}>{books.title}</li>
-                  {books.authors.map((author) => (
+                  {book.authors.slice(0, 1).map((author) => (
                     <li key={author.id} className={styles.authorName}>
                       {author.name}
                     </li>
                   ))}
                 </ul>
               </div>
-              <div className={styles.ratingContainer}>
-                <RatingIcon />
-                <p className={styles.rating}>{books.rating}</p>
+              <div className={styles.bottomContainer}>
+                <div className={styles.ratingContainer}>
+                  <RatingIcon />
+                  <p className={styles.rating}>{Math.floor(book.rating)}</p>
+                </div>
+                <div className={styles.deleteIconContainer} onClick={() => deleteBook(book.id)}>
+                  <TrashIcon />
+                </div>
               </div>
             </div>
           ))}
