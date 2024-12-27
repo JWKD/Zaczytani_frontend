@@ -1,4 +1,4 @@
-import { CurrentlyReadingBookDetails, CurrentlyReadingBookReview } from '../interfaces/review';
+import { CurrentlyReadingBookDetails, CurrentlyReadingBookReview, ReviewPage } from '../interfaces/review';
 import apiClient from './config/axios';
 import endpoints from './config/endpoints';
 
@@ -11,6 +11,10 @@ const reviewApi = {
   },
   postCurrentlyReadingBookReview: async (id: string, payload: CurrentlyReadingBookReview): Promise<void> => {
     return await apiClient.post(endpoints.review.currentlyReadingBookReview(id), payload);
+  },
+  getReview: async (id: string): Promise<ReviewPage> => {
+    const response = await apiClient.get<ReviewPage>(endpoints.review.getReview(id));
+    return response.data;
   },
 };
 

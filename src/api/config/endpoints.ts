@@ -33,6 +33,7 @@ const endpoints = {
   review: {
     fetchCurrentlyReadingBookDetails: (id: string) => `Review/${id}/Progress`, // Endpoint do pobierania detali książki do recenzji
     currentlyReadingBookReview: (id: string) => `Review/${id}`, // Endpoint do wysyłania recenzji
+    getReview: (id: string) => `Review/${id}`, // Endpoint do pobierania detali recenzji
   },
 };
 

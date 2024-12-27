@@ -1,0 +1,162 @@
+.reviewContainer {
+  max-width: 70%;
+  margin: 0 auto;
+  background-color: #ffffff66;
+  border-radius: 8px;
+  font-family: Roboto serif;
+  font-size: 16px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+
+  .reviewHeader {
+    display: flex;
+    color: #4a3423;
+    margin-bottom: 15px;
+    font-weight: 900;
+    padding-left: 10px;
+    font-size: 20px;
+    padding-top: 15px;
+    span {
+      display: flex;
+      margin-right: 5px;
+    }
+  }
+  .detailsCover {
+    padding: 40px;
+    display: flex;
+    margin-bottom: 20px;
+    img {
+      width: 120px;
+      height: auto;
+      max-height: 168px;
+      box-shadow: 0 4px 6px #0000001a;
+    }
+
+    .details {
+      background-color: #c3b6ac4d;
+      margin-top: 40px;
+      margin-bottom: 40px;
+      border-top-right-radius: 50px;
+      border-bottom-right-radius: 50px;
+      width: 100%;
+      text-align: center;
+      .title {
+        font-weight: 800;
+        color: #333;
+        margin-bottom: 5px;
+        margin-top: 10px;
+      }
+      .authors {
+        color: #665243;
+        font-weight: 500;
+        margin-bottom: 5px;
+      }
+
+      .series {
+        color: #0000008c;
+        font-weight: 300;
+        margin-bottom: 10px;
+      }
+    }
+  }
+
+  .notes {
+    padding: 20px 50px;
+    .note {
+      margin-bottom: 30px;
+      .noteHeader {
+        display: flex;
+        justify-content: space-between;
+        .noteNumber {
+          font-size: 16px;
+          font-weight: 600;
+        }
+        .noteProgress {
+          margin-top: 10px;
+          margin-bottom: 5px;
+          display: flex;
+          .progressName {
+            color: #665243;
+            font-size: 15px;
+            font-weight: 600;
+            margin-right: 3px;
+          }
+        }
+        .noteRating {
+          display: flex;
+          flex-direction: row;
+          font-weight: 600;
+          p {
+            margin-left: 5px;
+            margin-top: 2px;
+          }
+        }
+      }
+      .noteContent {
+        background-color: white;
+        border-radius: 5px;
+        height: 80%;
+        color: #0000008c;
+        padding: 10px;
+        margin-bottom: 5px;
+      }
+      .spoiler {
+        display: flex;
+        justify-content: right;
+        text-align: center;
+        padding: 10px;
+        font-size: 20px;
+        margin-bottom: 5px;
+        .unchecked {
+          width: 20px;
+          height: 20px;
+          background-color: white;
+          border-radius: 5px;
+          position: absolute;
+          border: 2px solid black;
+        }
+        .checked {
+          position: absolute;
+          margin-right: 23px;
+        }
+        p {
+          margin-left: 23px;
+        }
+      }
+    }
+  }
+  .comments {
+    border-top: 1px solid black;
+    .commentsHeader {
+      color: #4a3423;
+      font-size: 20px;
+      font-weight: 900;
+      padding: 10px;
+    }
+    .comment {
+      background-color: #8b7e74cc;
+      border-radius: 50px;
+      display: flex;
+      margin: 20px;
+      margin-top: 0;
+      img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        padding: 10px;
+      }
+      .rightPanel {
+        .userName {
+          font-size: 20px;
+          font-weight: 900;
+          padding-top: 10px;
+          padding-left: 5px;
+          color: white;
+        }
+        .commentContent {
+          color: #f1eee8;
+        }
+      }
+    }
+  }
+}

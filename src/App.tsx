@@ -20,6 +20,7 @@ import PublicRoute from './routes/PublicRoute';
 import { UserProvider } from './context/UserContext';
 import HomeLayout from './layout/HomeLayout';
 import CurrentlyReadingReviewPage from './pages/CurrentlyReadingReviewPage';
+import ReviewDetailsPage from './pages/ReviewDetailsPage';
 
 const router = createBrowserRouter([
   {
@@ -48,6 +49,7 @@ const router = createBrowserRouter([
       { path: '/user/bookrequests', element: <BookRequestStatusPage /> },
       { path: '/books/add', element: <AddBookPage /> },
       { path: '/review/progress/:id', element: <CurrentlyReadingReviewPage /> },
+      { path: '/review/:id', element: <ReviewDetailsPage /> },
     ],
   },
   {
