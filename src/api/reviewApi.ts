@@ -22,6 +22,9 @@ const reviewApi = {
   postUnlike: async (id: string): Promise<void> => {
     return await apiClient.post(endpoints.review.unlike(id));
   },
+  postComment: async (id: string, payload: { content: string }): Promise<void> => {
+    return await apiClient.post(endpoints.review.comment(id), payload);
+  },
 };
 
 export default reviewApi;

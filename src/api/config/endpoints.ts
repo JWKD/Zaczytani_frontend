@@ -39,6 +39,7 @@ const endpoints = {
     getReview: (id: string) => `Review/${id}`, // Endpoint do pobierania detali recenzji
     like: (id: string) => `Review/${id}/like`, // Endpoint do like recenzji
     unlike: (id: string) => `Review/${id}/unlike`, // Endpoint do unlike recenzji
+    comment: (id: string) => `Review/${id}/Comment`, // Endpoint do dodawania komentarzy
   },
 };
 

@@ -8,14 +8,20 @@ import ProgressBar from '../ProgressBar/ProgressBar';
 import Star from '../../icons/Star';
 import Checked from '../../icons/Checked';
 import profilePicture from '../../assets/profilePicture.png';
+import SingleReview from '../SingleReview/SingleReview';
 
 interface ReviewDetailsProps {
   bookId: string;
 }
+
 function ReviewDetails({ bookId }: ReviewDetailsProps) {
   const [review, setReview] = useState<ReviewPage>();
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
+  const [singleReview, setSingleReview] = useState<Review>();
+  const [comment, setComment] = useState<string>('');
+  const [errors, setErrors] = useState<{ [key: string]: string }>({});
+  const [commentAdded, setCommentAdded] = useState<boolean>(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -30,7 +36,57 @@ function ReviewDetails({ bookId }: ReviewDetailsProps) {
     };
 
     fetchData();
-  }, [bookId]);
+  }, [bookId, commentAdded]);
+
+  useEffect(() => {
+    changeToSingleReview();
+  }, [review]);
+
+  const changeToSingleReview = () => {
+    if (review) {
+      setSingleReview({
+        id: review.id,
+        content: review.content,
+        rating: review.rating,
+        likes: review.likes,
+        comments: review.comments.length,
+        notesCount: review.notes.length,
+        user: review.user,
+      });
+    }
+  };
+
+  const postComment = async () => {
+    if (validateForm()) {
+      try {
+        if (review && comment) {
+          const comm = {
+            content: comment,
+          };
+          await reviewApi.postComment(review.id, comm);
+          setCommentAdded(!commentAdded);
+          console.log(singleReview?.comments);
+          setComment('');
+        }
+      } catch (error) {
+        console.error('Błąd podczas przesyłania komentarza:', error);
+      }
+    }
+  };
+
+  const handleChangeComment = (content: string) => {
+    setComment(content);
+  };
+
+  const validateForm = () => {
+    const newErrors: { [key: string]: string } = {};
+
+    if (comment.length > 300 || comment.length <= 10) {
+      newErrors.comment = 'Komentarz musi być dłuższy niż 10 znaków i krótszy niż 300 znaków!';
+    }
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
 
   return loading ? (
     <div>Loading ...</div>
@@ -57,17 +113,14 @@ function ReviewDetails({ bookId }: ReviewDetailsProps) {
               </p>
             </div>
           </div>
-          <div className={styles.review}>
-            {
-              //<SingleReview {...review} />
-            }
-            Wygląd tego jajca
-          </div>
+          {singleReview && (
+            <div className={styles.review}>{<SingleReview key={JSON.stringify(singleReview)} {...singleReview} />}</div>
+          )}
           <div className={styles.notes}>
             {review.notes.map((note, id) => (
-              <div className={styles.note}>
+              <div className={styles.note} key={id}>
                 <div className={styles.noteHeader} id={note.id}>
-                  <div className={styles.noteNumber}>Notatka nr {id + 1}</div>
+                  <div className={styles.noteNumber}>Notka nr {id + 1}:</div>
                   <div className={styles.noteProgress}>
                     <p className={styles.progressName}>Progres:</p>
                     <ProgressBar current={note.progress} max={review.book.pageNumber} />
@@ -94,9 +147,27 @@ function ReviewDetails({ bookId }: ReviewDetailsProps) {
             ))}
           </div>
           <div className={styles.comments}>
+            <div className={styles.commentsHeader}>Dodaj komentarz</div>
+            <div className={styles.addComment}>
+              <div className={styles.inputContainer}>
+                <div className={styles.contentContener}>
+                  <textarea
+                    className={styles.content}
+                    placeholder="Tutaj pisz..."
+                    onChange={(e) => handleChangeComment(e.target.value)}
+                    value={comment ?? ''}
+                  ></textarea>
+                </div>
+                {errors.comment && <div className={styles.error}>{errors.comment}</div>}
+              </div>
+              <div className={styles.update} onClick={() => postComment()}>
+                Dodaj
+              </div>
+            </div>
+
             <div className={styles.commentsHeader}>Komentarze</div>
             {review.comments.map((comment) => (
-              <div className={styles.comment} id={comment.id}>
+              <div className={styles.comment} key={comment.id}>
                 <img src={comment.user.imageUrl ?? profilePicture} alt="Avatar" />
                 <div className={styles.rightPanel}>
                   <div className={styles.userName}>{comment.user.firstName + ' ' + comment.user.lastName}</div>

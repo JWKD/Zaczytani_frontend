@@ -60,6 +60,10 @@
     }
   }
 
+  .review {
+    background-color: #ffffff8f;
+  }
+
   .notes {
     padding: 20px 50px;
     .note {
@@ -127,11 +131,56 @@
   }
   .comments {
     border-top: 1px solid black;
+
     .commentsHeader {
       color: #4a3423;
       font-size: 20px;
       font-weight: 900;
       padding: 10px;
+    }
+    .addComment {
+      border-bottom: 1px solid black;
+      margin-bottom: 10px;
+      .inputContainer {
+        .error {
+          margin-top: 1px;
+          margin-left: 20px;
+          position: absolute;
+          color: red;
+          font-size: 11px;
+        }
+      }
+      .content {
+        width: calc(100% - 40px);
+        height: 80px;
+        outline: none;
+        border: none;
+        box-shadow: none;
+        border-radius: 5px;
+        padding: 10px;
+        resize: none;
+        font-size: 16px;
+        font-weight: 300;
+        margin-left: 20px;
+        margin-right: 20px;
+      }
+
+      .update {
+        background-color: #007bff;
+        color: white;
+        text-align: center;
+        width: 25%;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        padding: 2px;
+        margin: 10px;
+        margin-right: 20px;
+        margin-left: auto;
+      }
+      .update:hover {
+        background-color: #0056b3;
+      }
     }
     .comment {
       background-color: #8b7e74cc;
