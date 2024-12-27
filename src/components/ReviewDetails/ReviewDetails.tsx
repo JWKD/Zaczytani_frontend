@@ -65,7 +65,6 @@ function ReviewDetails({ bookId }: ReviewDetailsProps) {
           };
           await reviewApi.postComment(review.id, comm);
           setCommentAdded(!commentAdded);
-          console.log(singleReview?.comments);
           setComment('');
         }
       } catch (error) {
@@ -130,7 +129,11 @@ function ReviewDetails({ bookId }: ReviewDetailsProps) {
                     <p>{review.rating + '  / 10'}</p>
                   </div>
                 </div>
-                <div className={styles.noteContent}>{note.content}</div>
+                {note.containsSpoilers ? (
+                  <div className={styles.noteContentBlurred}>{note.content}</div>
+                ) : (
+                  <div className={styles.noteContent}>{note.content}</div>
+                )}
                 <div className={styles.spoiler}>
                   <div className={styles.checkboxContainer}>
                     {note.containsSpoilers ? (
