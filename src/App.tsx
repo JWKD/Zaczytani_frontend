@@ -21,6 +21,7 @@ import { UserProvider } from './context/UserContext';
 import HomeLayout from './layout/HomeLayout';
 import CurrentlyReadingReviewPage from './pages/CurrentlyReadingReviewPage';
 import ReviewDetailsPage from './pages/ReviewDetailsPage';
+import ReportUserPage from './pages/ReportUserPage';
 
 const router = createBrowserRouter([
   {
@@ -50,6 +51,7 @@ const router = createBrowserRouter([
       { path: '/books/add', element: <AddBookPage /> },
       { path: '/review/progress/:id', element: <CurrentlyReadingReviewPage /> },
       { path: '/review/:id', element: <ReviewDetailsPage /> },
+      { path: '/report/:id', element: <ReportUserPage /> },
     ],
   },
   {
