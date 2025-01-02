@@ -69,7 +69,7 @@ function ReportUser() {
     const newErrors: { [key: string]: string } = {};
 
     if (report.content.length > 300 || report.content.length <= 10) {
-      newErrors.content = 'Zgłoszenie musi być dłuższe niż 10 znaków i krótsze niż 300 znaków!';
+      newErrors.comment = 'Zgłoszenie musi być dłuższe niż 10 znaków i krótsze niż 300 znaków!';
     }
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -89,7 +89,10 @@ function ReportUser() {
   return (
     <div className={styles.mainContainer}>
       <div className={styles.header}>
-        Zgłoszenia użytkowników <ReportIcon />
+        Zgłoszenia użytkowników
+        <span>
+          <ReportIcon />{' '}
+        </span>
       </div>
       <div className={styles.report}>
         <div className={styles.reportHeader}>
@@ -107,13 +110,14 @@ function ReportUser() {
                 value={selectedCategory}
                 onChange={handleChangeCategory}
                 placeholder="Wybierz kategorię..."
+                className={styles.select}
               />
             </div>
           </div>
         </div>
         <div className={styles.text}>Zgłoszona treść:</div>
         <div className={styles.reportContent}>{review.content}</div>
-        <div className={styles.text}>Opis:</div>
+        <div className={styles.textB}>Opis:</div>
         <div className={styles.inputContainer}>
           <div className={styles.contentContener}>
             <textarea
