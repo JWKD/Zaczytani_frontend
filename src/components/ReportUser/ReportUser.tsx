@@ -7,35 +7,18 @@ import ReportIcon from '../../icons/ReportIcon';
 import DotHorizontal from '../../icons/DotsHorizontal';
 import profilePicture from '../../assets/profilePicture.png';
 import Select from 'react-select';
-import { Report } from '../../interfaces/report';
+import { Option, Report } from '../../interfaces/report';
 import { SingleValue } from 'react-select';
+import { categories } from '../../interfaces/report';
 
 interface ReportUserProps {
   review: Review;
-}
-interface Option {
-  value: string;
-  label: string;
 }
 
 function ReportUser() {
   const location = useLocation();
   const state = location.state as ReportUserProps;
   const review = state.review;
-
-  const categories: Option[] = [
-    { value: 'Spam', label: 'Spam' },
-    { value: 'HateSpeech', label: 'Mowa nienawiści' },
-    { value: 'InappropriateContent', label: 'Nieodpowiednie treści' },
-    { value: 'FalseInformation', label: 'Fałszywe informacje' },
-    { value: 'Plagiarism', label: 'Plagiat' },
-    { value: 'Trolling', label: 'Trolling' },
-    { value: 'OffTopic', label: 'Nie na temat' },
-    { value: 'CopyrightInfringement', label: 'Naruszenie praw autorskich' },
-    { value: 'PrivateInformation', label: 'Prywatne informacje' },
-    { value: 'MisleadingContent', label: 'Wprowadzenie w błąd' },
-    { value: 'LackOfSubstance', label: 'Brak wartości merytorycznej' },
-  ];
 
   const [report, setReport] = useState<Report>({ content: '', category: 'Spam' });
   const [selectedCategory, setSelectedCategory] = useState<Option | null>(categories[0]);
@@ -44,7 +27,7 @@ function ReportUser() {
 
   const postReport = async () => {
     try {
-      if (report) await reportApi.postReport(review.id, report);
+      await reportApi.postReport(review.id, report);
     } catch (error) {
       console.error('Błąd podczas zgłoszenia:', error);
     }
@@ -91,7 +74,7 @@ function ReportUser() {
       <div className={styles.header}>
         Zgłoszenia użytkowników
         <span>
-          <ReportIcon />{' '}
+          <ReportIcon />
         </span>
       </div>
       <div className={styles.report}>
