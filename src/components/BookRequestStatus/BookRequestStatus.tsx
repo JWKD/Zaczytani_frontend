@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import styles from './BookRequestStatus.module.scss';
 import dataApi from '../../api/bookApi';
 import { BookRequest } from '../../interfaces/book';
+import CatLoader from '../CatLoader/CatLoader';
 
 function BookRequestStatus() {
   const [loading, setLoading] = useState<boolean>(true);
@@ -29,7 +30,9 @@ function BookRequestStatus() {
   };
 
   return loading ? (
-    <div>Loading ...</div>
+    <div>
+      <CatLoader />
+    </div>
   ) : error ? (
     <div>Error: {error}</div>
   ) : (
