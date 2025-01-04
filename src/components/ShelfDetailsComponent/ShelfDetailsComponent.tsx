@@ -12,6 +12,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import shelfApi from '../../api/shelvesApi';
 import TrashIcon from '../../icons/TrashIcon';
 import DeleteBookFromShelf from '../DeleteBookFromShelf/DeleteBookFromShelf';
+import CatLoader from '../CatLoader/CatLoader';
 
 interface ShelfDetailsProps {
   id: string;
@@ -125,7 +126,9 @@ function ShelfDetailsComponent({ id }: ShelfDetailsProps) {
     setIsPopupVisible(true);
   }
   return loading ? (
-    <div>Loading ...</div>
+    <div style={{ width: '100px' }}>
+      <CatLoader />
+    </div>
   ) : error ? (
     <div>Error: {error}</div>
   ) : (

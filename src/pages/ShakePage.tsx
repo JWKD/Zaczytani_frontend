@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import dataApi from '../api/bookApi';
 import { Book } from '../interfaces/book';
 import { AxiosError } from 'axios';
+import CatLoader from '../components/CatLoader/CatLoader';
 
 function ShakePage() {
   const [myBook, setBook] = useState<Book>();
@@ -33,7 +34,18 @@ function ShakePage() {
   }, []);
 
   return loading ? (
-    <div>Loading ...</div>
+    <div
+      style={{
+        width: '500px',
+        height: '500px',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        margin: '0 auto',
+      }}
+    >
+      <CatLoader />
+    </div>
   ) : error ? (
     <div>Error: {error}</div>
   ) : isShaking ? (

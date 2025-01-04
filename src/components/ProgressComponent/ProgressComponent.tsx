@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import ProgressBar from '../ProgressBar/ProgressBar';
 import dataApi from '../../api/bookApi';
 import { CurrentlyReading } from '../../interfaces/book';
+import CatLoader from '../CatLoader/CatLoader';
 
 function ProgressComponent() {
   const [books, setBooks] = useState<CurrentlyReading[]>([]);
@@ -27,7 +28,9 @@ function ProgressComponent() {
   }, []);
 
   return loading ? (
-    <div>Loading ...</div>
+    <div style={{ width: '100px' }}>
+      <CatLoader />
+    </div>
   ) : error ? (
     <div>Error: {error}</div>
   ) : (

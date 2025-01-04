@@ -6,6 +6,7 @@ import { Shelf } from '../../interfaces/Shelf';
 import AddShelfComponent from '../ShelfComponent/AddSheflComponent/AddSheflComponent';
 import shelfApi from '../../api/shelvesApi';
 import AddShelfPopUp from '../AddShelfPopUp/AddShelfPopUp';
+import CatLoader from '../CatLoader/CatLoader';
 
 function ShelvesContainer() {
   const [shelves, setShelves] = useState<Shelf[]>();
@@ -38,7 +39,9 @@ function ShelvesContainer() {
   }
 
   return loading ? (
-    <div>Loading ...</div>
+    <div style={{ width: '300px' }}>
+      <CatLoader />
+    </div>
   ) : error ? (
     <div>Error: {error}</div>
   ) : clickAdd ? (

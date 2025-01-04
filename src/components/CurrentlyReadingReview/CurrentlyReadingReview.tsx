@@ -9,6 +9,7 @@ import StarEmpty from '../../icons/StarEmpty';
 import Checked from '../../icons/Checked';
 import { useNavigate } from 'react-router-dom';
 import BookIcon from '../../icons/BookIcon';
+import CatLoader from '../CatLoader/CatLoader';
 
 interface CurrentlyReadingReviewProps {
   bookId: string;
@@ -130,7 +131,9 @@ function CurrentlyReadingReview({ bookId }: CurrentlyReadingReviewProps) {
   };
 
   return loading ? (
-    <div>Loading ...</div>
+    <div style={{ width: '100px' }}>
+      <CatLoader />
+    </div>
   ) : error ? (
     <div>Error: {error}</div>
   ) : (
