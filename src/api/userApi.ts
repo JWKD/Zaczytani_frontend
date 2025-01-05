@@ -1,4 +1,5 @@
 import { LoginRequest } from '../interfaces/login';
+import { UserProfileDetails } from '../interfaces/user';
 import apiClient from './config/axios';
 import endpoints from './config/endpoints';
 
@@ -8,6 +9,10 @@ const userApi = {
     return response;
   },
   refreshToken: async (refreshToken: string) => await apiClient.post(endpoints.user.refreshToken, { refreshToken }),
+  getDetails: async (): Promise<UserProfileDetails> => {
+    const response = await apiClient.get<UserProfileDetails>(endpoints.user.fetchDetails);
+    return response.data;
+  },
 };
 
 export default userApi;
