@@ -1,15 +1,19 @@
 import { useState } from 'react';
-import styles from './CreateChallengePage.module.scss';
+import styles from './CreateChallenge.module.scss';
 import ChallengeIcon from '../../icons/ChallengeIcon';
 import DotHorizontal from '../../icons/DotsHorizontal';
+import { useNavigate } from 'react-router-dom';
 
-function CreateChallengePage() {
+function CreateChallenge() {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
+  const navigate = useNavigate();
 
   function handleAdd() {}
 
-  function handleCancel() {}
+  function handleCancel() {
+    navigate(-1);
+  }
 
   return loading ? (
     <div>Loading ...</div>
@@ -49,4 +53,4 @@ function CreateChallengePage() {
   );
 }
 
-export default CreateChallengePage;
+export default CreateChallenge;

@@ -21,7 +21,9 @@ import { UserProvider } from './context/UserContext';
 import HomeLayout from './layout/HomeLayout';
 import CurrentlyReadingReviewPage from './pages/CurrentlyReadingReviewPage';
 import ReviewDetailsPage from './pages/ReviewDetailsPage';
-import CreateChallengePage from './components/CreateChallengePage/CreateChallengePage';
+import CreateChallengePage from './pages/CreateChallengePage';
+import ChallengePage from './pages/ChallengePage';
+import ChallengeLayout from './layout/ChallengeLayout';
 
 const router = createBrowserRouter([
   {
@@ -53,6 +55,15 @@ const router = createBrowserRouter([
       { path: '/review/:id', element: <ReviewDetailsPage /> },
       { path: '/user/challenge/add', element: <CreateChallengePage /> },
     ],
+  },
+  {
+    path: '/user/challenge',
+    element: (
+      <PrivateRoute>
+        <ChallengeLayout />
+      </PrivateRoute>
+    ),
+    children: [{ path: '/user/challenge', element: <ChallengePage /> }],
   },
   {
     path: '/auth',
