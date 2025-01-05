@@ -36,10 +36,6 @@ const ShelfComponent: React.FC<ShelfComponentProps> = ({ shelf }) => {
     <div
       style={{
         width: '100px',
-        height: '100px',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
         margin: '0 auto',
       }}
     >

@@ -3,6 +3,9 @@
   width: 100%;
   max-width: 20em;
   overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .cat::before {
@@ -12,7 +15,7 @@
 }
 
 .cat:hover > * {
-  animation-play-state: paused;
+  animation-play-state: running;
 }
 
 .cat:active > * {

@@ -37,11 +37,6 @@ function ShakePage() {
     <div
       style={{
         width: '500px',
-        height: '500px',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        margin: '0 auto',
       }}
     >
       <CatLoader />
