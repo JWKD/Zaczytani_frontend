@@ -20,13 +20,17 @@ function ReportUser() {
   const state = location.state as ReportUserProps;
   const review = state.review;
 
-  const [report, setReport] = useState<Report>({ content: '', category: 'Spam' });
-  const [selectedCategory, setSelectedCategory] = useState<Option | null>(categories[0]);
+  const [content, setContent] = useState<string>('');
+  const [selectedCategory, setSelectedCategory] = useState<Option>(categories[0]);
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
   const navigate = useNavigate();
 
   const postReport = async () => {
     try {
+      const report: Report = {
+        content: content,
+        category: selectedCategory.value,
+      };
       await reportApi.postReport(review.id, report);
     } catch (error) {
       console.error('Błąd podczas zgłoszenia:', error);
@@ -34,24 +38,17 @@ function ReportUser() {
   };
 
   const handleChangeCategory = (option: SingleValue<Option>) => {
-    setSelectedCategory(option);
-    setReport({
-      ...report,
-      category: option?.label ?? '',
-    });
+    if (option) setSelectedCategory(option);
   };
 
   const handleChangeComment = (content: string) => {
-    setReport({
-      ...report,
-      content: content,
-    });
+    setContent(content);
   };
 
   const validateForm = () => {
     const newErrors: { [key: string]: string } = {};
 
-    if (report.content.length > 300 || report.content.length <= 10) {
+    if (content.length > 300 || content.length <= 10) {
       newErrors.comment = 'Zgłoszenie musi być dłuższe niż 10 znaków i krótsze niż 300 znaków!';
     }
     setErrors(newErrors);
@@ -107,7 +104,7 @@ function ReportUser() {
               className={styles.content}
               placeholder="Tutaj pisz..."
               onChange={(e) => handleChangeComment(e.target.value)}
-              value={report.content ?? ''}
+              value={content ?? ''}
             ></textarea>
           </div>
           {errors.comment && <div className={styles.error}>{errors.comment}</div>}
