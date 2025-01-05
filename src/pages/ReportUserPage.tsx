@@ -27,21 +27,22 @@ function ReportUserPage() {
 
     fetchData();
   }, [id]);
-  if (review)
-    return loading ? (
-      <div
-        style={{
-          width: '500px',
-          margin: '0 auto',
-        }}
-      >
-        <CatLoader />
-      </div>
-    ) : error ? (
-      <div>Error: {error}</div>
-    ) : (
-      <ReportUser {...review} />
-    );
+  return loading ? (
+    <div
+      style={{
+        width: '500px',
+        margin: '0 auto',
+      }}
+    >
+      <CatLoader />
+    </div>
+  ) : error ? (
+    <div>Error: {error}</div>
+  ) : review ? (
+    <ReportUser {...review} />
+  ) : (
+    <div></div>
+  );
 }
 
 export default ReportUserPage;
