@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import Select from 'react-select';
 import dataApi from '../../../api/bookApi';
-import './AutoComplete.modules.scss';
+import './AutoComplete.module.scss';
 import { BookRequestPre } from '../AddBook';
 
 interface GenreOption {
@@ -50,7 +50,7 @@ function GenresAutoComplete({ value, onChange }: GenresAutoCompleteProps) {
   };
 
   return loading ? (
-    <div>Loading ...</div>
+    <div></div>
   ) : error ? (
     <div>Error: {error}</div>
   ) : (

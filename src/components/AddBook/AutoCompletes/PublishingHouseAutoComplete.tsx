@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import CreatableSelect from 'react-select/creatable';
 import dataApi from '../../../api/bookApi';
 import { PublishingHouse } from '../../../interfaces/book';
-import './AutoComplete.modules.scss';
+import './AutoComplete.module.scss';
 import { BookRequestPre } from '../AddBook';
 
 interface PublishingHouseOption {
@@ -61,7 +61,7 @@ function PublishingHouseAutoComplete({ value, onChange }: PublishingHouseAutoCom
   };
 
   return loading ? (
-    <div>Loading ...</div>
+    <div></div>
   ) : error ? (
     <div>Error: {error}</div>
   ) : (

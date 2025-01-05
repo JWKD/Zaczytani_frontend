@@ -7,6 +7,7 @@ import DefaultCover from '../../assets/defaultCover.jpg';
 import DotHorizontal from '../../icons/DotsHorizontal';
 import ReviewsList from '../ReviewsList/ReviewsList';
 import AddBookOnShelf from '../AddBookOnShelf/AddBookOnShelf';
+import CatLoader from '../CatLoader/CatLoader';
 
 interface BookDetailsProps {
   id: string;
@@ -42,7 +43,14 @@ function BookDetails({ id }: BookDetailsProps) {
   }, [id]);
 
   return loading ? (
-    <div>Loading ...</div>
+    <div
+      style={{
+        width: '500px',
+        margin: '0 auto',
+      }}
+    >
+      <CatLoader />
+    </div>
   ) : error ? (
     <div>Error: {error}</div>
   ) : (
@@ -91,13 +99,13 @@ function BookDetails({ id }: BookDetailsProps) {
             <div className={styles.rating}>
               <Star />
               <p>
-                <strong>Ocena:</strong> {Math.round(book.rating * 10) / 10} / 10
+                <strong>Ocena:</strong> {Math.round(book.rating * 10) / 10} / 10 z {book.ratingCount} ocen
               </p>
             </div>
             <div>
               <p>
                 <strong>Ilość recenzji </strong>
-                100 z 400
+                {book.readers} czytelników - {book.reviews} recenzji
               </p>
             </div>
           </div>

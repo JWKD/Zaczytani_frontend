@@ -8,6 +8,9 @@ export interface Book {
   imageUrl: string;
   genre: string[];
   rating: number;
+  ratingCount: number;
+  reviews: number;
+  readers: number;
   series: string;
   publishingHouse: string;
   authors: Author[];
