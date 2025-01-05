@@ -5,6 +5,7 @@ import shelfApi from '../../api/shelvesApi';
 import DotHorizontal from '../../icons/DotsHorizontal';
 import ShelfComponent from '../ShelfComponent/ShelfComponent';
 import { useNavigate } from 'react-router-dom';
+import CatLoader from '../CatLoader/CatLoader';
 
 interface AddBookOnShelfProps {
   bookId?: string;
@@ -46,7 +47,9 @@ const AddBookOnShelf: React.FC<AddBookOnShelfProps> = ({ bookId, onChangeValue }
   };
 
   return loading ? (
-    <div>Loading ...</div>
+    <div style={{ width: '100px' }}>
+      <CatLoader />
+    </div>
   ) : error ? (
     <div>Error: {error}</div>
   ) : (

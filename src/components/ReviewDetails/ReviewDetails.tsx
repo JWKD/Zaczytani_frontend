@@ -9,6 +9,7 @@ import Star from '../../icons/Star';
 import Checked from '../../icons/Checked';
 import profilePicture from '../../assets/profilePicture.png';
 import SingleReview from '../SingleReview/SingleReview';
+import CatLoader from '../CatLoader/CatLoader';
 
 interface ReviewDetailsProps {
   bookId: string;
@@ -88,7 +89,14 @@ function ReviewDetails({ bookId }: ReviewDetailsProps) {
   };
 
   return loading ? (
-    <div>Loading ...</div>
+    <div
+      style={{
+        width: '500px',
+        margin: '0 auto',
+      }}
+    >
+      <CatLoader />
+    </div>
   ) : error ? (
     <div>Error: {error}</div>
   ) : (

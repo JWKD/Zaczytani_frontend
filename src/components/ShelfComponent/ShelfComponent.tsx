@@ -6,6 +6,7 @@ import styles from './ShelfComponent.module.scss';
 import { Book } from '../../interfaces/book';
 import { Shelf } from '../../interfaces/Shelf';
 import shelfApi from '../../api/shelvesApi';
+import CatLoader from '../CatLoader/CatLoader';
 
 export interface ShelfComponentProps {
   shelf: Shelf;
@@ -32,7 +33,14 @@ const ShelfComponent: React.FC<ShelfComponentProps> = ({ shelf }) => {
   }, [shelf.id]);
 
   return loading ? (
-    <div>Loading ...</div>
+    <div
+      style={{
+        width: '100px',
+        margin: '0 auto',
+      }}
+    >
+      <CatLoader />
+    </div>
   ) : error ? (
     <div>Error: {error}</div>
   ) : (

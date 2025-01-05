@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { Review } from '../../interfaces/review';
 import bookApi from '../../api/bookApi';
 import SingleReview from '../SingleReview/SingleReview';
+import CatLoader from '../CatLoader/CatLoader';
 
 interface ReviewsListProps {
   bookId: string;
@@ -29,7 +30,7 @@ function ReviewsList({ bookId }: ReviewsListProps) {
   }, [bookId]);
 
   return loading ? (
-    <div>Loading ...</div>
+    <div></div>
   ) : error ? (
     <div>Error: {error}</div>
   ) : (
