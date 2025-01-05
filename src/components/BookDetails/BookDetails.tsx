@@ -7,6 +7,7 @@ import DefaultCover from '../../assets/defaultCover.jpg';
 import DotHorizontal from '../../icons/DotsHorizontal';
 import ReviewsList from '../ReviewsList/ReviewsList';
 import AddBookOnShelf from '../AddBookOnShelf/AddBookOnShelf';
+import CatLoader from '../CatLoader/CatLoader';
 
 interface BookDetailsProps {
   id: string;
@@ -42,7 +43,14 @@ function BookDetails({ id }: BookDetailsProps) {
   }, [id]);
 
   return loading ? (
-    <div>Loading ...</div>
+    <div
+      style={{
+        width: '500px',
+        margin: '0 auto',
+      }}
+    >
+      <CatLoader />
+    </div>
   ) : error ? (
     <div>Error: {error}</div>
   ) : (

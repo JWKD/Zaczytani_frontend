@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Author } from '../../../interfaces/book';
 import dataApi from '../../../api/bookApi';
 import CreatableSelect from 'react-select/creatable';
-import './AutoComplete.modules.scss';
+import './AutoComplete.module.scss';
 import { BookRequestPre } from '../AddBook';
 
 interface AuthorOption {
@@ -59,7 +59,7 @@ function AuthorAutoComplete({ value, onChange }: AuthorsAutoCompleteProps) {
   };
 
   return loading ? (
-    <div>Loading ...</div>
+    <div></div>
   ) : error ? (
     <div>Error: {error}</div>
   ) : (
