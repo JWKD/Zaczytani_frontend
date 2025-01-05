@@ -1,6 +1,6 @@
 import styles from './ReportUser.module.scss';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { Review } from '../../interfaces/review';
+import { useNavigate } from 'react-router-dom';
+import { ReviewPage } from '../../interfaces/review';
 import reportApi from '../../api/reportApi';
 import { useState } from 'react';
 import ReportIcon from '../../icons/ReportIcon';
@@ -11,15 +11,7 @@ import { Option, Report } from '../../interfaces/report';
 import { SingleValue } from 'react-select';
 import { categories } from '../../interfaces/report';
 
-interface ReportUserProps {
-  review: Review;
-}
-
-function ReportUser() {
-  const location = useLocation();
-  const state = location.state as ReportUserProps;
-  const review = state.review;
-
+function ReportUser(review: ReviewPage) {
   const [content, setContent] = useState<string>('');
   const [selectedCategory, setSelectedCategory] = useState<Option>(categories[0]);
   const [errors, setErrors] = useState<{ [key: string]: string }>({});

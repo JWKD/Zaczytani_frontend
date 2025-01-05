@@ -44,7 +44,7 @@ function SingleReview(initialReview: Review) {
   };
 
   const handleReport = () => {
-    navigate(`/report/${review.id}`, { state: { review } });
+    navigate(`/report/${review.id}`);
   };
 
   return (
