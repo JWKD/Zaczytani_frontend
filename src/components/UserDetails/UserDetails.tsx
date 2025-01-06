@@ -2,6 +2,9 @@ import { useEffect, useState } from 'react';
 import styles from './UserDetails.module.scss';
 import { UserProfileDetails } from '../../interfaces/user';
 import userApi from '../../api/userApi';
+import CatLoader from '../CatLoader/CatLoader';
+import DotHorizontal from '../../icons/DotsHorizontal';
+import RackIcon from '../../icons/rackIcon';
 
 function UserDetails() {
   const [profile, setProfile] = useState<UserProfileDetails>();
@@ -24,11 +27,28 @@ function UserDetails() {
   }, []);
 
   return loading ? (
-    <div>Loading ...</div>
+    <CatLoader />
   ) : error ? (
     <div>Error: {error}</div>
   ) : (
-    <div className={styles.pageContainer}></div>
+    <div className={styles.pageContainer}>
+      <div className={styles.topText}>
+        <DotHorizontal />
+        <p className={styles.pageText}>Mój Profil</p>
+      </div>
+      <div className={styles.mainContainer}>
+        <div className={styles.userContainer}>
+          <div className={styles.userPicture}></div>
+          <div className={styles.userInfo}>
+            <p className={styles.userName}>{profile?.firstName}</p>
+            <p className={styles.userLastName}>{profile?.lastName} niee maaa</p>
+            <p className={styles.bookCount}>Przeczytała: {profile?.totalBooksRead} książki</p>
+            <p className={styles.genres}>sffdsf</p>
+          </div>
+          <RackIcon />
+        </div>
+      </div>
+    </div>
   );
 }
 
