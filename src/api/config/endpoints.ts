@@ -42,6 +42,9 @@ const endpoints = {
     unlike: (id: string) => `Review/${id}/unlike`, // Endpoint do unlike recenzji
     comment: (id: string) => `Review/${id}/Comment`, // Endpoint do dodawania komentarzy
   },
+  report: {
+    report: (id: string) => `Report/${id}`, // Endpoint do reportowania recenzji
+  },
 };
 
 export default endpoints;
