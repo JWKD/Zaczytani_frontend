@@ -1,0 +1,50 @@
+.bookContainer {
+  padding: 7px 30px;
+  .image {
+    width: 106px;
+    height: 150px;
+  }
+  .bookTitle {
+    width: 105px;
+    height: 16px;
+    font-size: 14px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: bold;
+    color: #4a3423;
+    font-family: 'Roboto Serif';
+  }
+  .bookAuthor {
+    margin-top: 2px;
+    width: 105px;
+    height: 14px;
+    font-size: 12px;
+    .authorName {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      color: #665243;
+      font-family: 'Roboto Serif';
+    }
+  }
+  .bottomContainer {
+    margin-top: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 5px;
+    .ratingContainer {
+      display: flex;
+      align-items: center;
+      .rating {
+        margin-top: 2px;
+        margin-left: 10px;
+        color: #665243;
+        font-family: 'Roboto Serif';
+        font-size: 16px;
+        font-weight: bold;
+      }
+    }
+  }
+}
