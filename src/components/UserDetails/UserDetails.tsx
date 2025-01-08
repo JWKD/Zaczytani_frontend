@@ -9,19 +9,18 @@ import { Link } from 'react-router-dom';
 import UserImage from '../UserImage/UserImage';
 import { Book } from '../../interfaces/book';
 import ProfilePageBook from '../ProfilePageBook.tsx/ProfilePageBook';
+import bookVariety from '../../utils/bookVarietyProfile';
 
 function UserDetails() {
   const [profile, setProfile] = useState<UserProfileDetails>();
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
-  const [bookVariety, setBookVariety] = useState<string | null>(' ');
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const result = await userApi.getDetails();
         setProfile(result);
-        BookVariety(profile?.totalBooksRead || 0);
       } catch (err) {
         setError('Wystąpił błąd');
       } finally {
@@ -31,18 +30,6 @@ function UserDetails() {
 
     fetchData();
   }, []);
-
-  function BookVariety(number: number) {
-    if (number === 0) {
-      setBookVariety('0 książek');
-    } else if (number === 1) {
-      setBookVariety(`1 książkę`);
-    } else if (number % 10 >= 2 && number % 10 <= 4 && (number % 100 < 10 || number % 100 >= 20)) {
-      setBookVariety(`${number} książki`);
-    } else {
-      setBookVariety(`${number} książek`);
-    }
-  }
 
   return loading ? (
     <CatLoader />
@@ -64,7 +51,7 @@ function UserDetails() {
               <p className={styles.userName}>
                 {profile?.firstName} {profile?.lastName}
               </p>
-              <p className={styles.bookCount}>Przeczytane: {bookVariety}</p>
+              <p className={styles.bookCount}>Przeczytane: {bookVariety(profile?.totalBooksRead || 0)}</p>
               <p className={styles.genres}>{profile?.favoriteGenres.join(', ')}</p>
             </div>
           </div>
