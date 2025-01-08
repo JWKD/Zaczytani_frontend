@@ -1,3 +1,5 @@
+import { Book } from './book';
+
 export interface User {
   firstName: string;
   lastName: string;
@@ -9,4 +11,15 @@ export interface UserInfo {
   firstName: string;
   lastName: string;
   imageUrl: string;
+}
+
+export interface UserProfileDetails {
+  firstName: string;
+  lastName: string;
+  imageUrl: string;
+  totalBooksRead: number;
+  favoriteGenres: string[];
+  badges: string[];
+  readBooks: Book[];
+  currentlyReading: Book[];
 }

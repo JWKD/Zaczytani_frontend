@@ -19,6 +19,7 @@ const endpoints = {
   user: {
     login: `Identity/login`,
     refreshToken: 'Identity/refresh',
+    fetchDetails: `User/Profile`, // Endpoint do pobierania danych o profilu użytkownika
   },
   file: {
     postFile: `File`, // Endpoint do wysyłania pliku
@@ -40,6 +41,9 @@ const endpoints = {
     like: (id: string) => `Review/${id}/like`, // Endpoint do like recenzji
     unlike: (id: string) => `Review/${id}/unlike`, // Endpoint do unlike recenzji
     comment: (id: string) => `Review/${id}/Comment`, // Endpoint do dodawania komentarzy
+  },
+  report: {
+    report: (id: string) => `Report/${id}`, // Endpoint do reportowania recenzji
   },
 };
 
