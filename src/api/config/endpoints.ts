@@ -19,6 +19,7 @@ const endpoints = {
   user: {
     login: `Identity/login`,
     refreshToken: 'Identity/refresh',
+    fetchDetails: `User/Profile`, // Endpoint do pobierania danych o profilu użytkownika
   },
   file: {
     postFile: `File`, // Endpoint do wysyłania pliku

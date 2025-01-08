@@ -16,6 +16,7 @@
       height: 140px;
     }
     .detailsComponenet {
+      
       font-family: Roboto serif;
       display: grid;
       .bookTitle {
@@ -67,7 +68,9 @@
           margin-right: 3px;
         }
       }
+     
       .buttonContainer {
+        text-decoration: none;
         background-color: #b8dc8cd4;
         height: 20px;
         width: 261px;
@@ -76,6 +79,8 @@
         cursor: pointer;
         transition: background-color 0.3s ease;
         .linkButton {
+          margin-top: 2px;
+          text-align: center;
           text-decoration: none;
           color: white;
           font-size: 14px;

@@ -3,7 +3,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 20px;
+  padding: 2px 20px;
   .logo {
     margin: 0px;
     font-family: 'Coiny', sans-serif;
@@ -19,6 +19,7 @@
   }
   .links {
     display: flex;
+    align-items: center;
     gap: 50px;
   }
 }
