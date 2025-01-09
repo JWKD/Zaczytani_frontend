@@ -1,7 +1,5 @@
 .container {
   display: flex;
-  align-items: center;
-  justify-content: center;
   flex-direction: column;
   background-color: #ffffff8f;
   border-radius: 5px;
@@ -14,16 +12,30 @@
     margin-left: 20px;
     margin-bottom: 10px;
     display: flex;
-    justify-content: center;
     align-items: center;
     margin: auto;
-    margin-top:none;
+    margin-top: none;
     margin-left: 19px;
     margin-right: 19px;
-    .text {
-      margin-left: 10px;
-      font-size: 16px;
-      font-weight: 600;
+    .allText {
+      display: flex;
+      flex-direction: column;
+      .text {
+        display: flex;
+        flex-direction: row;
+        margin-left: 10px;
+        font-size: 16px;
+        font-weight: 600;
+        .smallText {
+          font-weight: 300;
+          margin-left: 2px;
+          margin-right: 3px;
+        }
+      }
+      .dotContainer {
+        display: flex;
+        margin-left: 10px
+      }
     }
   }
 

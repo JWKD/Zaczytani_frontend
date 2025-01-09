@@ -45,6 +45,12 @@ const endpoints = {
   report: {
     report: (id: string) => `Report/${id}`, // Endpoint do reportowania recenzji
   },
+  challenge: {
+    create: `Challenge`, // Endpoint do tworzenia wyzwania (POST)
+    fetch: `Challenge`, // Endpoint do pobierania wyzwań wsystkich (GET)
+    join: (challengeId: string) => `Challenge/${challengeId}/Join`, // Endpoint do dołączenia do wyzwania
+    fetchProgress: `Challenge/Progress`, // Endpoint do pobierania zaczętych wyzwań użytkownika
+  },
 };
 
 export default endpoints;
