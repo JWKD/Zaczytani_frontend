@@ -1,3 +1,5 @@
+import { strict } from 'assert';
+
 export interface Challenge {
   id: string;
   booksToRead: number;
@@ -10,12 +12,12 @@ export interface Challenge {
 export interface PostChallenge {
   booksToRead: number;
   critiera: string;
-  criteriaValue: string;
+  criteriaValue: string | null;
 }
 
 export interface NewChallenge {
   id: string;
   booksToRead: number;
-  critiera: string;
   criteriaValue: string;
+  criteria: string;
 }

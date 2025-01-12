@@ -5,19 +5,26 @@ import DotHorizontal from '../../icons/DotsHorizontal';
 import ChallengeProgressBar from '../ChallengeProgressBar/ChallengeProgressBar';
 import styles from './UserChallenge.module.scss';
 import CatLoader from '../CatLoader/CatLoader';
-import { Challenge } from '../../interfaces/challenge';
+import { Challenge, NewChallenge } from '../../interfaces/challenge';
 import challengeApi from '../../api/challengeApi';
+import ChallengeProposal from '../ChallengeProposal/ChallengeProposal';
 
 function UserChallenge() {
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   const [progressChallenges, setProgressChallenges] = useState<Challenge[]>();
+  const [proposalChallenges, setProposalChallenges] = useState<NewChallenge[]>();
+  const [childTrigger, setChildTrigger] = useState(false);
 
+  const handleChangeValue = () => {
+    setChildTrigger((prev) => !prev);
+  };
   const fetchData = async () => {
     try {
       const result = await challengeApi.getAllProgressChallenges();
       setProgressChallenges(result);
-      console.log(result);
+      const proposalResult = await challengeApi.getAllNewChallenges();
+      setProposalChallenges(proposalResult);
     } catch (err) {
       setError('Wystąpił nieoczekiwany problem');
     } finally {
@@ -27,7 +34,7 @@ function UserChallenge() {
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [childTrigger]);
 
   return loading ? (
     <div style={{ width: '300px' }}>
@@ -47,16 +54,16 @@ function UserChallenge() {
             <CupIcon />
             <p className={styles.cupText}>Moje</p>
           </div>
-          <div className={styles.progressChallengesContainer}></div>
-          {progressChallenges?.map((challenge) => (
-            <ChallengeProgressBar
-              takePart={true}
-              current={challenge.booksRead}
-              max={challenge.booksToRead}
-              name={challenge.criteriaValue}
-              criteria={challenge.criteria}
-            />
-          ))}
+          <div className={styles.progressChallengesContainer}>
+            {progressChallenges?.map((challenge) => (
+              <ChallengeProgressBar
+                current={challenge.booksRead}
+                max={challenge.booksToRead}
+                name={challenge.criteriaValue}
+                criteria={challenge.criteria}
+              />
+            ))}
+          </div>
         </div>
       </section>
       <section className={styles.rightContainer}>
@@ -64,7 +71,18 @@ function UserChallenge() {
           <DotHorizontal />
           <p className={styles.title}>Propozycje</p>
         </div>
-        <div className={styles.proposalContainer}></div>
+        <div className={styles.proposalContainer}>
+          {proposalChallenges?.map((challenge) => (
+            <ChallengeProposal
+              onChangeValue={handleChangeValue}
+              current={0}
+              max={challenge.booksToRead}
+              name={challenge.criteriaValue}
+              criteria={challenge.criteria}
+              id={challenge.id}
+            />
+          ))}
+        </div>
       </section>
     </div>
   );

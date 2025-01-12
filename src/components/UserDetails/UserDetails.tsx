@@ -10,6 +10,7 @@ import UserImage from '../UserImage/UserImage';
 import { Book } from '../../interfaces/book';
 import ProfilePageBook from '../ProfilePageBook.tsx/ProfilePageBook';
 import bookVariety from '../../utils/bookVarietyProfile';
+import CurrentChallenges from '../CurrentChallenges/CurrentChallenges';
 
 function UserDetails() {
   const [profile, setProfile] = useState<UserProfileDetails>();
@@ -42,32 +43,40 @@ function UserDetails() {
         <p className={styles.pageText}>Mój Profil</p>
       </div>
       <div className={styles.mainContainer}>
-        <div className={styles.userContainer}>
-          <div className={styles.container}>
-            <div className={styles.userPicture}>
-              <UserImage />
+        <div className={styles.upContainer}>
+          <div className={styles.leftSection}>
+            <div className={styles.userContainer}>
+              <div className={styles.container}>
+                <div className={styles.userPicture}>
+                  <UserImage />
+                </div>
+                <div className={styles.userInfo}>
+                  <p className={styles.userName}>
+                    {profile?.firstName} {profile?.lastName}
+                  </p>
+                  <p className={styles.bookCount}>Przeczytane: {bookVariety(profile?.totalBooksRead || 0)}</p>
+                  <p className={styles.genres}>{profile?.favoriteGenres.join(', ')}</p>
+                </div>
+              </div>
+              <div className={styles.rack}>
+                <RackIcon />
+              </div>
             </div>
-            <div className={styles.userInfo}>
-              <p className={styles.userName}>
-                {profile?.firstName} {profile?.lastName}
-              </p>
-              <p className={styles.bookCount}>Przeczytane: {bookVariety(profile?.totalBooksRead || 0)}</p>
-              <p className={styles.genres}>{profile?.favoriteGenres.join(', ')}</p>
+            <div className={styles.buttonContainer}>
+              <Link to="/user/bookrequests" className={styles.bookRequestsbutton}>
+                Moje zgłoszenia
+              </Link>
+            </div>
+            <div className={styles.decorationsContainer}>
+              <p className={styles.badgesName}>Odznaczenia:</p>
+              <div className={styles.badgesBack}></div>
             </div>
           </div>
-          <div className={styles.rack}>
-            <RackIcon />
+          <div className={styles.rightSection}>
+            <CurrentChallenges challengeQuantity={3} />
           </div>
         </div>
-        <div className={styles.buttonContainer}>
-          <Link to="/user/bookrequests" className={styles.bookRequestsbutton}>
-            Moje zgłoszenia
-          </Link>
-        </div>
-        <div className={styles.decorationsContainer}>
-          <p className={styles.badgesName}>Odznaczenia:</p>
-          <div className={styles.badgesBack}></div>
-        </div>
+
         <div className={styles.shelvesContainer}>
           <div className={styles.shelvesTextContainer}>
             <p>Aktualnie czytane</p>

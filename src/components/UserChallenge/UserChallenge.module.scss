@@ -1,12 +1,13 @@
 .pageContainer {
-    display: flex;
-    gap: 10px;
+  display: flex;
+  gap: 10px;
   .leftContainer {
     display: flex;
     align-items: center;
     flex-direction: column;
     padding: 20px;
     gap: 20px;
+
     .titleSection {
       background-color: #c3b6ac4d;
       border-radius: 50px;
@@ -33,6 +34,7 @@
       border-radius: 10px;
       width: 450px;
       height: 70vh;
+      padding-bottom: 6px;
       .topSection {
         display: flex;
         align-items: center;
@@ -49,6 +51,15 @@
           color: white;
         }
       }
+      .progressChallengesContainer {
+        display: flex;
+        gap: 10px;
+        padding: 5px;
+        flex-direction: column;
+        max-height: auto;
+        overflow-y: auto;
+      }
+      
     }
   }
   .rightContainer {
@@ -59,7 +70,7 @@
     display: flex;
     padding: 10px;
     border-radius: 10px;
-    background-color: #FFFFFF66;
+    background-color: #ffffff66;
     flex-direction: column;
     .sectionTitle {
       font-family: 'Roboto Serif';
@@ -71,6 +82,15 @@
       .title {
         margin-left: 5px;
       }
+    }
+    .proposalContainer{
+      display: flex;
+      height: 70vh;
+      gap: 10px;
+      padding: 5px;
+      flex-direction: column;
+      max-height: 700px;
+      overflow-y: auto;
     }
   }
 }

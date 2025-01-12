@@ -57,8 +57,37 @@
     .optionsContainer {
       flex: 1;
       padding: 30px;
-     
-      
+      .markContainer{
+        margin-right: 3px;
+      }
+      .input{
+        border: none;
+        margin-left: 3px;
+        margin-right: 3px;
+        text-align: center;
+        width: 60px;
+        height: 28px;
+        border-radius: 5px;
+      }
+      .bookCountOption{
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+        
+      }
+      .genreOption{
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+      }
+      .authorOption{
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+      }
+      .validationContainer{
+        color: red;
+      }
     }
     .buttonContainer {
       text-align: right;

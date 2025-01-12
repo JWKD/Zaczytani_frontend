@@ -7,17 +7,18 @@ interface ProgressBarProps {
   current: number;
   max: number;
   name: string;
-  takePart: boolean;
   criteria: string;
 }
 
-const ChallengeProgressBar: React.FC<ProgressBarProps> = ({ current, max, name, takePart, criteria }) => {
+const ChallengeProgressBar: React.FC<ProgressBarProps> = ({ current, max, name, criteria }) => {
   const percentage = Math.floor(max > 0 ? (current / max) * 100 : 0);
 
   return (
     <div className={styles.container}>
       <div className={styles.textContainer}>
-        <div className={styles.icon}>{takePart ? <OpenBookIcon /> : <ChallengeBookIcon />}</div>
+        <div className={styles.icon}>
+          <OpenBookIcon />
+        </div>
         <div className={styles.allText}>
           <p className={styles.text}>
             Przeczytać<p className={styles.smallText}> {max}</p>
