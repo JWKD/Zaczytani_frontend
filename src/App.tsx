@@ -22,6 +22,9 @@ import HomeLayout from './layout/HomeLayout';
 import CurrentlyReadingReviewPage from './pages/CurrentlyReadingReviewPage';
 import UserPage from './pages/UserPage';
 import ReviewDetailsPage from './pages/ReviewDetailsPage';
+import CreateChallengePage from './pages/CreateChallengePage';
+import ChallengePage from './pages/ChallengePage';
+import ChallengeLayout from './layout/ChallengeLayout';
 import ReportUserPage from './pages/ReportUserPage';
 
 const router = createBrowserRouter([
@@ -53,8 +56,18 @@ const router = createBrowserRouter([
       { path: '/review/progress/:id', element: <CurrentlyReadingReviewPage /> },
       { path: '/user/profile', element: <UserPage /> },
       { path: '/review/:id', element: <ReviewDetailsPage /> },
+      { path: '/user/challenge/add', element: <CreateChallengePage /> },
       { path: '/report/:id', element: <ReportUserPage /> },
     ],
+  },
+  {
+    path: '/user/challenge',
+    element: (
+      <PrivateRoute>
+        <ChallengeLayout />
+      </PrivateRoute>
+    ),
+    children: [{ path: '/user/challenge', element: <ChallengePage /> }],
   },
   {
     path: '/auth',

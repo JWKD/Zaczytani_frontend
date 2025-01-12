@@ -1,3 +1,4 @@
+import CurrentChallenges from '../../components/CurrentChallenges/CurrentChallenges';
 import ProgressComponent from '../../components/ProgressComponent/ProgressComponent';
 import ShakeButton from '../../components/ShakeButton/ShakeButton';
 import ShelvesContainer from '../../components/ShelvesContainer/ShelvesContainer';
@@ -12,6 +13,7 @@ function Home() {
           <BookIcon />
         </div>
         <ProgressComponent />
+        <CurrentChallenges challengeQuantity={1} />
         <ShakeButton />
       </section>
       <section className={styles.rightPanel}>

@@ -1,0 +1,27 @@
+.buttonContainer {
+    margin-left: 70px;
+  display: flex;
+  height: 32px;
+  width: 145px;
+  justify-content: space-between;
+  background-color: #8b7e74;
+  border-radius: 20px;
+  padding: 5px 15px;
+  font-family: Roboto serif;
+  cursor: pointer;
+  text-decoration: none;
+  .icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .textContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .text {
+      color: white;
+      font-size: 15px;
+    }
+  }
+}
