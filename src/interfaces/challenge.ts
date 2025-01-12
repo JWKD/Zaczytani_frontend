@@ -1,5 +1,3 @@
-import { strict } from 'assert';
-
 export interface Challenge {
   id: string;
   booksToRead: number;

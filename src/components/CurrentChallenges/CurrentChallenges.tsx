@@ -18,7 +18,6 @@ const CurrentChallenges: React.FC<CurrentChallengesProps> = ({ challengeQuantity
     try {
       const result = await challengeApi.getAllProgressChallenges();
       setProgressChallenges(result);
-      console.log(result);
     } catch (err) {
       setError('Wystąpił nieoczekiwany problem');
     } finally {
@@ -30,7 +29,11 @@ const CurrentChallenges: React.FC<CurrentChallengesProps> = ({ challengeQuantity
     fetchData();
   }, []);
 
-  return (
+  return loading ? (
+    <div>Loading ...</div>
+  ) : error ? (
+    <div>Error: {error}</div>
+  ) : (
     <div className={styles.container}>
       <div className={styles.titleSection}>
         <p className={styles.componentName}>Wyzwania czytelnicze</p>

@@ -78,10 +78,10 @@ function CreateChallenge() {
   async function postChallengeToApi() {
     try {
       await challengeApi.postChallenge(challenge);
-      console.log('Wyzwanie zostało dodane!');
     } catch (error) {
-      console.error('Błąd podczas dodawania wyzwania:', error);
+      setError('Wystąpił nieoczekiwany problem');
     } finally {
+      setLoading(false);
       alert('Wyzwanie dodano pomyślnie!');
     }
   }
