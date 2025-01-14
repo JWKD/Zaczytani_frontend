@@ -1,0 +1,210 @@
+.mainContainer {
+  max-width: 90%;
+  padding: 30px;
+  font-family: Roboto serif;
+  font-size: 16px;
+  margin-left: 10%;
+
+  .currentlyReading {
+    display: flex;
+    max-width: 360px;
+    background-color: #c3b6ac4d;
+    color: #4a3423;
+    padding: 10px;
+    padding-left: 20px;
+    font-weight: bolder;
+    font-size: 20px;
+    border-radius: 20px;
+    span {
+      margin-left: 100px;
+      display: flex;
+    }
+  }
+  .secondContainer {
+    background-color: #ffffff66;
+    padding: 30px;
+    border-radius: 20px;
+    margin-top: 20px;
+    width: 90%;
+
+    .thirdContainer {
+      margin-left: 50px;
+      margin-right: 50px;
+    }
+
+    .updateText {
+      font-size: 20px;
+      font-weight: bold;
+      color: #4a3423;
+      display: flex;
+      margin-bottom: 20px;
+      .updateTextP {
+        margin-left: 8px;
+        font-size: 20px;
+      }
+    }
+
+    .detailsCover {
+      display: flex;
+      margin-bottom: 20px;
+      img {
+        width: 120px;
+        height: auto;
+        max-height: 168px;
+        box-shadow: 0 4px 6px #0000001a;
+      }
+
+      .details {
+        background-color: #c3b6ac4d;
+        margin-top: 40px;
+        margin-bottom: 40px;
+        border-top-right-radius: 50px;
+        border-bottom-right-radius: 50px;
+        width: 100%;
+        text-align: center;
+        .title {
+          font-weight: 800;
+          color: #333;
+          margin-bottom: 5px;
+          margin-top: 10px;
+        }
+        .authors {
+          color: #665243;
+          font-weight: 500;
+          margin-bottom: 5px;
+        }
+
+        .series {
+          color: #0000008c;
+          font-weight: 300;
+          margin-bottom: 10px;
+        }
+      }
+    }
+    .inputContainer {
+      position: relative;
+      margin-bottom: 18px;
+      margin-left: 120px;
+    }
+    .inputContainerNext {
+      position: relative;
+    }
+    .page {
+      input[type='number']::-webkit-inner-spin-button,
+      input[type='number']::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+
+      input {
+        border: none;
+        outline: none;
+        background-color: #ffffff8f;
+        max-width: 90px;
+        margin-left: 3px;
+        margin-right: 3px;
+        border-radius: 5px;
+        padding: 5px;
+      }
+    }
+    .rating {
+      color: #4a3423;
+      font-weight: 500;
+      margin-left: 120px;
+      display: flex;
+      p {
+        margin-right: 3px;
+      }
+      span {
+        padding-left: 2px;
+        padding-right: 2px;
+      }
+    }
+    .review {
+      color: #4a3423;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    .content {
+      width: 100%;
+      outline: none;
+      border: none;
+      box-shadow: none;
+      border-radius: 5px;
+      height: 200px;
+      padding: 10px;
+      resize: none;
+      font-size: 16px;
+      font-weight: 300;
+    }
+    .spoiler {
+      display: flex;
+      justify-content: right;
+      text-align: center;
+      padding: 10px;
+      font-size: 20px;
+      margin-bottom: 5px;
+      .unchecked {
+        width: 20px;
+        height: 20px;
+        background-color: white;
+        border-radius: 5px;
+        position: absolute;
+        border: 1px solid #d6cfca;
+      }
+      .checked {
+        position: absolute;
+        margin-right: 23px;
+      }
+      p {
+        margin-left: 23px;
+      }
+    }
+    .buttons {
+      display: flex;
+      justify-content: space-between;
+      .update {
+        background-color: #b8dc8cd4;
+        color: white;
+        text-align: center;
+        width: 32%;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+      .update:hover {
+        background-color: #a3c88b;
+      }
+      .final {
+        background-color: #1fc7a599;
+        color: white;
+        text-align: center;
+        width: 32%;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+      .final:hover {
+        background-color: #1da78bc5;
+      }
+      .cancel {
+        background-color: #743836b2;
+        color: white;
+        text-align: center;
+        width: 32%;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+      .cancel:hover {
+        background-color: #743836;
+      }
+    }
+  }
+}
+.error {
+  position: absolute;
+  top: 100%;
+  color: red;
+  font-size: 11px;
+}

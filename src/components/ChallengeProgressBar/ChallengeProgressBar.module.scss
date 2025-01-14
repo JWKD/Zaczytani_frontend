@@ -1,0 +1,76 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff8f;
+  border-radius: 5px;
+  height: 80px;
+  width: 412px;
+  font-family: Roboto serif;
+  color: #543e2e;
+  padding: 5px;
+  .textContainer {
+    margin-left: 20px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    margin: auto;
+    margin-top: none;
+    margin-left: 19px;
+    margin-right: 19px;
+    .allText {
+      display: flex;
+      flex-direction: column;
+      .text {
+        display: flex;
+        flex-direction: row;
+        margin-left: 10px;
+        font-size: 16px;
+        font-weight: 600;
+        .smallText {
+          font-weight: 300;
+          margin-left: 2px;
+          margin-right: 3px;
+        }
+      }
+      .dotContainer {
+        display: flex;
+        margin-left: 10px
+      }
+    }
+  }
+
+  .percentageSection {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .barContainer {
+      width: 323px;
+      height: 19px;
+      background-color: #c3b6ac4d;
+      overflow: hidden;
+      position: relative;
+      .progressText {
+        margin-top: 1px;
+        position: absolute;
+        width: 100%;
+        text-align: center;
+        font-size: 13px;
+        font-weight: 300;
+        color: #4a3423;
+      }
+      .progressBar {
+        margin: 1%;
+        max-width: 98%;
+        height: 13px;
+        background-color: #1fc7a54a;
+        width: 95%;
+      }
+    }
+    .percentRating {
+      color: #4a3423;
+      font-size: 16px;
+      font-weight: 400;
+      margin-left: 10px;
+    }
+  }
+}

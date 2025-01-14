@@ -1,0 +1,29 @@
+.homeContainer {
+  display: flex;
+  gap: 50px;
+  padding: 19px;
+  justify-content: space-around;
+  .leftPanel {
+    display: grid;
+    place-items: center;
+    gap: 19px;
+    .titleContainer {
+      background-color: #c3b6ac4d;
+      border-radius: 50px;
+      width: 367px;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 100px;
+      .componentName {
+        font-family: Roboto serif;
+        font-size: 20px;
+        font-weight: 800;
+        color: #4a3423;
+      }
+    }
+  }
+  .rightPanel {
+  }
+}

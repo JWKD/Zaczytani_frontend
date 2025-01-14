@@ -1,0 +1,133 @@
+.shelfPopUpContainer {
+  width: 770px;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff66;
+  border-radius: 10px;
+
+  .addShelfContainer {
+    background-color: white;
+    width: 514px;
+    height: 314px;
+    border-radius: 10px;  
+
+    .title {
+      font-family: 'Roboto Serif';
+      font-size: 20px;
+      color: #4a3423;
+      display: flex;
+      margin: 15px;
+      .text {
+        margin-left: 5px;
+        font-size: 20px;
+      }
+    }
+    .centerContainer {
+      padding: 50px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      .shelfContainer {
+        width: 250px;
+        margin: 8px;
+
+        .booksContainer {
+          width: 250px;
+          margin-bottom: none;
+          display: flex;
+          justify-content: space-between;
+          padding: 0 15px;
+
+          .images {
+            height: 100px;
+            width: 70px;
+            margin-bottom: 0px;
+          }
+          .imageWithText {
+            position: relative;
+            height: 100px;
+            width: 70px;
+
+            img {
+              height: 100%;
+              width: 100%;
+            }
+
+            .textOverlay {
+              margin-top: 3px;
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              text-align: center;
+            }
+          }
+        }
+
+        .bar {
+          margin: 0px;
+          height: 13px;
+          width: 250px;
+          background-color: rgba(74, 52, 35, 0.76);
+        }
+        .placeholder {
+          font-family: 'Roboto Serif';
+          width: 250px;
+          text-align: center;
+          border: none;
+        }
+        .errorText {
+          margin-top: 2px;
+          font-family: 'Roboto Serif';
+          text-align: center;
+          color: red;
+          font-size: 11px;
+          position: absolute;
+        }
+
+        .text {
+          text-align: center;
+          padding: 5px;
+          font-family: 'Roboto Serif';
+          color: #948b89;
+        }
+      }
+    }
+    .buttonContainer {
+      text-align: right;
+      margin-right: 15px;
+      margin: 15px;
+      .addButton {
+        background-color: #b8dc8c;
+        border-radius: 30px;
+        border: none;
+        color: white;
+        width: 123px;
+        height: 31px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+      .addButton:hover {
+        background-color: #a3c88b;
+      }
+      .cancelButton {
+        background-color: #8f4f4a;
+        border-radius: 30px;
+        border: none;
+        color: white;
+        width: 123px;
+        height: 31px;
+        margin-left: 20px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+      .cancelButton:hover {
+        background-color: #743836;
+      }
+    }
+  }
+}

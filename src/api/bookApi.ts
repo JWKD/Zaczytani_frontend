@@ -1,10 +1,70 @@
-import { Book } from '../interfaces/book';
+import {
+  AuthorBooks,
+  Author,
+  Book,
+  BookRequest,
+  PublishingHouse,
+  BookRequestRequest,
+  CurrentlyReading,
+} from '../interfaces/book';
+import { Review } from '../interfaces/review';
 import apiClient from './config/axios';
 import endpoints from './config/endpoints';
 
 const dataApi = {
-  getData: async (): Promise<Book[]> => {
-    const response = await apiClient.get<Book[]>(endpoints.book.fetch);
+  getBookDetails: async (id: string): Promise<Book> => {
+    const response = await apiClient.get<Book>(endpoints.book.fetchDetails(id));
+    return response.data;
+  },
+
+  getSearchedBooks: async (searchPhrase: string): Promise<AuthorBooks[]> => {
+    const response = await apiClient.get<AuthorBooks[]>(endpoints.book.fetchSearchedBooks, {
+      params: { searchPhrase },
+    });
+    return response.data;
+  },
+
+  postRandomBook: async (): Promise<Book> => {
+    const response = await apiClient.post(endpoints.book.getRandomBook);
+    return response.data;
+  },
+
+  gethasDrawn: async (): Promise<Book> => {
+    const response = await apiClient.get<Book>(endpoints.book.fetchBookHasDrawn);
+    return response.data;
+  },
+
+  getAuthors: async (): Promise<Author[]> => {
+    const response = await apiClient.get<Author[]>(endpoints.book.fetchAuthors);
+    return response.data;
+  },
+
+  getGenres: async (): Promise<string[]> => {
+    const response = await apiClient.get<string[]>(endpoints.book.fetchGenres);
+    return response.data;
+  },
+
+  getPublishingHouses: async (): Promise<PublishingHouse[]> => {
+    const response = await apiClient.get<PublishingHouse[]>(endpoints.book.fetchPublishingHouses);
+    return response.data;
+  },
+
+  getBookRequest: async (): Promise<BookRequest[]> => {
+    const response = await apiClient.get<BookRequest[]>(endpoints.book.fetchBookRequest);
+    return response.data;
+  },
+
+  postBookRequest: async (payload: BookRequestRequest): Promise<void> => {
+    return await apiClient.post(endpoints.book.bookRequest, payload);
+  },
+
+  getProgress: async (): Promise<CurrentlyReading[]> => {
+    const response = await apiClient.get<CurrentlyReading[]>(endpoints.book.fetchCurrentlyReading);
+    return response.data;
+  },
+
+  getReviews: async (id: string): Promise<Review[]> => {
+    const response = await apiClient.get<Review[]>(endpoints.book.fetchReviews(id));
     return response.data;
   },
 

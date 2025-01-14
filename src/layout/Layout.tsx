@@ -1,19 +1,17 @@
-import { Container, styled } from '@mui/material';
-import Navigation from './Navigation';
 import { Outlet } from 'react-router-dom';
-
-const StyledContainer = styled(Container)(({ theme }) => ({
-  display: 'flex',
-  flexDirection: 'column',
-  padding: theme.spacing(0, 2),
-}));
+import Navigation from './Navigation/Navigation';
+import UserImage from '../components/UserImage/UserImage';
+import BookSearch from '../components/BookSearch/BookSearch';
 
 const Layout = () => {
   return (
-    <StyledContainer>
-      <Navigation />
+    <>
+      <Navigation>
+        <BookSearch />
+        <UserImage />
+      </Navigation>
       <Outlet />
-    </StyledContainer>
+    </>
   );
 };
 

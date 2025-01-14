@@ -1,0 +1,125 @@
+.pageContainer {
+  display: flex;
+  gap: 10px;
+  .leftContainer {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px;
+    .titleSection {
+      background-color: #c3b6ac4d;
+      border-radius: 50px;
+      width: 367px;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 100px;
+      .componentName {
+        font-family: Roboto serif;
+        font-size: 20px;
+        font-weight: 800;
+        color: #4a3423;
+      }
+    }
+    .pageText {
+      font-family: Roboto serif;
+      font-size: 18px;
+      background-color: #ffffff66;
+      border-radius: 10px;
+      padding: 20px;
+      width: 367px;
+      margin-top: 20px;
+      height: 71vh;
+    }
+  }
+  .rightContainer {
+    flex: 1;
+    margin-right: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #0000000d;
+    flex-direction: column;
+    .sectionTitle {
+      font-family: 'Roboto Serif';
+      font-size: 20px;
+      font-weight: 600;
+      color: #4a3423;
+      display: flex;
+      margin: 10px;
+      .title {
+        margin-left: 5px;
+      }
+    }
+    .optionsContainer {
+      flex: 1;
+      padding: 30px;
+      .markContainer{
+        margin-right: 3px;
+      }
+      .input{
+        border: none;
+        margin-left: 3px;
+        margin-right: 3px;
+        text-align: center;
+        width: 60px;
+        height: 28px;
+        border-radius: 5px;
+      }
+      .bookCountOption{
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+        
+      }
+      .genreOption{
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+      }
+      .authorOption{
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+      }
+      .validationContainer{
+        color: red;
+      }
+    }
+    .buttonContainer {
+      text-align: right;
+      margin: 15px;
+      margin-right: 20px;
+      .addButton {
+        background-color: #b8dc8c;
+        border-radius: 30px;
+        border: none;
+        color: white;
+        width: 123px;
+        height: 31px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+      .addButton:hover {
+        background-color: #a3c88b;
+      }
+      .cancelButton {
+        background-color: #8f4f4a;
+        border-radius: 30px;
+        border: none;
+        color: white;
+        width: 123px;
+        height: 31px;
+        margin-left: 20px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+      .cancelButton:hover {
+        background-color: #743836;
+      }
+    }
+  }
+}
