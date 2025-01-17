@@ -17,7 +17,7 @@ const CurrentChallenges: React.FC<CurrentChallengesProps> = ({ challengeQuantity
   const fetchData = async () => {
     try {
       const result = await challengeApi.getAllProgressChallenges();
-      setProgressChallenges(result);
+      setProgressChallenges(result.slice().reverse());
     } catch (err) {
       setError('Wystąpił nieoczekiwany problem');
     } finally {

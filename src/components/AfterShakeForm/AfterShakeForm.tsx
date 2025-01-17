@@ -33,7 +33,7 @@ function AfterShakeForm({ book }: AfterShakeFormProps) {
         </h2>
         <div className={styles.bookRatingContainer}>
           <Star />
-          <p className={styles.rating}>{book?.rating}</p>
+          <p className={styles.rating}> {book?.rating === null ? 0 : book?.rating.toFixed(1)}</p>
         </div>
         <button className={styles.addToShelfButton} onClick={addBookToShelf}>
           Dodaj do półki

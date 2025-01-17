@@ -3,20 +3,15 @@
   flex-direction: column;
   background-color: #ffffff8f;
   border-radius: 5px;
-  height: 80px;
-  width: 412px;
   font-family: Roboto serif;
   color: #543e2e;
-  padding: 5px;
+  width: 100%;
+  padding: 10px;
+  gap: 10px;
   .textContainer {
-    margin-left: 20px;
-    margin-bottom: 10px;
+    
     display: flex;
     align-items: center;
-    margin: auto;
-    margin-top: none;
-    margin-left: 19px;
-    margin-right: 19px;
     .allText {
       display: flex;
       flex-direction: column;
@@ -43,8 +38,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
+  
     .barContainer {
-      width: 323px;
+      width: 100%;
       height: 19px;
       background-color: #c3b6ac4d;
       overflow: hidden;
