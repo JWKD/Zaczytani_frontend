@@ -4,6 +4,7 @@ import ChallengeProgressBar from '../ChallengeProgressBar/ChallengeProgressBar';
 import styles from './CurrentChallenges.module.scss';
 import { Challenge } from '../../interfaces/challenge';
 import challengeApi from '../../api/challengeApi';
+import CatLoader from '../CatLoader/CatLoader';
 
 interface CurrentChallengesProps {
   challengeQuantity: number;
@@ -17,7 +18,7 @@ const CurrentChallenges: React.FC<CurrentChallengesProps> = ({ challengeQuantity
   const fetchData = async () => {
     try {
       const result = await challengeApi.getAllProgressChallenges();
-      setProgressChallenges(result);
+      setProgressChallenges(result.slice().reverse());
     } catch (err) {
       setError('Wystąpił nieoczekiwany problem');
     } finally {
@@ -30,7 +31,9 @@ const CurrentChallenges: React.FC<CurrentChallengesProps> = ({ challengeQuantity
   }, []);
 
   return loading ? (
-    <div>Loading ...</div>
+    <div style={{ width: '100px' }}>
+      <CatLoader />
+    </div>
   ) : error ? (
     <div>Error: {error}</div>
   ) : (

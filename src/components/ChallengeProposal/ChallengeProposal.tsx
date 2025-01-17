@@ -20,7 +20,6 @@ const ChallengeProposal: React.FC<ChallengeProposalProps> = ({ current, max, nam
     } catch (error) {
       console.error('Błąd podczas dołączania do wyzwania:', error);
     } finally {
-      alert('Dołączono pomyślnie!');
       onChangeValue();
     }
   };

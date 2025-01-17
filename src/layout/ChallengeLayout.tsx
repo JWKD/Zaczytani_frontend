@@ -12,7 +12,14 @@ function ChallengeLayout() {
         <BookSearch />
         <UserImage />
       </Navigation>
-      <Outlet />
+      <div
+        style={{
+          maxWidth: '1280px',
+          margin: '0 auto',
+        }}
+      >
+        <Outlet />
+      </div>
     </>
   );
 }

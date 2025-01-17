@@ -24,11 +24,13 @@
     .bookTitle {
       font-size: 18px;
       margin-bottom: 5px;
+      font-family: 'Roboto Serif';
     }
     .authors {
       font-size: 14px;
       margin-bottom: 5px;
       color: #665243;
+      font-family: 'Roboto Serif';
     }
     .bookRatingContainer {
       display: flex;
@@ -36,6 +38,7 @@
       justify-content: center;
       margin-bottom: 5px;
       .rating {
+        font-family: 'Roboto Serif';
         margin-left: 5px;
       }
     }
