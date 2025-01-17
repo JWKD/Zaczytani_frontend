@@ -1,11 +1,12 @@
 import { useNavigate } from 'react-router-dom';
 import styles from './LogOutPopUp.module.scss';
+import { useUser } from '../../context/UserContext';
 
 function LogOutPopUp() {
   const navigate = useNavigate();
+  const { logout } = useUser();
   function handleLogOut() {
-    localStorage.removeItem('accessToken');
-    localStorage.removeItem('refreshToken');
+    logout();
     navigate('/auth/login');
   }
 
