@@ -70,9 +70,11 @@ function AuthorDetails() {
                       <h3 className={styles.series}>{book.series}</h3>
                       <h3 className={styles.rating}>
                         <Star />
-                        <strong>Ocena: </strong> {book.rating ?? 'Brak'} / 10
+                        <strong>Ocena: </strong> {Math.round(book.rating * 10) / 10} / 10
                       </h3>
-                      <h3 className={styles.review}>Recenzje bla bla</h3>
+                      <h3 className={styles.review}>
+                        {book.readers} czytelników - {book.reviews} recenzji
+                      </h3>
                     </ul>
                   </div>
                 </div>

@@ -69,6 +69,9 @@ function BookSearch() {
             rating: bookData.rating,
             series: bookData.series,
             publishingHouse: bookData.publishingHouse,
+            ratingCount: bookData.ratingCount,
+            reviews: bookData.reviews,
+            readers: bookData.readers,
             authors: [
               {
                 id: authorData.id,
