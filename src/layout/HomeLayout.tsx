@@ -16,7 +16,7 @@ function HomeLayout() {
       </Navigation>
       <div
         style={{
-          maxWidth: '1280px',
+          maxWidth: '1390px',
           margin: '0 auto',
         }}
       >

@@ -63,6 +63,23 @@
           }
           .rack {
             margin-right: 20px;
+            position: relative;
+            .icon {
+              cursor: pointer;
+            }
+            .logOutPopUp {
+              opacity: 0;
+              transform: translateY(-10px);
+              transition:
+                opacity 0.3s ease,
+                transform 0.3s ease;
+              pointer-events: none;
+            }
+            .logOutPopUp.visible {
+              opacity: 1;
+              transform: translateY(0);
+              pointer-events: auto;
+            }
           }
         }
         .buttonContainer {

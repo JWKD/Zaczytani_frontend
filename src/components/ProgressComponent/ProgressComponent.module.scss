@@ -3,11 +3,12 @@
   gap: 8px;
   max-height: 314px;
   overflow-y: auto;
+  width: 100%;
   .bookDetails {
     background-color: #ffffff8f;
     border-radius: 5px;
     height: 152px;
-    width: 412px;
+    width: auto;
     display: flex;
     justify-content: space-around;
     padding: 6px;
