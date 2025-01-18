@@ -83,7 +83,7 @@ function UserDetails() {
             </div> */}
           </div>
           <div className={styles.rightSection}>
-            <CurrentChallenges challengeQuantity={3} />
+            <CurrentChallenges challengeQuantity={2} />
           </div>
         </div>
 
