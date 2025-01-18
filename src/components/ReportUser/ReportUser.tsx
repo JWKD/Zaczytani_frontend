@@ -50,7 +50,7 @@ function ReportUser(review: ReviewPage) {
   const handleReport = () => {
     if (validateForm()) {
       postReport();
-      navigate('/');
+      navigate(-1);
     }
   };
 

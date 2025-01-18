@@ -134,7 +134,7 @@ function ReviewDetails({ bookId }: ReviewDetailsProps) {
                   </div>
                   <div className={styles.noteRating}>
                     <Star />
-                    <p>{review.rating + '  / 10'}</p>
+                    <p>{note.rating + '  / 10'}</p>
                   </div>
                 </div>
                 {note.containsSpoilers ? (
