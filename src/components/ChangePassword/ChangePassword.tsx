@@ -9,7 +9,7 @@ import { useUser } from '../../context/UserContext';
 
 function ChangePassword() {
   const [newPassword, setNewPassword] = useState<string>('');
-  const [newPasswordTwo, setNewPasswordTwo] = useState<string>('');
+  const [confirmPassword, setConfirmPassword] = useState<string>('');
   const [oldPassword, setOldPassword] = useState<string>('');
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
   const { logout } = useUser();
@@ -43,7 +43,7 @@ function ChangePassword() {
   const validateForm = () => {
     const newErrors: { [key: string]: string } = {};
 
-    if (newPassword !== newPasswordTwo) {
+    if (newPassword !== confirmPassword) {
       newErrors.different = 'Upewnij się czy hasła są takie same!';
     }
     if (
@@ -72,7 +72,7 @@ function ChangePassword() {
   };
 
   const handleChangeNewPasswordTwo = (password: string) => {
-    setNewPasswordTwo(password);
+    setConfirmPassword(password);
   };
 
   return (
@@ -107,7 +107,7 @@ function ChangePassword() {
           <input
             type="password"
             placeholder="Nowe hasło"
-            value={newPasswordTwo}
+            value={confirmPassword}
             onChange={(e) => handleChangeNewPasswordTwo(e.target.value)}
           />
         </div>
