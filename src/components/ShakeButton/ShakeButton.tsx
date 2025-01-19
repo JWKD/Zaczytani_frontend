@@ -7,9 +7,8 @@ function ShakeButton() {
     <Link to="/user/shake" className={styles.shakeomatButton}>
       <img src={image} alt="Books" className={styles.shakeomatImage} />
       <div className={styles.shakeomatText}>
-        <strong className={styles.text}>Shakeomat</strong>
-        <br />
-        <span>Wylosuj książkę do czytania.</span>
+        <span className={styles.text}>Shakeomat</span>
+        <span className={styles.bottomText}>Wylosuj książkę do czytania.</span>
       </div>
     </Link>
   );

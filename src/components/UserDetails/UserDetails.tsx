@@ -77,13 +77,13 @@ function UserDetails() {
                 Moje zgłoszenia
               </Link>
             </div>
-            <div className={styles.decorationsContainer}>
+            {/* <div className={styles.decorationsContainer}>
               <p className={styles.badgesName}>Odznaczenia:</p>
               <div className={styles.badgesBack}></div>
-            </div>
+            </div> */}
           </div>
           <div className={styles.rightSection}>
-            <CurrentChallenges challengeQuantity={3} />
+            <CurrentChallenges challengeQuantity={2} />
           </div>
         </div>
 

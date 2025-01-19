@@ -9,11 +9,16 @@ function LogOutPopUp() {
     logout();
     navigate('/auth/login');
   }
+  function handleChangePassword() {
+    navigate('/user/changepassword');
+  }
 
   return (
     <div className={styles.container}>
       <div className={styles.element}>Zmień zdjęcie profilowe</div>
-      <div className={styles.element}>Zmień hasło</div>
+      <div className={styles.element} onClick={handleChangePassword}>
+        Zmień hasło
+      </div>
       <div className={styles.element} onClick={handleLogOut}>
         Wyloguj
       </div>

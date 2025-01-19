@@ -20,6 +20,7 @@ const endpoints = {
     login: `Identity/login`,
     refreshToken: 'Identity/refresh',
     fetchDetails: `User/Profile`, // Endpoint do pobierania danych o profilu użytkownika
+    changePassword: `Identity/manage/info`, // Endpoint do zmiany hasła
   },
   file: {
     postFile: `File`, // Endpoint do wysyłania pliku
@@ -33,6 +34,7 @@ const endpoints = {
     delete: `Bookshelf/Delete`, // Endpoint do usuwania półki
     attach: (shelfId: string, bookId: string) => `Bookshelf/${shelfId}/${bookId}/Attach`, // Endpoint do dodania książki na daną półkę
     detach: (shelfId: string, bookId: string) => `Bookshelf/${shelfId}/${bookId}/Detach`, // Endpoint do usuwania książki z danej półki
+    fetchShelfId: `BookShelf/CurrentlyReadingShelfId`, // Endpoint do pobrania id półki aktualnie czytane
   },
   review: {
     fetchCurrentlyReadingBookDetails: (id: string) => `Review/${id}/Progress`, // Endpoint do pobierania detali książki do recenzji

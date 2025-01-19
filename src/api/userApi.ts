@@ -1,5 +1,5 @@
 import { LoginRequest } from '../interfaces/login';
-import { UserProfileDetails } from '../interfaces/user';
+import { ChangePasswordPost, UserProfileDetails } from '../interfaces/user';
 import apiClient from './config/axios';
 import endpoints from './config/endpoints';
 
@@ -12,6 +12,10 @@ const userApi = {
   getDetails: async (): Promise<UserProfileDetails> => {
     const response = await apiClient.get<UserProfileDetails>(endpoints.user.fetchDetails);
     return response.data;
+  },
+  changePassword: async (payload: ChangePasswordPost) => {
+    const response = await apiClient.post(endpoints.user.changePassword, payload);
+    return response;
   },
 };
 
