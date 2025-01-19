@@ -23,3 +23,8 @@ export interface UserProfileDetails {
   readBooks: Book[];
   currentlyReading: Book[];
 }
+
+export interface ChangePasswordPost {
+  newPassword: string;
+  oldPassword: string;
+}
