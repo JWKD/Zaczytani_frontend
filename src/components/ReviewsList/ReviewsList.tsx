@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react';
 import { Review } from '../../interfaces/review';
 import bookApi from '../../api/bookApi';
 import SingleReview from '../SingleReview/SingleReview';
-import CatLoader from '../CatLoader/CatLoader';
 
 interface ReviewsListProps {
   bookId: string;

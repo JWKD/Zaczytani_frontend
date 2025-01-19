@@ -20,6 +20,7 @@ const endpoints = {
     login: `Identity/login`,
     refreshToken: 'Identity/refresh',
     fetchDetails: `User/Profile`, // Endpoint do pobierania danych o profilu użytkownika
+    changePassword: `Identity/manage/info`, // Endpoint do zmiany hasła
   },
   file: {
     postFile: `File`, // Endpoint do wysyłania pliku

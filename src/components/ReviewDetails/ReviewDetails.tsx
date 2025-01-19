@@ -53,6 +53,7 @@ function ReviewDetails({ bookId }: ReviewDetailsProps) {
         comments: review.comments.length,
         notesCount: review.notes.length,
         user: review.user,
+        isLiked: review.isLiked,
       });
     }
   };
