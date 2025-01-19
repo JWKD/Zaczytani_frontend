@@ -76,6 +76,8 @@
               pointer-events: none;
             }
             .logOutPopUp.visible {
+              position: absolute;
+              z-index: 9999;
               opacity: 1;
               transform: translateY(0);
               pointer-events: auto;
