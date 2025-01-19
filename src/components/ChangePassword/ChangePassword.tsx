@@ -9,10 +9,11 @@ import { useUser } from '../../context/UserContext';
 
 function ChangePassword() {
   const [newPassword, setNewPassword] = useState<string>('');
-  const [newPassword1, setNewPassword1] = useState<string>('');
+  const [newPasswordTwo, setNewPasswordTwo] = useState<string>('');
   const [oldPassword, setOldPassword] = useState<string>('');
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
   const { logout } = useUser();
+  const navigate = useNavigate();
 
   const postData = async () => {
     try {
@@ -42,7 +43,7 @@ function ChangePassword() {
   const validateForm = () => {
     const newErrors: { [key: string]: string } = {};
 
-    if (newPassword !== newPassword1) {
+    if (newPassword !== newPasswordTwo) {
       newErrors.different = 'Upewnij się czy hasła są takie same!';
     }
     if (
@@ -58,8 +59,6 @@ function ChangePassword() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const navigate = useNavigate();
-
   const handleCancel = () => {
     navigate(-1);
   };
@@ -72,8 +71,8 @@ function ChangePassword() {
     setNewPassword(password);
   };
 
-  const handleChangeNewPassword1 = (password: string) => {
-    setNewPassword1(password);
+  const handleChangeNewPasswordTwo = (password: string) => {
+    setNewPasswordTwo(password);
   };
 
   return (
@@ -108,8 +107,8 @@ function ChangePassword() {
           <input
             type="password"
             placeholder="Nowe hasło"
-            value={newPassword1}
-            onChange={(e) => handleChangeNewPassword1(e.target.value)}
+            value={newPasswordTwo}
+            onChange={(e) => handleChangeNewPasswordTwo(e.target.value)}
           />
         </div>
 
