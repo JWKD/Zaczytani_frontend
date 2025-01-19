@@ -21,7 +21,7 @@ function BookDetails({ id }: BookDetailsProps) {
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   const [isVisible, setIsVisible] = useState<boolean>(false);
-  const [currentShelf, setShelfId] = useState<CurrentlyReadingShelf>();
+  const [currentShelf, setCurrentShelf] = useState<CurrentlyReadingShelf>();
   const navigate = useNavigate();
 
   const handleChangeValue = (newValue: boolean) => {
@@ -48,7 +48,7 @@ function BookDetails({ id }: BookDetailsProps) {
         const result = await dataApi.getBookDetails(id);
         setBook(result);
         const shelfResult = await shelfApi.getShelfId();
-        setShelfId(shelfResult);
+        setCurrentShelf(shelfResult);
       } catch (err) {
         setError('Wystąpił błąd');
       } finally {
