@@ -28,6 +28,7 @@ import ChallengeLayout from './layout/ChallengeLayout';
 import ReportUserPage from './pages/ReportUserPage';
 import ResetPassword from './pages/ResetPassword';
 import ConfirmEmail from './pages/ConfirmEmail';
+import ChangePasswordPage from './pages/ChangePasswordPage';
 
 const router = createBrowserRouter([
   {
@@ -60,6 +61,7 @@ const router = createBrowserRouter([
       { path: '/review/:id', element: <ReviewDetailsPage /> },
       { path: '/user/challenge/add', element: <CreateChallengePage /> },
       { path: '/report/:id', element: <ReportUserPage /> },
+      { path: '/user/changepassword', element: <ChangePasswordPage /> },
     ],
   },
   {

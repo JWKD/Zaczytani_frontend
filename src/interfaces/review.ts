@@ -27,6 +27,7 @@ export interface Review {
   comments: number;
   notesCount: number;
   user: UserInfo;
+  isLiked: boolean;
 }
 
 export interface BookReview {
@@ -61,4 +62,5 @@ export interface ReviewPage {
   book: BookReview;
   notes: Note[];
   comments: Comment[];
+  isLiked: boolean;
 }

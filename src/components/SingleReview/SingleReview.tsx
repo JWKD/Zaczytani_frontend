@@ -12,14 +12,12 @@ import { useNavigate } from 'react-router-dom';
 
 function SingleReview(initialReview: Review) {
   const [review, setReview] = useState<Review>(initialReview);
-  const [isLiked, setIsLiked] = useState<boolean>(false);
   const navigate = useNavigate();
 
   const postLike = async (id: string) => {
     try {
       await reviewApi.postLike(id);
-      setIsLiked(true);
-      setReview((prevReview) => ({ ...prevReview, likes: prevReview.likes + 1 }));
+      setReview((prevReview) => ({ ...prevReview, likes: prevReview.likes + 1, isLiked: true }));
     } catch (error) {
       console.error('Błąd podczas polubienia:', error);
     }
@@ -28,15 +26,14 @@ function SingleReview(initialReview: Review) {
   const postUnlike = async (id: string) => {
     try {
       await reviewApi.postUnlike(id);
-      setIsLiked(false);
-      setReview((prevReview) => ({ ...prevReview, likes: prevReview.likes - 1 }));
+      setReview((prevReview) => ({ ...prevReview, likes: prevReview.likes - 1, isLiked: false }));
     } catch (error) {
       console.error('Błąd podczas cofnięcia polubienia:', error);
     }
   };
 
   const handleLike = (id: string) => {
-    isLiked ? postUnlike(id) : postLike(id);
+    review.isLiked ? postUnlike(id) : postLike(id);
   };
 
   const handleComment = () => {
@@ -61,8 +58,8 @@ function SingleReview(initialReview: Review) {
 
           <div className={styles.likesAndComm}>
             <span onClick={() => handleLike(review.id)}>
-              {isLiked && <Liked />}
-              {!isLiked && <Like />}
+              {review.isLiked && <Liked />}
+              {!review.isLiked && <Like />}
               {review.likes}
             </span>
             <span onClick={() => handleComment()}>

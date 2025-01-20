@@ -1,5 +1,5 @@
 import { Book } from '../interfaces/book';
-import { CreateShelf, DeleteShelf, Shelf, UpdateShelf } from '../interfaces/Shelf';
+import { CreateShelf, CurrentlyReadingShelf, DeleteShelf, Shelf, UpdateShelf } from '../interfaces/Shelf';
 import apiClient from './config/axios';
 import endpoints from './config/endpoints';
 
@@ -14,6 +14,10 @@ const shelfApi = {
   },
   getShelf: async (id: string): Promise<Shelf> => {
     const response = await apiClient.get<Shelf>(endpoints.shelf.fetchShelf(id));
+    return response.data;
+  },
+  getShelfId: async (): Promise<CurrentlyReadingShelf> => {
+    const response = await apiClient.get<CurrentlyReadingShelf>(endpoints.shelf.fetchShelfId);
     return response.data;
   },
   postShelf: async (payload: CreateShelf): Promise<void> => {
