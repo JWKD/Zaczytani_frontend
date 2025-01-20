@@ -27,6 +27,7 @@ import ChallengePage from './pages/ChallengePage';
 import ChallengeLayout from './layout/ChallengeLayout';
 import ReportUserPage from './pages/ReportUserPage';
 import ResetPassword from './pages/ResetPassword';
+import ConfirmEmail from './pages/ConfirmEmail';
 import ChangePasswordPage from './pages/ChangePasswordPage';
 
 const router = createBrowserRouter([
@@ -83,6 +84,7 @@ const router = createBrowserRouter([
       { path: '/auth/register', element: <RegisterPage /> },
       { path: '/auth/forgotPassword', element: <ForgotPassword /> },
       { path: '/auth/resetPassword', element: <ResetPassword /> },
+      { path: '/auth/confirmEmail', element: <ConfirmEmail /> },
     ],
   },
   {
