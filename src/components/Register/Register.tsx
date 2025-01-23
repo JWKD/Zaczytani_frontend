@@ -10,7 +10,7 @@ function Register() {
   const [confirmPassword, setConfirmPassword] = useState<string>('');
   const navigate = useNavigate();
   const [success, setSuccess] = useState<boolean>(false);
-  const [isDisabled, setIsDisabled] = useState(false);
+  const [isDisabled, setIsDisabled] = useState<boolean>(false);
   const [register, setRegister] = useState<RegisterPost>({
     login: '',
     firstName: '',
@@ -19,7 +19,7 @@ function Register() {
     email: '',
   });
 
-  const handleChange = (field: keyof RegisterPost, value: any) => {
+  const handleChange = (field: keyof RegisterPost, value: string) => {
     setRegister({
       ...register,
       [field]: value,
