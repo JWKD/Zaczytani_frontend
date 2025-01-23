@@ -21,6 +21,9 @@ const endpoints = {
     refreshToken: 'Identity/refresh',
     fetchDetails: `User/Profile`, // Endpoint do pobierania danych o profilu użytkownika
     changePassword: `Identity/manage/info`, // Endpoint do zmiany hasła
+    register: `User/Register`, // Endpoint do rejestracji
+    resendEmail: `Identity/resendConfirmationEmail`, // Endpoint do ponownego wysłania maila
+    confirmEmail: `Identity/confirmEmail`, // Endpoint do potwierdzenia maila
   },
   file: {
     postFile: `File`, // Endpoint do wysyłania pliku

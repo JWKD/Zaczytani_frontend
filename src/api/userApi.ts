@@ -1,5 +1,11 @@
 import { LoginRequest } from '../interfaces/login';
-import { ChangePasswordPost, UserProfileDetails } from '../interfaces/user';
+import {
+  ChangePasswordPost,
+  ConfirmEmailPost,
+  RegisterPost,
+  ResendEmail,
+  UserProfileDetails,
+} from '../interfaces/user';
 import apiClient from './config/axios';
 import endpoints from './config/endpoints';
 
@@ -15,6 +21,20 @@ const userApi = {
   },
   changePassword: async (payload: ChangePasswordPost) => {
     const response = await apiClient.post(endpoints.user.changePassword, payload);
+    return response;
+  },
+  register: async (payload: RegisterPost) => {
+    const response = await apiClient.post(endpoints.user.register, payload);
+    return response;
+  },
+  resendEmail: async (payload: ResendEmail) => {
+    const response = await apiClient.post(endpoints.user.resendEmail, payload);
+    return response;
+  },
+  confirmEmail: async (payload: ConfirmEmailPost) => {
+    const response = await apiClient.get(endpoints.user.confirmEmail, {
+      params: { userId: payload.userId, code: payload.code },
+    });
     return response;
   },
 };
