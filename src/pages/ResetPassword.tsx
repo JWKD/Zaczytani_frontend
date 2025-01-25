@@ -1,17 +1,7 @@
-import { useLocation } from 'react-router-dom';
+import ResetPasswordForm from '../components/ResetPasswordForm/ResetPasswordForm';
 
 function ResetPassword() {
-  const location = useLocation();
-
-  const queryParams = new URLSearchParams(location.search);
-
-  const resetCode = queryParams.get('resetCode');
-  const email = queryParams.get('email');
-  return (
-    <h1>
-      email: {email}, Code: {resetCode}
-    </h1>
-  );
+  return <ResetPasswordForm />;
 }
 
 export default ResetPassword;

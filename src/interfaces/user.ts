@@ -45,3 +45,13 @@ export interface ConfirmEmailPost {
   userId: string;
   code: string;
 }
+
+export interface ForgotPasswordEmail {
+  email: string;
+}
+
+export interface ResetPassword {
+  email: string;
+  resetCode: string;
+  newPassword: string;
+}
