@@ -24,6 +24,8 @@ const endpoints = {
     register: `User/Register`, // Endpoint do rejestracji
     resendEmail: `Identity/resendConfirmationEmail`, // Endpoint do ponownego wysłania maila
     confirmEmail: `Identity/confirmEmail`, // Endpoint do potwierdzenia maila
+    forgotPassword: `Identity/forgotPassword`, // Endpoint do wpisania mailna do zapomnianego hasła
+    resetPassword: `Identity/resetPassword`, // Endpoint do resetowania hasła
   },
   file: {
     postFile: `File`, // Endpoint do wysyłania pliku
