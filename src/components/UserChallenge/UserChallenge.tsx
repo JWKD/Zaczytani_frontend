@@ -22,9 +22,9 @@ function UserChallenge() {
   const fetchData = async () => {
     try {
       const result = await challengeApi.getAllProgressChallenges();
-      setProgressChallenges(result);
+      setProgressChallenges(result.slice().reverse());
       const proposalResult = await challengeApi.getAllNewChallenges();
-      setProposalChallenges(proposalResult);
+      setProposalChallenges(proposalResult.slice().reverse());
     } catch (err) {
       setError('Wystąpił nieoczekiwany problem');
     } finally {
@@ -37,7 +37,12 @@ function UserChallenge() {
   }, [childTrigger]);
 
   return loading ? (
-    <div style={{ width: '300px' }}>
+    <div
+      style={{
+        width: '500px',
+        margin: '0 auto',
+      }}
+    >
       <CatLoader />
     </div>
   ) : error ? (

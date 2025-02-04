@@ -11,11 +11,13 @@ import { Book } from '../../interfaces/book';
 import ProfilePageBook from '../ProfilePageBook.tsx/ProfilePageBook';
 import bookVariety from '../../utils/bookVarietyProfile';
 import CurrentChallenges from '../CurrentChallenges/CurrentChallenges';
+import LogOutPopUp from '../LogOutPopUp/LogOutPopUp';
 
 function UserDetails() {
   const [profile, setProfile] = useState<UserProfileDetails>();
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
+  const [isVisible, setIsVisible] = useState<boolean>(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -32,6 +34,9 @@ function UserDetails() {
     fetchData();
   }, []);
 
+  function handleClick() {
+    setIsVisible(!isVisible);
+  }
   return loading ? (
     <CatLoader />
   ) : error ? (
@@ -59,7 +64,12 @@ function UserDetails() {
                 </div>
               </div>
               <div className={styles.rack}>
-                <RackIcon />
+                <div className={styles.icon} onClick={handleClick}>
+                  <RackIcon />
+                </div>
+                <div className={`${styles.logOutPopUp} ${isVisible ? styles.visible : ''}`}>
+                  <LogOutPopUp />
+                </div>
               </div>
             </div>
             <div className={styles.buttonContainer}>
@@ -67,13 +77,13 @@ function UserDetails() {
                 Moje zgłoszenia
               </Link>
             </div>
-            <div className={styles.decorationsContainer}>
+            {/* <div className={styles.decorationsContainer}>
               <p className={styles.badgesName}>Odznaczenia:</p>
               <div className={styles.badgesBack}></div>
-            </div>
+            </div> */}
           </div>
           <div className={styles.rightSection}>
-            <CurrentChallenges challengeQuantity={3} />
+            <CurrentChallenges challengeQuantity={2} />
           </div>
         </div>
 

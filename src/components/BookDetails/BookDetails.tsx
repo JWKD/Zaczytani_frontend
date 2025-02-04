@@ -8,6 +8,9 @@ import DotHorizontal from '../../icons/DotsHorizontal';
 import ReviewsList from '../ReviewsList/ReviewsList';
 import AddBookOnShelf from '../AddBookOnShelf/AddBookOnShelf';
 import CatLoader from '../CatLoader/CatLoader';
+import shelfApi from '../../api/shelvesApi';
+import { useNavigate } from 'react-router-dom';
+import { CurrentlyReadingShelf } from '../../interfaces/Shelf';
 
 interface BookDetailsProps {
   id: string;
@@ -18,6 +21,8 @@ function BookDetails({ id }: BookDetailsProps) {
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   const [isVisible, setIsVisible] = useState<boolean>(false);
+  const [currentShelf, setCurrentShelf] = useState<CurrentlyReadingShelf>();
+  const navigate = useNavigate();
 
   const handleChangeValue = (newValue: boolean) => {
     setIsVisible(newValue);
@@ -27,11 +32,23 @@ function BookDetails({ id }: BookDetailsProps) {
     setIsVisible(true);
   }
 
+  const addBookToCurrentReading = async (shelfId: string) => {
+    try {
+      await shelfApi.attach(shelfId, id);
+    } catch (error) {
+      console.error('Błąd podczas dodawania książki na półkę', error);
+    } finally {
+      navigate(`/`);
+    }
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       try {
         const result = await dataApi.getBookDetails(id);
         setBook(result);
+        const shelfResult = await shelfApi.getShelfId();
+        setCurrentShelf(shelfResult);
       } catch (err) {
         setError('Wystąpił błąd');
       } finally {
@@ -75,7 +92,12 @@ function BookDetails({ id }: BookDetailsProps) {
               <button className={styles.addButton} onClick={addBookToShelf}>
                 Dodaj do półki
               </button>
-              <button className={styles.currentlyButton}>Aktualnie czytam</button>
+              <button
+                className={styles.currentlyButton}
+                onClick={() => addBookToCurrentReading(currentShelf?.id || '')}
+              >
+                Aktualnie czytam
+              </button>
             </div>
           </div>
 
@@ -112,7 +134,7 @@ function BookDetails({ id }: BookDetailsProps) {
           <p className={styles.description}>{book.description}</p>
         </div>
         <div className={styles.similarBooks}>
-          <h2>Podobne</h2>
+          <h2></h2>
         </div>
         <h2 className={styles.reviewHeader}>
           <span>

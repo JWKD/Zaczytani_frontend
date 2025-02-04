@@ -23,3 +23,35 @@ export interface UserProfileDetails {
   readBooks: Book[];
   currentlyReading: Book[];
 }
+
+export interface ChangePasswordPost {
+  newPassword: string;
+  oldPassword: string;
+}
+
+export interface RegisterPost {
+  login: string;
+  firstName: string;
+  lastName: string;
+  password: string;
+  email: string;
+}
+
+export interface ResendEmail {
+  email: string;
+}
+
+export interface ConfirmEmailPost {
+  userId: string;
+  code: string;
+}
+
+export interface ForgotPasswordEmail {
+  email: string;
+}
+
+export interface ResetPassword {
+  email: string;
+  resetCode: string;
+  newPassword: string;
+}

@@ -9,6 +9,7 @@ import { PostChallenge } from '../../interfaces/challenge';
 import SingleGenreAutoComplete from './AutoComplites/SingleGenreAutoComplite';
 import SingleAuthorAutoComplete from './AutoComplites/SingleAuthorAutoComplite';
 import challengeApi from '../../api/challengeApi';
+import CatLoader from '../CatLoader/CatLoader';
 
 function CreateChallenge() {
   const [loading, setLoading] = useState<boolean>(false);
@@ -67,7 +68,7 @@ function CreateChallenge() {
 
     if (!isValidLocal) {
       setIsValid(false);
-      setMessage('Sprawdź poprawność danych przed wysłaniem.');
+      setMessage('Uzupełnij dane. Liczba powinna być z zakresu od 1 do 3000.');
       return;
     }
 
@@ -82,7 +83,7 @@ function CreateChallenge() {
       setError('Wystąpił nieoczekiwany problem');
     } finally {
       setLoading(false);
-      alert('Wyzwanie dodano pomyślnie!');
+      navigate(-1);
     }
   }
 
@@ -91,7 +92,14 @@ function CreateChallenge() {
   }
 
   return loading ? (
-    <div>Loading ...</div>
+    <div
+      style={{
+        width: '500px',
+        margin: '0 auto',
+      }}
+    >
+      <CatLoader />
+    </div>
   ) : error ? (
     <div>Error: {error}</div>
   ) : (
@@ -126,6 +134,7 @@ function CreateChallenge() {
               type="number"
               onChange={(e) => handleChange('booksToRead', e.target.value)}
               value={challenge.booksToRead ?? ''}
+              maxLength={4}
             />
             książek.
           </div>
@@ -135,6 +144,7 @@ function CreateChallenge() {
             </div>
             Przeczytać
             <input
+              maxLength={4}
               className={styles.input}
               placeholder="liczba"
               type="number"
@@ -160,6 +170,7 @@ function CreateChallenge() {
             </div>
             Przeczytać
             <input
+              maxLength={4}
               className={styles.input}
               placeholder="liczba"
               type="number"

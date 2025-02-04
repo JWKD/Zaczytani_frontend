@@ -53,6 +53,7 @@ function ReviewDetails({ bookId }: ReviewDetailsProps) {
         comments: review.comments.length,
         notesCount: review.notes.length,
         user: review.user,
+        isLiked: review.isLiked,
       });
     }
   };
@@ -134,7 +135,7 @@ function ReviewDetails({ bookId }: ReviewDetailsProps) {
                   </div>
                   <div className={styles.noteRating}>
                     <Star />
-                    <p>{review.rating + '  / 10'}</p>
+                    <p>{note.rating + '  / 10'}</p>
                   </div>
                 </div>
                 {note.containsSpoilers ? (

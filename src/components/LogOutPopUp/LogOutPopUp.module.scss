@@ -1,0 +1,23 @@
+.container {
+  min-width: 195px;
+  height: auto;
+  background-color: white;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  padding: 10px;
+  border-radius: 10px;
+  font-family: 'Roboto Serif';
+  font-size: 14px;
+  color: #4a3423;
+  .element {
+    padding: 2px;
+    border: 10px;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  .element:hover {
+    background-color: rgb(242, 241, 241);
+  }
+}

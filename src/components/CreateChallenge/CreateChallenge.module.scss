@@ -55,12 +55,19 @@
       }
     }
     .optionsContainer {
+      font-family: 'Roboto Serif';
       flex: 1;
       padding: 30px;
-      .markContainer{
+      .markContainer {
         margin-right: 3px;
       }
-      .input{
+
+      input[type='number']::-webkit-inner-spin-button,
+      input[type='number']::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+      .input {
         border: none;
         margin-left: 3px;
         margin-right: 3px;
@@ -69,24 +76,24 @@
         height: 28px;
         border-radius: 5px;
       }
-      .bookCountOption{
-        display: flex;
-        align-items: center;
-        margin-bottom: 10px;
-        
-      }
-      .genreOption{
+      .bookCountOption {
         display: flex;
         align-items: center;
         margin-bottom: 10px;
       }
-      .authorOption{
+      .genreOption {
         display: flex;
         align-items: center;
         margin-bottom: 10px;
       }
-      .validationContainer{
+      .authorOption {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+      }
+      .validationContainer {
         color: red;
+        font-size: 13px;
       }
     }
     .buttonContainer {
