@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import styles from './BookDetails.module.scss';
 import dataApi from '../../api/bookApi';
-import { Book } from '../../interfaces/book';
+import bookApi from '../../api/bookApi';
+import { Book, RecommendedBooksBookProps } from '../../interfaces/book';
 import Star from '../../icons/Star';
 import DefaultCover from '../../assets/defaultCover.jpg';
 import DotHorizontal from '../../icons/DotsHorizontal';
@@ -11,6 +12,7 @@ import CatLoader from '../CatLoader/CatLoader';
 import shelfApi from '../../api/shelvesApi';
 import { useNavigate } from 'react-router-dom';
 import { CurrentlyReadingShelf } from '../../interfaces/Shelf';
+import ProfilePageBook from '../ProfilePageBook.tsx/ProfilePageBook';
 
 interface BookDetailsProps {
   id: string;
@@ -23,6 +25,7 @@ function BookDetails({ id }: BookDetailsProps) {
   const [isVisible, setIsVisible] = useState<boolean>(false);
   const [currentShelf, setCurrentShelf] = useState<CurrentlyReadingShelf>();
   const navigate = useNavigate();
+  const [similarBooks, setSimilarBooks] = useState<Book[]>([]);
 
   const handleChangeValue = (newValue: boolean) => {
     setIsVisible(newValue);
@@ -49,6 +52,15 @@ function BookDetails({ id }: BookDetailsProps) {
         setBook(result);
         const shelfResult = await shelfApi.getShelfId();
         setCurrentShelf(shelfResult);
+        if (book) {
+          const props: RecommendedBooksBookProps = {
+            pageSize: 5,
+            bookGenre: book?.genre[0],
+            authorName: book.authors[0].name,
+          };
+          const result = await bookApi.postRecommendedBooks(props);
+          setSimilarBooks(result);
+        }
       } catch (err) {
         setError('Wystąpił błąd');
       } finally {
@@ -57,7 +69,7 @@ function BookDetails({ id }: BookDetailsProps) {
     };
 
     fetchData();
-  }, [id]);
+  }, [id, book?.title]);
 
   return loading ? (
     <div
@@ -133,8 +145,19 @@ function BookDetails({ id }: BookDetailsProps) {
           </div>
           <p className={styles.description}>{book.description}</p>
         </div>
+
+        <h2 className={styles.reviewHeader}>
+          <span>
+            <DotHorizontal />
+          </span>
+          Proponowane
+        </h2>
         <div className={styles.similarBooks}>
-          <h2></h2>
+          <div className={styles.currentBooksContainer}>
+            {similarBooks.slice(0, 5).map((book: Book) => (
+              <ProfilePageBook book={book} fullStar={false} />
+            ))}
+          </div>
         </div>
         <h2 className={styles.reviewHeader}>
           <span>

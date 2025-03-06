@@ -6,6 +6,8 @@ import {
   PublishingHouse,
   BookRequestRequest,
   CurrentlyReading,
+  RecommendedBooksHomeProps,
+  RecommendedBooksBookProps,
 } from '../interfaces/book';
 import { Review } from '../interfaces/review';
 import apiClient from './config/axios';
@@ -66,6 +68,14 @@ const dataApi = {
   getReviews: async (id: string): Promise<Review[]> => {
     const response = await apiClient.get<Review[]>(endpoints.book.fetchReviews(id));
     return response.data;
+  },
+
+  postRecommendedBooks: async (payload: RecommendedBooksHomeProps): Promise<Book[]> => {
+    return (await apiClient.post(endpoints.book.postRecommendedBooks, payload)).data;
+  },
+
+  postRecommendedBookstoBook: async (payload: RecommendedBooksBookProps): Promise<Book[]> => {
+    return (await apiClient.post(endpoints.book.postRecommendedBooks, payload)).data;
   },
 
   // postData: async (payload: DataItemRequest): Promise<void> => {

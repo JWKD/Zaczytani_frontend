@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import defaultImage from '../../assets/defaultCover.jpg';
-import defaultImageBlank from '../../assets/DefaultBookCover.png';
+import defaultImageBlank from '../../assets/defaultCover.jpg';
 import styles from './ShelfComponent.module.scss';
 import { Book } from '../../interfaces/book';
 import { Shelf } from '../../interfaces/Shelf';
