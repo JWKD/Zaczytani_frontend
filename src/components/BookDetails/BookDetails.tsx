@@ -126,8 +126,7 @@ function BookDetails({ id }: BookDetailsProps) {
             </div>
             <div>
               <p>
-                <strong>Ilość recenzji </strong>
-                {book.readers} czytelników - {book.reviews} recenzji
+                <strong>{book.readers}</strong> czytelników - <strong>{book.reviews}</strong> recenzji
               </p>
             </div>
           </div>
