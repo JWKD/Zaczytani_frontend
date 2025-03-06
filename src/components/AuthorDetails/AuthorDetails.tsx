@@ -73,7 +73,7 @@ function AuthorDetails() {
                         <strong>Ocena: </strong> {Math.round(book.rating * 10) / 10} / 10
                       </h3>
                       <h3 className={styles.review}>
-                        {book.readers} czytelników - {book.reviews} recenzji
+                        <strong>{book.readers}</strong> czytelników - <strong>{book.reviews}</strong> recenzji
                       </h3>
                     </ul>
                   </div>
