@@ -45,6 +45,18 @@ function BookDetails({ id }: BookDetailsProps) {
     }
   };
 
+  const getRecommendedBooks = async () => {
+    if (book) {
+      const props: RecommendedBooksBookProps = {
+        pageSize: 5,
+        bookGenre: book?.genre[0],
+        authorName: book.authors[0].name,
+      };
+      const result = await bookApi.postRecommendedBooks(props);
+      setSimilarBooks(result);
+    }
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -52,15 +64,7 @@ function BookDetails({ id }: BookDetailsProps) {
         setBook(result);
         const shelfResult = await shelfApi.getShelfId();
         setCurrentShelf(shelfResult);
-        if (book) {
-          const props: RecommendedBooksBookProps = {
-            pageSize: 5,
-            bookGenre: book?.genre[0],
-            authorName: book.authors[0].name,
-          };
-          const result = await bookApi.postRecommendedBooks(props);
-          setSimilarBooks(result);
-        }
+        getRecommendedBooks();
       } catch (err) {
         setError('Wystąpił błąd');
       } finally {
@@ -154,7 +158,7 @@ function BookDetails({ id }: BookDetailsProps) {
         </h2>
         <div className={styles.similarBooks}>
           <div className={styles.currentBooksContainer}>
-            {similarBooks.slice(0, 5).map((book: Book) => (
+            {similarBooks.map((book: Book) => (
               <ProfilePageBook book={book} fullStar={false} />
             ))}
           </div>

@@ -77,18 +77,6 @@ const dataApi = {
   postRecommendedBookstoBook: async (payload: RecommendedBooksBookProps): Promise<Book[]> => {
     return (await apiClient.post(endpoints.book.postRecommendedBooks, payload)).data;
   },
-
-  // postData: async (payload: DataItemRequest): Promise<void> => {
-  //   return await apiClient.post(endpoints.data.create, payload);
-  // },
-
-  // updateData: async (id: number, payload: DataItemRequest): Promise<void> => {
-  //   return await apiClient.put(endpoints.data.update(id), payload);
-  // },
-
-  // deleteData: async (id: number): Promise<void> => {
-  //   await apiClient.delete(endpoints.data.delete(id));
-  // },
 };
 
 export default dataApi;
