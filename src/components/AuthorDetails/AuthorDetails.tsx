@@ -6,6 +6,8 @@ import Star from '../../icons/Star';
 import varietOfBooks from '../../utils/utils';
 import profillePicture from '../../assets/profilePicture.png';
 import DefaultCover from '../../assets/defaultCover.jpg';
+import readerVariety from '../../utils/readerVariety';
+import reviewVariety from '../../utils/reviewVariety';
 
 interface AuthorDetailsProps {
   author: AuthorBooks;
@@ -73,7 +75,8 @@ function AuthorDetails() {
                         <strong>Ocena: </strong> {Math.round(book.rating * 10) / 10} / 10
                       </h3>
                       <h3 className={styles.review}>
-                        <strong>{book.readers}</strong> czytelników - <strong>{book.reviews}</strong> recenzji
+                        <strong>{book.readers}</strong> {readerVariety(book.readers)} - <strong>{book.reviews}</strong>{' '}
+                        {reviewVariety(book.reviews)}
                       </h3>
                     </ul>
                   </div>
