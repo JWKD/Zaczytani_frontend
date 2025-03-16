@@ -86,11 +86,20 @@
     }
     .proposalContainer{
       display: flex;
-      height: 70vh;
+      height: auto;
       gap: 10px;
       padding: 5px;
       flex-direction: column;
-      max-height: 700px;
+      max-height: 215px;
+      overflow-y: auto;
+    }
+    .myChallengesContainer{
+      display: flex;
+      height: auto;
+      gap: 10px;
+      padding: 5px;
+      flex-direction: column;
+      max-height: 215px;
       overflow-y: auto;
     }
   }

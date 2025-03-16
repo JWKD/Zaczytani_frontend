@@ -1,17 +1,43 @@
-import ChallengeBookIcon from '../../icons/ChallengeBookIcon';
+import { symlink } from 'fs';
 import OpenBookIcon from '../../icons/OpenBookIcon';
 import challengeVariety from '../../utils/ChallengeVariety';
 import styles from './ChallengeProgressBar.module.scss';
+import TrashIcon from '../../icons/TrashIcon';
+import { useState } from 'react';
+import challengeApi from '../../api/challengeApi';
 
 interface ProgressBarProps {
+  id: string;
   current: number;
   max: number;
   name: string;
   criteria: string;
+  deleteIcon: boolean;
+  onChangeValue: () => void;
 }
 
-const ChallengeProgressBar: React.FC<ProgressBarProps> = ({ current, max, name, criteria }) => {
+const ChallengeProgressBar: React.FC<ProgressBarProps> = ({
+  id,
+  current,
+  max,
+  name,
+  criteria,
+  deleteIcon,
+  onChangeValue,
+}) => {
   const percentage = Math.floor(max > 0 ? (current / max) * 100 : 0);
+  const [deletePopup, setDeletePopup] = useState(false);
+
+  const handleClickDetach = async () => {
+    try {
+      await challengeApi.detachChallenge(id);
+    } catch (error) {
+      console.error('Błąd podczas usuwania wyzwania:', error);
+    } finally {
+      setDeletePopup(false);
+      onChangeValue();
+    }
+  };
 
   return (
     <div className={styles.container}>
@@ -29,6 +55,13 @@ const ChallengeProgressBar: React.FC<ProgressBarProps> = ({ current, max, name, 
             {criteria !== 'BooksCount' && <p>.</p>}
           </div>
         </div>
+        {deleteIcon ? (
+          <div className={styles.deleteIconContainer} onClick={() => handleClickDetach()}>
+            <TrashIcon />
+          </div>
+        ) : (
+          <></>
+        )}
       </div>
       <div className={styles.percentageSection}>
         <div className={styles.barContainer}>
