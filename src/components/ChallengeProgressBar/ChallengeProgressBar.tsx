@@ -20,10 +20,11 @@ const ChallengeProgressBar: React.FC<ProgressBarProps> = ({ current, max, name, 
           <OpenBookIcon />
         </div>
         <div className={styles.allText}>
-          <p className={styles.text}>
-            Przeczytać<p className={styles.smallText}> {max}</p>
-            <p className={styles.function}>{challengeVariety(max, criteria)}</p>{' '}
-          </p>
+        <p className={styles.text}>
+  Przeczytać
+  <span className={styles.smallText}> {max}</span> 
+  <span className={styles.function}>{challengeVariety(max, criteria)}</span>
+</p>
           <div className={styles.dotContainer}>
             <p className={styles.name}> {name || ''}</p>
             {criteria !== 'BooksCount' && <p>.</p>}

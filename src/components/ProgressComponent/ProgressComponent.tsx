@@ -36,7 +36,7 @@ function ProgressComponent() {
   ) : (
     <div className={styles.progressContainer}>
       {books.map((book: CurrentlyReading, index) => (
-        <div className={styles.bookDetails}>
+        <div key={book.id || index} className={styles.bookDetails}>
           <img key={index} className={styles.image} src={book.imageUrl || defaultCover} alt="Book cover"></img>
           <div className={styles.detailsComponenet}>
             <p className={styles.bookTitle}>{book.title}</p>

@@ -52,6 +52,7 @@ const CurrentChallenges: React.FC<CurrentChallengesProps> = ({ challengeQuantity
               max={challenge.booksToRead}
               name={challenge.criteriaValue}
               criteria={challenge.criteria}
+              key={challenge.id}
             />
           ))}
       </div>
