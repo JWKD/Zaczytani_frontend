@@ -96,11 +96,11 @@ function UserDetails() {
             <div className={styles.currentBooksContainer}>
               {profile?.currentlyReading
                 .slice(0, 2)
-                .map((book: Book) => <ProfilePageBook book={book} fullStar={false} />)}
+                .map((book: Book) => <ProfilePageBook key={book.id} book={book} fullStar={false} />)}
             </div>
             <div className={styles.line}></div>
             <div className={styles.readBooksContainer}>
-              {profile?.readBooks.slice(0, 6).map((book: Book) => <ProfilePageBook book={book} fullStar={true} />)}
+              {profile?.readBooks.slice(0, 6).map((book: Book) => <ProfilePageBook key={book.id} book={book} fullStar={true} />)}
             </div>
           </div>
         </div>

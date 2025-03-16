@@ -62,6 +62,7 @@ function UserChallenge() {
           <div className={styles.progressChallengesContainer}>
             {progressChallenges?.map((challenge) => (
               <ChallengeProgressBar
+                key={challenge.id}
                 current={challenge.booksRead}
                 max={challenge.booksToRead}
                 name={challenge.criteriaValue}
@@ -79,6 +80,7 @@ function UserChallenge() {
         <div className={styles.proposalContainer}>
           {proposalChallenges?.map((challenge) => (
             <ChallengeProposal
+              key={challenge.id}
               onChangeValue={handleChangeValue}
               current={0}
               max={challenge.booksToRead}
