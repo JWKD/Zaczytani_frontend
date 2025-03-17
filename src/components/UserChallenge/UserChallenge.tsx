@@ -24,8 +24,26 @@ function UserChallenge() {
     try {
       const result = await challengeApi.getAllProgressChallenges();
       setProgressChallenges(result.slice().reverse());
+    } catch (err) {
+      setError('Wystąpił nieoczekiwany problem');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const fetchProposal = async () => {
+    try {
       const proposalResult = await challengeApi.getAllNewChallenges();
       setProposalChallenges(proposalResult.slice().reverse());
+    } catch (err) {
+      setError('Wystąpił nieoczekiwany problem');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const fetchMyChallenges = async () => {
+    try {
       const myChallenges = await challengeApi.getAllMyChallenges();
       setMyChallenges(myChallenges);
     } catch (err) {
@@ -37,6 +55,8 @@ function UserChallenge() {
 
   useEffect(() => {
     fetchData();
+    fetchProposal();
+    fetchMyChallenges();
   }, [childTrigger]);
 
   return loading ? (
