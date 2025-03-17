@@ -60,7 +60,6 @@
         max-height: auto;
         overflow-y: auto;
       }
-      
     }
   }
   .rightContainer {
@@ -84,22 +83,12 @@
         margin-left: 5px;
       }
     }
-    .proposalContainer{
+    .proposalContainer {
       display: flex;
-      height: auto;
       gap: 10px;
       padding: 5px;
       flex-direction: column;
-      max-height: 215px;
-      overflow-y: auto;
-    }
-    .myChallengesContainer{
-      display: flex;
-      height: auto;
-      gap: 10px;
-      padding: 5px;
-      flex-direction: column;
-      max-height: 215px;
+      max-height: 31vh;
       overflow-y: auto;
     }
   }

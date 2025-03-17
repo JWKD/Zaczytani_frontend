@@ -99,7 +99,7 @@ function UserChallenge() {
           <DotHorizontal />
           <p className={styles.title}>Moje wyzwania</p>
         </div>
-        <div className={styles.myChallengesContainer}>
+        <div className={styles.proposalContainer}>
           {myChallenges?.map((challenge) => (
             <ChallengeProposal
               onChangeValue={handleChangeValue}
