@@ -57,6 +57,7 @@ const CurrentChallenges: React.FC<CurrentChallengesProps> = ({ challengeQuantity
               criteria={challenge.criteria}
               deleteIcon={false}
               onChangeValue={handleChangeValue}
+              key={challenge.id}
             />
           ))}
       </div>

@@ -144,8 +144,8 @@ function BookSearch() {
       {books.length > 0 && searchPhrase.length > 2 ? (
         <div className={styles.bookList}>
           {books.map((book) => (
-            <ul>
-              <li className={styles.bookItem} key={book.id}>
+            <ul key={book.id}> 
+              <li className={styles.bookItem}>
                 <h3 className={styles.bookTitle} onClick={() => handleClickBook(book.id)}>
                   {book.title}:{' '}
                 </h3>

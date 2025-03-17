@@ -35,7 +35,7 @@ function ReviewsList({ bookId }: ReviewsListProps) {
   ) : (
     <div className={styles.reviews}>
       {reviews.map((review: Review) => (
-        <SingleReview {...review} />
+        <SingleReview key={review.id} {...review} />
       ))}
     </div>
   );
