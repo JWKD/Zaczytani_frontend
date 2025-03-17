@@ -55,7 +55,7 @@ const ChallengeProposal: React.FC<ChallengeProposalProps> = ({
       {deletePopup && (
         <div className={styles.popupOverlay}>
           <div className={styles.deletePopupContainer}>
-            <div className={styles.deleteText}>Czy na pewno chcesz usunąć?</div>
+            <div className={styles.deleteText}>Czy na pewno chcesz usunąć wyzwanie?</div>
             <div className={styles.deleteButtonContainer}>
               <button className={styles.shelfDeleteButoon} onClick={handleClickDelete}>
                 Tak

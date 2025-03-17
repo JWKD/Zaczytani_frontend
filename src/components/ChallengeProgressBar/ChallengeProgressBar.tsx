@@ -1,4 +1,3 @@
-import { symlink } from 'fs';
 import OpenBookIcon from '../../icons/OpenBookIcon';
 import challengeVariety from '../../utils/ChallengeVariety';
 import styles from './ChallengeProgressBar.module.scss';
@@ -41,28 +40,48 @@ const ChallengeProgressBar: React.FC<ProgressBarProps> = ({
 
   return (
     <div className={styles.container}>
-      <div className={styles.textContainer}>
-        <div className={styles.icon}>
-          <OpenBookIcon />
-        </div>
-        <div className={styles.allText}>
-          <p className={styles.text}>
-            Przeczytać<p className={styles.smallText}> {max}</p>
-            <p className={styles.function}>{challengeVariety(max, criteria)}</p>{' '}
-          </p>
-          <div className={styles.dotContainer}>
-            <p className={styles.name}> {name || ''}</p>
-            {criteria !== 'BooksCount' && <p>.</p>}
+      {deletePopup && (
+        <div className={styles.popupOverlay}>
+          <div className={styles.deletePopupContainer}>
+            <div className={styles.deleteText}>Czy na pewno chcesz opuścić wyzwanie?</div>
+            <div className={styles.deleteButtonContainer}>
+              <button className={styles.shelfDeleteButoon} onClick={handleClickDetach}>
+                Tak
+              </button>
+              <button className={styles.shelfCancelButoon} onClick={() => setDeletePopup(false)}>
+                Anuluj
+              </button>
+            </div>
           </div>
         </div>
-        {deleteIcon ? (
-          <div className={styles.deleteIconContainer} onClick={() => handleClickDetach()}>
-            <TrashIcon />
+      )}
+      <div className={styles.chllengeContainer}>
+        <div className={styles.textContainer}>
+          <div className={styles.icon}>
+            <OpenBookIcon />
           </div>
-        ) : (
-          <></>
-        )}
+          <div className={styles.allText}>
+            <p className={styles.text}>
+              Przeczytać<p className={styles.smallText}> {max}</p>
+              <p className={styles.function}>{challengeVariety(max, criteria)}</p>{' '}
+            </p>
+            <div className={styles.dotContainer}>
+              <p className={styles.name}> {name || ''}</p>
+              {criteria !== 'BooksCount' && <p>.</p>}
+            </div>
+          </div>
+        </div>
+        <div className={styles.trashContainer}>
+          {deleteIcon ? (
+            <div className={styles.deleteIconContainer} onClick={() => setDeletePopup(true)}>
+              <TrashIcon />
+            </div>
+          ) : (
+            <></>
+          )}
+        </div>
       </div>
+
       <div className={styles.percentageSection}>
         <div className={styles.barContainer}>
           <div className={styles.progressText}>

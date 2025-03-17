@@ -65,7 +65,7 @@ function UserChallenge() {
           <div className={styles.progressChallengesContainer}>
             {progressChallenges?.map((challenge) => (
               <ChallengeProgressBar
-                id={challenge.id}
+                id={challenge.challengeId}
                 current={challenge.booksRead}
                 max={challenge.booksToRead}
                 name={challenge.criteriaValue}

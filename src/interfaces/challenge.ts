@@ -1,5 +1,6 @@
 export interface Challenge {
   id: string;
+  challengeId: string;
   booksToRead: number;
   criteriaValue: string;
   criteria: string;
