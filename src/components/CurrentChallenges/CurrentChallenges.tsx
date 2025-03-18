@@ -30,6 +30,8 @@ const CurrentChallenges: React.FC<CurrentChallengesProps> = ({ challengeQuantity
     fetchData();
   }, []);
 
+  const handleChangeValue = () => {};
+
   return loading ? (
     <div style={{ width: '100px' }}>
       <CatLoader />
@@ -48,10 +50,13 @@ const CurrentChallenges: React.FC<CurrentChallengesProps> = ({ challengeQuantity
           ?.slice(0, challengeQuantity)
           .map((challenge) => (
             <ChallengeProgressBar
+              id={challenge.id}
               current={challenge.booksRead}
               max={challenge.booksToRead}
               name={challenge.criteriaValue}
               criteria={challenge.criteria}
+              deleteIcon={false}
+              onChangeValue={handleChangeValue}
               key={challenge.id}
             />
           ))}

@@ -54,8 +54,11 @@ const endpoints = {
   },
   challenge: {
     create: `Challenge`, // Endpoint do tworzenia wyzwania (POST)
+    delete: (challengeId: string) => `Challenge/${challengeId}`, //Endpoint do usuwania swojego wyzwania (DELETE)
     fetch: `Challenge`, // Endpoint do pobierania wyzwań wsystkich (GET)
+    fetchMyChallenges: `Challenge/MyChallenges`, // Endpoint do pobierania wszytkich moich wyzwań (GET)
     join: (challengeId: string) => `Challenge/${challengeId}/Join`, // Endpoint do dołączenia do wyzwania
+    detach: (challengeId: string) => `Challenge/${challengeId}/Detach`, // Ednpoin do wypisywania się z wyzwania (DELETE)
     fetchProgress: `Challenge/Progress`, // Endpoint do pobierania zaczętych wyzwań użytkownika
   },
 };

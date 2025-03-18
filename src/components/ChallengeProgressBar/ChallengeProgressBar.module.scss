@@ -8,28 +8,102 @@
   width: 100%;
   padding: 10px;
   gap: 10px;
-  .textContainer {
+  .popupOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
     display: flex;
+    justify-content: center;
     align-items: center;
-    .allText {
+    z-index: 1000;
+    .deletePopupContainer {
+      background-color: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      width: 400px;
+      height: auto;
       display: flex;
       flex-direction: column;
-      .text {
+      align-items: center;
+      .deleteButtonContainer {
+        padding: 20px;
         display: flex;
-        flex-direction: row;
-        margin-left: 10px;
-        font-size: 16px;
-        font-weight: 600;
-        .smallText {
-          font-weight: 300;
-          margin-left: 2px;
-          margin-right: 3px;
+        gap: 20px;
+        .deleteText {
+          text-align: center;
+        }
+        .shelfDeleteButoon {
+          background-color: #b8dc8c;
+          border-radius: 5px;
+          border: none;
+          color: white;
+          width: 80px;
+          height: 30px;
+          cursor: pointer;
+          transition: background-color 0.3s ease;
+        }
+        .shelfDeleteButoon:hover {
+          background-color: #a3c88b;
+        }
+        .shelfCancelButoon {
+          background-color: hsla(2, 36%, 33%, 0.6);
+          border-radius: 5px;
+          border: none;
+          color: white;
+          width: 80px;
+          height: 30px;
+          cursor: pointer;
+          transition: background-color 0.3s ease;
+        }
+        .shelfCancelButoon:hover {
+          background-color: hsla(2, 36%, 33%, 0.7);
         }
       }
-      .dotContainer {
+    }
+  }
+  .chllengeContainer {
+    display: flex;
+    justify-content: space-between;
+    .textContainer {
+      display: flex;
+      align-items: center;
+      .allText {
         display: flex;
-        margin-left: 10px;
+        flex-direction: column;
+        .text {
+          display: flex;
+          flex-direction: row;
+          margin-left: 10px;
+          font-size: 16px;
+          font-weight: 600;
+          .smallText {
+            font-weight: 300;
+            margin-left: 2px;
+            margin-right: 3px;
+          }
+        }
+        .dotContainer {
+          display: flex;
+          margin-left: 10px;
+        }
       }
+    }
+    .trashContainer {
+      padding: 4px;
+    }
+    .trashContainer svg {
+      display: flex;
+      align-items: center;
+      justify-content: right;
+      cursor: pointer;
+      transition: fill 0.2s ease-in-out;
+    }
+    .trashContainer:hover svg {
+      fill: red;
     }
   }
 
