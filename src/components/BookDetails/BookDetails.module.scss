@@ -149,3 +149,10 @@ p {
     margin-right: 5px;
   }
 }
+.similarBooks {
+  background-color: white;
+  margin-bottom: 10px;
+  .currentBooksContainer {
+    display: flex;
+  }
+}

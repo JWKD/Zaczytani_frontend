@@ -15,6 +15,7 @@ const endpoints = {
     fetchPublishingHouses: `Book/PublishingHouses`, // Endpoint do pobierania wydawnictw
     fetchCurrentlyReading: `Book/CurrentlyReading`, // Endpoint do pobierania aktualnie czytanych książek
     fetchReviews: (id: string) => `Book/${id}/Reviews`, // Endpoint do pobierania recenzji książki
+    postRecommendedBooks: `Book/Recommended`, // Endpoint do pobierania rekomendowanych książek
   },
   user: {
     login: `Identity/login`,

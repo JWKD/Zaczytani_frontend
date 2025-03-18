@@ -78,3 +78,13 @@ export interface CurrentlyReading {
   pageNumber: number;
   authors: Author[];
 }
+
+export interface RecommendedBooksHomeProps {
+  pageSize: number;
+}
+
+export interface RecommendedBooksBookProps {
+  pageSize: number;
+  bookGenre: string;
+  authorName: string;
+}
