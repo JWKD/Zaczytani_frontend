@@ -60,7 +60,6 @@
         max-height: auto;
         overflow-y: auto;
       }
-      
     }
   }
   .rightContainer {
@@ -84,13 +83,12 @@
         margin-left: 5px;
       }
     }
-    .proposalContainer{
+    .proposalContainer {
       display: flex;
-      height: 70vh;
       gap: 10px;
       padding: 5px;
       flex-direction: column;
-      max-height: 700px;
+      max-height: 31vh;
       overflow-y: auto;
     }
   }

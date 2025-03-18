@@ -13,6 +13,8 @@ import shelfApi from '../../api/shelvesApi';
 import { useNavigate } from 'react-router-dom';
 import { CurrentlyReadingShelf } from '../../interfaces/Shelf';
 import ProfilePageBook from '../ProfilePageBook.tsx/ProfilePageBook';
+import readerVariety from '../../utils/readerVariety';
+import reviewVariety from '../../utils/reviewVariety';
 
 interface BookDetailsProps {
   id: string;
@@ -142,8 +144,8 @@ function BookDetails({ id }: BookDetailsProps) {
             </div>
             <div>
               <p>
-                <strong>Ilość recenzji </strong>
-                {book.readers} czytelników - {book.reviews} recenzji
+                <strong>{book.readers}</strong> {readerVariety(book.readers)} - <strong>{book.reviews}</strong>{' '}
+                {reviewVariety(book.reviews)}
               </p>
             </div>
           </div>

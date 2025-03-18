@@ -14,6 +14,7 @@ function UserChallenge() {
   const [error, setError] = useState<string | null>(null);
   const [progressChallenges, setProgressChallenges] = useState<Challenge[]>();
   const [proposalChallenges, setProposalChallenges] = useState<NewChallenge[]>();
+  const [myChallenges, setMyChallenges] = useState<NewChallenge[]>();
   const [childTrigger, setChildTrigger] = useState(false);
 
   const handleChangeValue = () => {
@@ -23,6 +24,15 @@ function UserChallenge() {
     try {
       const result = await challengeApi.getAllProgressChallenges();
       setProgressChallenges(result.slice().reverse());
+    } catch (err) {
+      setError('Wystąpił nieoczekiwany problem');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const fetchProposal = async () => {
+    try {
       const proposalResult = await challengeApi.getAllNewChallenges();
       setProposalChallenges(proposalResult.slice().reverse());
     } catch (err) {
@@ -32,8 +42,21 @@ function UserChallenge() {
     }
   };
 
+  const fetchMyChallenges = async () => {
+    try {
+      const myChallenges = await challengeApi.getAllMyChallenges();
+      setMyChallenges(myChallenges);
+    } catch (err) {
+      setError('Wystąpił nieoczekiwany problem');
+    } finally {
+      setLoading(false);
+    }
+  };
+
   useEffect(() => {
     fetchData();
+    fetchProposal();
+    fetchMyChallenges();
   }, [childTrigger]);
 
   return loading ? (
@@ -62,10 +85,14 @@ function UserChallenge() {
           <div className={styles.progressChallengesContainer}>
             {progressChallenges?.map((challenge) => (
               <ChallengeProgressBar
+                id={challenge.challengeId}
+                key={challenge.id}
                 current={challenge.booksRead}
                 max={challenge.booksToRead}
                 name={challenge.criteriaValue}
                 criteria={challenge.criteria}
+                deleteIcon={true}
+                onChangeValue={handleChangeValue}
               />
             ))}
           </div>
@@ -79,12 +106,31 @@ function UserChallenge() {
         <div className={styles.proposalContainer}>
           {proposalChallenges?.map((challenge) => (
             <ChallengeProposal
+              key={challenge.id}
               onChangeValue={handleChangeValue}
               current={0}
               max={challenge.booksToRead}
               name={challenge.criteriaValue}
               criteria={challenge.criteria}
               id={challenge.id}
+              trashIcon={false}
+            />
+          ))}
+        </div>
+        <div className={styles.sectionTitle}>
+          <DotHorizontal />
+          <p className={styles.title}>Moje wyzwania</p>
+        </div>
+        <div className={styles.proposalContainer}>
+          {myChallenges?.map((challenge) => (
+            <ChallengeProposal
+              onChangeValue={handleChangeValue}
+              current={0}
+              max={challenge.booksToRead}
+              name={challenge.criteriaValue}
+              criteria={challenge.criteria}
+              id={challenge.id}
+              trashIcon={true}
             />
           ))}
         </div>
