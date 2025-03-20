@@ -1,5 +1,5 @@
 import styles from './AddShelfComponent.module.scss';
-import defaultImage from '../../../assets/DefaultBookCover.png';
+import defaultImage from '../../../assets/defaultCover.jpg';
 import Plus from '../../../icons/Plus';
 
 function AddShelfComponent() {

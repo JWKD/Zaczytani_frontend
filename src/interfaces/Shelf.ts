@@ -3,6 +3,7 @@ export interface Shelf {
   name: string;
   description: string;
   isDefault: boolean;
+  imageUrl: string[];
 }
 
 export interface CreateShelf {

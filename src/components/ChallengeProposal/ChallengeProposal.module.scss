@@ -1,4 +1,5 @@
 .container {
+  
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -9,6 +10,63 @@
   font-family: Roboto serif;
   color: #543e2e;
   padding: 5px;
+  .popupOverlay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    .deletePopupContainer {
+      background-color: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      width: 400px;
+      height: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      .deleteButtonContainer {
+        padding: 20px;
+        display: flex;
+        gap: 20px;
+        .deleteText {
+          text-align: center;
+        }
+        .shelfDeleteButoon {
+          background-color: #b8dc8c;
+          border-radius: 5px;
+          border: none;
+          color: white;
+          width: 80px;
+          height: 30px;
+          cursor: pointer;
+          transition: background-color 0.3s ease;
+        }
+        .shelfDeleteButoon:hover {
+          background-color: #a3c88b;
+        }
+        .shelfCancelButoon {
+          background-color: hsla(2, 36%, 33%, 0.6);
+          border-radius: 5px;
+          border: none;
+          color: white;
+          width: 80px;
+          height: 30px;
+          cursor: pointer;
+          transition: background-color 0.3s ease;
+        }
+        .shelfCancelButoon:hover {
+          background-color: hsla(2, 36%, 33%, 0.7);
+        }
+      }
+    }
+  }
   .leftSection {
     display: flex;
     flex-direction: column;
@@ -78,18 +136,35 @@
       }
     }
   }
-  .button{
-    height: 27px;
-    width: 100px;
-    color: white;
-    border-radius: 5px;
-    border:none;
-    background-color: #B8DC8CD4;
-    margin-right: 20px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+  .buttonContainer{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    .deleteIconContainer svg{
+      display: flex;
+      align-items: center;
+      justify-content: right;
+      cursor: pointer;
+      transition: fill 0.2s ease-in-out;
+    }
+    .deleteIconContainer:hover svg {
+      fill: red;
+    }
+
+    .button{
+      height: 27px;
+      width: 100px;
+      color: white;
+      border-radius: 5px;
+      border:none;
+      background-color: #B8DC8CD4;
+      margin-right: 20px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .button:hover{
+      background-color: #a3c88b;
+    }
   }
-  .button:hover{
-    background-color: #a3c88b;
-  }
+ 
 }

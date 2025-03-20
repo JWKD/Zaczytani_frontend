@@ -15,6 +15,7 @@ const endpoints = {
     fetchPublishingHouses: `Book/PublishingHouses`, // Endpoint do pobierania wydawnictw
     fetchCurrentlyReading: `Book/CurrentlyReading`, // Endpoint do pobierania aktualnie czytanych książek
     fetchReviews: (id: string) => `Book/${id}/Reviews`, // Endpoint do pobierania recenzji książki
+    postRecommendedBooks: `Book/Recommended`, // Endpoint do pobierania rekomendowanych książek
   },
   user: {
     login: `Identity/login`,
@@ -54,8 +55,11 @@ const endpoints = {
   },
   challenge: {
     create: `Challenge`, // Endpoint do tworzenia wyzwania (POST)
+    delete: (challengeId: string) => `Challenge/${challengeId}`, //Endpoint do usuwania swojego wyzwania (DELETE)
     fetch: `Challenge`, // Endpoint do pobierania wyzwań wsystkich (GET)
+    fetchMyChallenges: `Challenge/MyChallenges`, // Endpoint do pobierania wszytkich moich wyzwań (GET)
     join: (challengeId: string) => `Challenge/${challengeId}/Join`, // Endpoint do dołączenia do wyzwania
+    detach: (challengeId: string) => `Challenge/${challengeId}/Detach`, // Ednpoin do wypisywania się z wyzwania (DELETE)
     fetchProgress: `Challenge/Progress`, // Endpoint do pobierania zaczętych wyzwań użytkownika
   },
 };

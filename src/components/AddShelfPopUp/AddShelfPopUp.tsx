@@ -1,5 +1,5 @@
 import styles from './AddShelfPopUp.module.scss';
-import defaultImage from '../../assets/DefaultBookCover.png';
+import defaultImage from '../../assets/defaultCover.jpg';
 import Plus from '../../icons/Plus';
 import DotHorizontal from '../../icons/DotsHorizontal';
 import { useState } from 'react';
